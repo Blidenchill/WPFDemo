@@ -1,0 +1,94 @@
+﻿<RadioButton x:Class="MagicCube.TemplateUC.IMRBMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="RBItem"
+             FocusVisualStyle="{x:Null}"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <RadioButton.Style>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Width" Value="76" />
+            <Setter Property="Background" Value="#f6f6f6" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Height="60"
+                              Background="{TemplateBinding Background}"
+                              SnapsToDevicePixels="true">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="54" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Border x:Name="Bd"
+                                    Margin="0,0,0,0"
+                                    Background="{x:Null}"
+                                    BorderThickness="0">
+                                <Grid>
+                                    <TextBlock x:Name="txk"
+                                               Margin="0,22,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Top"
+                                               Foreground="#333333"
+                                               Text="{Binding Text,
+                                                              ElementName=RBItem}" />
+                                </Grid>
+                            </Border>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Height="1"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Bottom"
+                                           Fill="#e7e7e7"
+                                           StrokeThickness="0" />
+                                <Path x:Name="PART_Path"
+                                      Grid.Column="1"
+                                      Width="12"
+                                      Height="6"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Bottom"
+                                      Data="M0,12 L0,12 6,0 M6,0 L6,0 12,12"
+                                      Fill="#e7e7e7"
+                                      Stretch="Fill"
+                                      Stroke="#e7e7e7"
+                                      StrokeThickness="1"
+                                      Visibility="Collapsed" />
+                                <Rectangle x:Name="PART_Line"
+                                           Grid.Column="1"
+                                           Height="1"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Bottom"
+                                           Fill="#e7e7e7"
+                                           StrokeThickness="0"
+                                           Visibility="Visible" />
+                                <Rectangle Grid.Column="2"
+                                           Height="1"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Bottom"
+                                           Fill="#e7e7e7"
+                                           StrokeThickness="0" />
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Panel.ZIndex" Value="1" />
+                                <Setter TargetName="txk" Property="Foreground" Value="#10c2fe" />
+                                <Setter TargetName="PART_Path" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="PART_Line" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </RadioButton.Style>
+</RadioButton>

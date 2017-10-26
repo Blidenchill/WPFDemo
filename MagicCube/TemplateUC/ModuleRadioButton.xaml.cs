@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace MagicCube.TemplateUC
+{
+    /// <summary>
+    /// LinkButton.xaml 的交互逻辑
+    /// </summary>
+    public partial class ModuleRadioButton : RadioButton
+    {
+        public ModuleRadioButton()
+        {
+            
+            InitializeComponent();
+        }
+        public string Text
+         {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Hint.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(ModuleRadioButton), new PropertyMetadata(null));
+
+        public string ImageSource
+        {
+            get { return (string)GetValue(ImageSourceProperty); }
+            set { SetValue(ImageSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Hint.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ImageSourceProperty =
+            DependencyProperty.Register("ImageSource", typeof(string), typeof(ModuleRadioButton), new PropertyMetadata(null));
+
+        public string ImageHover
+        {
+            get { return (string)GetValue(ImageHoverProperty); }
+            set { SetValue(ImageHoverProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Hint.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ImageHoverProperty =
+            DependencyProperty.Register("ImageHover", typeof(string), typeof(ModuleRadioButton), new PropertyMetadata(null));
+
+        public string ImageSelected
+        {
+            get { return (string)GetValue(ImageSelectedProperty); }
+            set { SetValue(ImageSelectedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Hint.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ImageSelectedProperty =
+            DependencyProperty.Register("ImageSelected", typeof(string), typeof(ModuleRadioButton), new PropertyMetadata(null));
+
+        private void ModuleRB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
+            {
+                e.Handled = true;
+            }
+        }
+    }
+}

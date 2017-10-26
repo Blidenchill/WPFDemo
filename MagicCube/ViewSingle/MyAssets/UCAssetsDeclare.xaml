@@ -1,0 +1,443 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCAssetsDeclare"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="1882"
+             d:DesignWidth="696"
+             mc:Ignorable="d">
+    <Grid Background="White">
+        <Grid.Resources>
+            <Style x:Key="BlueTitleTb" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#00beff" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="0,40,0,20" />
+            </Style>
+            <Style x:Key="BlackTitleTb" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#333333" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style x:Key="contentTb" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#666666" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+        </Grid.Resources>
+        <StackPanel Margin="20,0,20,60">
+            <TextBlock Style="{StaticResource BlueTitleTb}" Text="关于M币" />
+            <TextBlock Margin="0,0,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  什么是M币" />
+            <TextBlock Style="{StaticResource contentTb}" Text="M币是魔方面面推出的便于用户使用的虚拟货币，1M币=1RMB" />
+            <TextBlock Margin="0,16,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  M币有什么用" />
+            <TextBlock Width="635"
+                       HorizontalAlignment="Left"
+                       Style="{StaticResource contentTb}"
+                       Text="可以用于下载候选人的联系方式和拨打电话，还能用于消费魔方面面推出的到访和到面等招聘服务（如需了解更多服务，请 联系我们010-59423287）"
+                       TextWrapping="Wrap" />
+            <TextBlock Margin="0,16,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  M币的获得途径" />
+            <TextBlock Style="{StaticResource contentTb}" Text="联系您的客户经理购买" />
+            <TextBlock Style="{StaticResource BlueTitleTb}" Text="关于积分" />
+            <TextBlock Margin="0,0,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  什么是积分" />
+            <TextBlock Style="{StaticResource contentTb}" Text="积分是魔方面面推出的虚拟分值，旨在为用户提供更多实惠和便利，同时体现大家的成就感" />
+            <TextBlock Margin="0,16,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  积分有什么用" />
+            <TextBlock Style="{StaticResource contentTb}" Text="可以用于下载候选人的联系方式和拨打电话" />
+            <TextBlock Margin="0,16,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  积分的获得途径" />
+            <TextBlock Style="{StaticResource contentTb}" Text="积分可以通过完成任务获取，详见下方说明。如果积极参加魔方组织的各项活动，还会获得不同额度的积分哦~" />
+            <TextBlock Margin="0,16,0,6"
+                       Style="{StaticResource BlackTitleTb}"
+                       Text="·  同时拥有M币和积分时，查看联系方式和拨打电话的使用规则" />
+            <TextBlock Style="{StaticResource contentTb}" Text="优先扣除积分，当积分不够时才会扣除您的M币" />
+            <TextBlock Style="{StaticResource BlueTitleTb}" Text="关于下载数" />
+            <TextBlock Style="{StaticResource contentTb}" Text="通过购买或赠送获得的简历联系方式下载数，使用时按人进行扣除，可用于直接下载联系方式或拨打免费电话" />
+            <TextBlock Style="{StaticResource BlueTitleTb}" Text="M币的使用规则" />
+            <Border BorderBrush="#eeeeee" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Background="#ffffff" Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="类型" />
+                        <TextBlock Margin="74,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="行为" />
+                        <TextBlock Margin="122,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="分值" />
+                        <TextBlock Margin="119,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="说明" />
+                    </StackPanel>
+                    <Rectangle Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="使用扣减" />
+                        <TextBlock Margin="50,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="候选人到访或到面" />
+                        <TextBlock Margin="50,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="合同约定" />
+                        <TextBlock Width="238"
+                                   Margin="90,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="如需了解详细服务内容和报价，请联系我们010-59423287"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Rectangle Grid.Row="1"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="2"
+                                Background="#fbfbfc"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="使用扣减" />
+                        <TextBlock Width="80"
+                                   Margin="50,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="下载联系方式拨打免费电话"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="65,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="最低期望薪资的1%" />
+                        <TextBlock Width="238"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="下载求职者联系方式、拨打免费电话，将按 照求职者最低期望薪资的1%扣除M币。两种 方式只扣除1次，不重复扣"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <TextBlock Style="{StaticResource BlueTitleTb}" Text="积分的获得及使用规则" />
+            <Border BorderBrush="#eeeeee" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                        <RowDefinition Height="86" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Background="#ffffff" Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="类型" />
+                        <TextBlock Margin="63,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="行为" />
+                        <TextBlock Margin="111,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="分值" />
+                        <TextBlock Margin="84,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#666666"
+                                   Text="说明" />
+                    </StackPanel>
+                    <Rectangle Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="首次发布职位" />
+                        <TextBlock Margin="65,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="50" />
+                        <TextBlock Width="238"
+                                   Margin="90,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="首次成功发布职位即可赠送50积分                                    仅向同一个公司下前3个发布职位的账号赠送"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Rectangle Grid.Row="1"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="2"
+                                Background="#fbfbfc"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="80"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="认证加V"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="55,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="100" />
+                        <TextBlock Width="258"
+                                   Margin="80,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="通过加V认证即可获赠100积分                                    仅向同一个公司下前3个加V认证成功的账号赠送"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Rectangle Grid.Row="2"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="3"
+                                Background="#ffffff"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="110"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="首次主动联系求职者"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="25,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="50" />
+                        <TextBlock Width="238"
+                                   Margin="85,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="首次主动拨打免费电话或成功查看联系方式即可赠送积分已认证送50积分"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Rectangle Grid.Row="3"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="4"
+                                Background="#fbfbfc"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="110"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="首次登录魔方小聘"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="25,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="50" />
+                        <TextBlock Width="278"
+                                   Margin="85,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="首次成功登录魔方小聘                                          仅向同一个公司下前3个成功登录魔方小聘的账号                                    赠送50积分"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Rectangle Grid.Row="4"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="5"
+                                Background="#ffffff"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="120"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="首次下载魔方面面App"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="15,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="10" />
+                        <TextBlock Width="278"
+                                   Margin="85,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="首次下载魔方面面app，并使用企业端功能                                    赠送10积分"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Rectangle Grid.Row="5"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="6"
+                                Background="#fcfcfc"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="120"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="连续签到5天"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="15,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="25" />
+                        <TextBlock Width="258"
+                                   Margin="85,0,0,0"
+                                   VerticalAlignment="Center"
+                                   LineHeight="20"
+                                   TextWrapping="Wrap">
+                            <Run Foreground="#333333" Text="连续5天签到，即可在第5天一次性获得25积分" />
+                            <Run Foreground="#ff6500" Text="只有已认证用户才能获赠" />
+                        </TextBlock>
+                    </StackPanel>
+                    <Rectangle Grid.Row="6"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="7"
+                                Background="#ffffff"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="120"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="积极回复求职者"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="15,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="15" />
+                        <TextBlock Width="308"
+                                   Margin="85,0,0,0"
+                                   VerticalAlignment="Center"
+                                   LineHeight="20"
+                                   TextWrapping="Wrap">
+                            <Run Foreground="#333333" Text="每日前3次回复初次建立沟通的求职者                                  24小时内回复，5积分/人，24-72小时间回复，3积分/人" />
+                            <Run Foreground="#ff6500" Text="只有已认证用户才能获赠" />
+                        </TextBlock>
+                    </StackPanel>
+                    <Rectangle Grid.Row="7"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="8"
+                                Background="#fcfcfc"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="获得积分" />
+                        <TextBlock Width="120"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="分享职位"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="15,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#f8995a"
+                                   Text="10" />
+                        <TextBlock Width="308"
+                                   Margin="85,0,0,0"
+                                   VerticalAlignment="Center"
+                                   LineHeight="20"
+                                   TextWrapping="Wrap">
+                            <Run Foreground="#333333" Text="每日朋友圈分享至少1个职位或您的个人主页，                                  即可获赠10积分" />
+                            <Run Foreground="#ff6500" Text="                                                            只有已认证用户才能获赠" />
+                        </TextBlock>
+                    </StackPanel>
+                    <Rectangle Grid.Row="8"
+                               Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                    <StackPanel Grid.Row="9"
+                                Background="#fcfcfc"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text=" 使用扣减" />
+                        <TextBlock Width="120"
+                                   Margin="40,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   LineHeight="20"
+                                   Text="下载联系方式                                    拨打免费电话"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="10,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#333333"
+                                   Text="最低期望薪资1%" />
+                        <TextBlock Width="308"
+                                   Margin="10,0,0,0"
+                                   VerticalAlignment="Center"
+                                   LineHeight="20"
+                                   Text="下载求职者联系方式、拨打免费电话，将按照求职者最                                    低期望薪资的1%扣除积分。                                          两种方式只扣除1次，不重复扣除积分"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

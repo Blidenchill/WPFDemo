@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="BusyIndicatorCtrl.BusyIndicator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="uc"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid Visibility="{Binding ElementName=uc, Path=IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Margin="0,0,115,0" Background="Transparent" />
+        <Image Name="loadingImg"
+               Grid.RowSpan="2"
+               Width="80"
+               Height="80"
+               Panel.ZIndex="3"
+               gif:ImageBehavior.AnimatedSource="/MagicCube;component/Resources/ImageSingle/loading.gif"
+               gif:ImageBehavior.AutoStart="{Binding AutoStart}"
+               gif:ImageBehavior.RepeatBehavior="{Binding RepeatBehavior}">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="20" CenterY="20" />
+            </Image.RenderTransform>
+
+        </Image>
+        <TextBlock Grid.Row="1"
+                   Margin="0,50,0,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Panel.ZIndex="4"
+                   FontSize="12"
+                   Foreground="#c9cde7"
+                   Text="{Binding Text,
+                                  ElementName=uc}" />
+        <Border Grid.Row="1" Background="Transparent" />
+    </Grid>
+</UserControl>

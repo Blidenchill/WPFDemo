@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{a5b6f99e-dadd-4392-9a89-b1bcbb989c7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDKWrapper">
+      <UniqueIdentifier>{590cb38f-b2eb-4a76-8136-c1728b70a2e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{16875449-904b-42b4-9014-6668a804ce6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="genByProject">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="C2C">
+      <UniqueIdentifier>{bc218fce-2b53-4752-a5fc-c858b0705029}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\QAVSDKDemo.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>genByProject</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>genByProject</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>genByProject</Filter>
+    </ClInclude>
+    <ClInclude Include="SdkWrapper.h">
+      <Filter>SDKWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogQAVSDKDemo.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="QAVSDKApp.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoRender.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigInfoMgr.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SDKMsgWrapper.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="gci-json.h">
+      <Filter>C2C</Filter>
+    </ClInclude>
+    <ClInclude Include="AVCcCodec.h">
+      <Filter>C2C</Filter>
+    </ClInclude>
+    <ClInclude Include="AVCcData.h">
+      <Filter>C2C</Filter>
+    </ClInclude>
+    <ClInclude Include="AVCcObserver.h">
+      <Filter>C2C</Filter>
+    </ClInclude>
+    <ClInclude Include="AVCcReciver.h">
+      <Filter>C2C</Filter>
+    </ClInclude>
+    <ClInclude Include="AVCcTask.h">
+      <Filter>C2C</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SdkWrapper.cpp">
+      <Filter>SDKWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>genByProject</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogQAVSDKDemo.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="QAVSDKApp.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoRender.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigInfoMgr.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SDKMsgWrapper.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="gci-json.cc">
+      <Filter>C2C</Filter>
+    </ClCompile>
+    <ClCompile Include="AVCcCodec.cpp">
+      <Filter>C2C</Filter>
+    </ClCompile>
+    <ClCompile Include="AVCcReciver.cpp">
+      <Filter>C2C</Filter>
+    </ClCompile>
+    <ClCompile Include="AVCcTask.cpp">
+      <Filter>C2C</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QAVSDKDemo.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

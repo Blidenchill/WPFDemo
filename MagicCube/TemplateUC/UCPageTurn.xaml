@@ -1,0 +1,145 @@
+﻿<UserControl
+    x:Class="MagicCube.TemplateUC.UCPageTurn"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="50"
+    d:DesignWidth="700"
+    Background="White"
+    FocusVisualStyle="{x:Null}"
+    mc:Ignorable="d">
+    <StackPanel
+        x:Name="pagePanel"
+        Grid.Row="3"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Horizontal">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Foreground" Value="#666666" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="5,0,0,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border
+                                x:Name="PART_Border"
+                                Padding="2,2,2,2"
+                                Background="Transparent"
+                                BorderBrush="#e5e5e5"
+                                BorderThickness="1"
+                                CornerRadius="3">
+                                <TextBlock
+                                    x:Name="tb"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="12"
+                                    Foreground="#666666"
+                                    Text="{Binding}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="PART_Border" Property="BorderBrush" Value="#8800beff" />
+                                    <Setter TargetName="tb" Property="Foreground" Value="#00beff" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="PART_Border" Property="BorderBrush" Value="#8800beff" />
+                                    <Setter TargetName="tb" Property="Foreground" Value="#00beff" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="tb" Property="Foreground" Value="#c9ced7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </StackPanel.Resources>
+        <Button
+            x:Name="PageFirst"
+            Width="44"
+            Height="26"
+            Click="Page_Click"
+            DataContext="首页" />
+        <Button
+            x:Name="PageUp"
+            Width="54"
+            Height="26"
+            Click="Page_Click"
+            DataContext="上一页" />
+        <Button
+            x:Name="PageDown"
+            Width="54"
+            Height="26"
+            Click="Page_Click"
+            DataContext="下一页" />
+        <Button
+            x:Name="PageLast"
+            Width="44"
+            Height="26"
+            Click="Page_Click"
+            DataContext="尾页" />
+        <TextBlock
+            Margin="18,0,0,0"
+            FontSize="12"
+            Text="第" />
+        <TextBlock
+            x:Name="tbCurPage"
+            FontSize="12"
+            Text="0" />
+        <TextBlock Text="页" />
+
+        <Rectangle
+            Width="1"
+            Height="16"
+            Margin="8,0,8,0"
+            Fill="#e7e7e7" />
+        <TextBlock FontSize="12" Text="共" />
+        <TextBlock
+            x:Name="tbTotlePage"
+            FontSize="12"
+            Text="0" />
+        <TextBlock Text="页" />
+        <Rectangle
+            Width="1"
+            Height="16"
+            Margin="8,0"
+            Fill="#e7e7e7" />
+        <TextBlock FontSize="12" Text="共" />
+        <TextBlock
+            x:Name="tbTotal"
+            FontSize="12"
+            Text="0" />
+        <TextBlock FontSize="12" Text="条" />
+        <Rectangle
+            Width="1"
+            Height="16"
+            Margin="8,0"
+            Fill="#e7e7e7" />
+        <TextBlock Text="转到" />
+        <TextBox
+            x:Name="tbChangePage"
+            Width="44"
+            Height="26"
+            Margin="8,0,0,0"
+            VerticalContentAlignment="Center"
+            BorderBrush="#e5e5e5"
+            FontSize="12"
+            Foreground="#666666" />
+        <TextBlock
+            Margin="10,0"
+            FontSize="12"
+            Text="页" />
+        <Button
+            x:Name="PageGo"
+            Width="44"
+            Height="26"
+            Margin="8,0,0,0"
+            Click="PageGo_Click"
+            DataContext="跳转" />
+    </StackPanel>
+</UserControl>

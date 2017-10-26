@@ -1,0 +1,2287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{612B749E-39B3-4182-A11C-0C2C670CC6BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MagicCube</RootNamespace>
+    <AssemblyName>MagicCube</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>G:\新建文件夹\MoFang\Release2\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\MagicCubeShell\bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>0AF618886A6FEB59D6B01834E54DD4E0FC7297C2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MagicCube_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icon\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '编辑|x86'">
+    <OutputPath>bin\x86\编辑\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '编辑|x64'">
+    <OutputPath>bin\x64\编辑\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\MagicCubeShell\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '编辑|AnyCPU'">
+    <OutputPath>bin\编辑\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="DocX, Version=1.0.0.22, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.0.0.22\lib\net40\DocX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Presentation.1.7.1\lib\net40\GMap.NET.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsPresentation, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Presentation.1.7.1\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-client\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="Simple.ImageResizer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simple.ImageResizer.2.1.0\lib\net40\Simple.ImageResizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.103\lib\net40\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.103\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.103\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\Lib\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.14\lib\net\WpfAnimatedGif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BindingConvert\CompanyConvert\CompanyProvinceToCityConverter.cs" />
+    <Compile Include="BindingConvert\GenderToUrlConverter.cs" />
+    <Compile Include="BindingConvert\InterviewProcessToVisiblityConverter.cs" />
+    <Compile Include="BindingConvert\JobDetailConvert\JobDetailConverter.cs" />
+    <Compile Include="BindingConvert\ListToVisibilityConvert.cs" />
+    <Compile Include="BindingConvert\RecordIdToVisbilityConverter.cs" />
+    <Compile Include="BindingConvert\PriceTipConverter.cs" />
+    <Compile Include="BindingConvert\DateTimeToStringConvert.cs" />
+    <Compile Include="BindingConvert\JobDetailConvert\CloseStateToVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\ResumeTimeConverter.cs" />
+    <Compile Include="BindingConvert\StringNullToUnEditConverter.cs" />
+    <Compile Include="BindingConvert\JobDetailConvert\OpenStateToVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\ObjectNullToCollapsedConverter.cs" />
+    <Compile Include="BindingConvert\StringToBoolConverter.cs" />
+    <Compile Include="BindingConvert\TagConvert\TagVidToCollapsedConverter.cs" />
+    <Compile Include="BindingConvert\TagConvert\TagVidToVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\MainHintConvert\HeightHintToVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\GrayTagColorConverter.cs" />
+    <Compile Include="BindingConvert\TagConvert\ListCountToVisiblityConverter.cs" />
+    <Compile Include="BindingConvert\ThirdSitesConverter.cs" />
+    <Compile Include="BindingConvert\BoolToBoolConverter.cs" />
+    <Compile Include="BindingConvert\CompanyConvert\CompanyImageChooseBtnVisibleConverter.cs" />
+    <Compile Include="BindingConvert\CompanyConvert\CompanyLogoConverter.cs" />
+    <Compile Include="BindingConvert\DateToStringConverter.cs" />
+    <Compile Include="BindingConvert\JobstringConverter.cs" />
+    <Compile Include="BindingConvert\HTML2RTFConverter.cs" />
+    <Compile Include="BindingConvert\LengthToVisibleConverter.cs" />
+    <Compile Include="BindingConvert\StringNullToVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\TagConvert\TagsToVisibleConverter.cs" />
+    <Compile Include="BindingConvert\unNameConverter.cs" />
+    <Compile Include="BindingConvert\LastTimeConverter.cs" />
+    <Compile Include="BindingConvert\BoolToCollapsedConverter.cs" />
+    <Compile Include="BindingConvert\StringVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\ListToStringConverter.cs" />
+    <Compile Include="BindingConvert\BoolToVisibilityConverter.cs" />
+    <Compile Include="BindingConvert\URLToImageConverter.cs" />
+    <Compile Include="BindingConvert\ValueToProcessConverter.cs" />
+    <Compile Include="BindingConvert\VisibilityToCollapseConverter.cs" />
+    <Compile Include="BindingConvert\WindowStateConverter.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Common\AutoRunSetting.cs" />
+    <Compile Include="Common\CodeHelper.cs" />
+    <Compile Include="Common\CommonValidationMethod.cs" />
+    <Compile Include="Common\DateTimeOperation.cs" />
+    <Compile Include="Common\Downloader.cs" />
+    <Compile Include="Common\DownloadResume.cs" />
+    <Compile Include="Common\GlobalEvent.cs" />
+    <Compile Include="Common\ImageProcessor .cs" />
+    <Compile Include="Common\LogHelper.cs" />
+    <Compile Include="Common\IMHelper.cs" />
+    <Compile Include="Common\MsgHandler.cs" />
+    <Compile Include="Common\O2OHelper.cs" />
+    <Compile Include="Common\PriceTipHelper.cs" />
+    <Compile Include="Common\PrintHelper.cs" />
+    <Compile Include="Common\ResXResourcHelper.cs" />
+    <Compile Include="Common\RSAHelper.cs" />
+    <Compile Include="Common\SystemInfoHelper.cs" />
+    <Compile Include="Common\TrackHelper2.cs" />
+    <Compile Include="Common\UnActivatePublish.cs" />
+    <Compile Include="Common\VideoHelper.cs" />
+    <Compile Include="HttpModel\HttpCharactCodes.cs" />
+    <Compile Include="HttpModel\HttpCompanyTagsCodes.cs" />
+    <Compile Include="HttpModel\HttpHomePage.cs" />
+    <Compile Include="HttpModel\HttpIMRecord.cs" />
+    <Compile Include="HttpModel\HttpIndustresCodes.cs" />
+    <Compile Include="HttpModel\HttpInterviewDetail.cs" />
+    <Compile Include="HttpModel\HttpInterviewNum.cs" />
+    <Compile Include="HttpModel\HttpLimit.cs" />
+    <Compile Include="HttpModel\HttpMCoinDetail.cs" />
+    <Compile Include="HttpModel\HttpMBTotal.cs" />
+    <Compile Include="HttpModel\HttpModifyPassword.cs" />
+    <Compile Include="HttpModel\HttpQuestion.cs" />
+    <Compile Include="HttpModel\HttpRecommend.cs" />
+    <Compile Include="HttpModel\HttpJobTree.cs" />
+    <Compile Include="Common\ImageCompress.cs" />
+    <Compile Include="Common\JudgeHelper.cs" />
+    <Compile Include="Common\RabbitMqOperation.cs" />
+    <Compile Include="Common\SearchSpell.cs" />
+    <Compile Include="Common\SQLiteHelper.cs" />
+    <Compile Include="Common\TaskBarHelper.cs" />
+    <Compile Include="Common\TimeHelper.cs" />
+    <Compile Include="Common\VTHelper.cs" />
+    <Compile Include="Common\Windows32Operation.cs" />
+    <Compile Include="Common\XmlHelper.cs" />
+    <Compile Include="Global\MagicGlobal.cs" />
+    <Compile Include="HTML\HTMLConvert.cs" />
+    <Compile Include="HTML\htmlcssparser.cs" />
+    <Compile Include="HTML\htmlfromxamlconverter.cs" />
+    <Compile Include="HTML\htmllexicalanalyzer.cs" />
+    <Compile Include="HTML\htmlparser.cs" />
+    <Compile Include="HTML\htmlschema.cs" />
+    <Compile Include="HTML\htmltokentype.cs" />
+    <Compile Include="HTML\HtmlToRtfConverter.cs" />
+    <Compile Include="HTML\htmltoxamlconverter.cs" />
+    <Compile Include="HTML\MarkupConverter.cs" />
+    <Compile Include="HTML\RtfToHtmlConverter.cs" />
+    <Compile Include="HttpModel\CurrentUserInfo.cs" />
+    <Compile Include="HttpModel\HttpCommonReply.cs" />
+    <Compile Include="HttpModel\HttpCompany.cs" />
+    <Compile Include="HttpModel\HttpCompanyInfo.cs" />
+    <Compile Include="HttpModel\HttpIm.cs" />
+    <Compile Include="HttpModel\HttpContactRecord.cs" />
+    <Compile Include="HttpModel\HttpJob.cs" />
+    <Compile Include="HttpModel\HttpJobDynamic.cs" />
+    <Compile Include="HttpModel\HttpJobList.cs" />
+    <Compile Include="HttpModel\HttpHX.cs" />
+    <Compile Include="HttpModel\HttpJobTotal.cs" />
+    <Compile Include="HttpModel\HttpJobTreeThree.cs" />
+    <Compile Include="HttpModel\HttpLogoutTime.cs" />
+    <Compile Include="HttpModel\HttpMB.cs" />
+    <Compile Include="HttpModel\HttpMessage.cs" />
+    <Compile Include="HttpModel\HttpPay.cs" />
+    <Compile Include="HttpModel\HttpProvinceCityCodes.cs" />
+    <Compile Include="HttpModel\HttpRecent.cs" />
+    <Compile Include="HttpModel\HttpResume.cs" />
+    <Compile Include="HttpModel\HttpResumeTable.cs" />
+    <Compile Include="HttpModel\HttpSearchList.cs" />
+    <Compile Include="HttpModel\HttpSelfInfo.cs" />
+    <Compile Include="HttpModel\HttpSign.cs" />
+    <Compile Include="Common\Httphelper.cs" />
+    <Compile Include="HttpModel\HttpTagsManage.cs" />
+    <Compile Include="HttpModel\HttpThirdSitesLogin.cs" />
+    <Compile Include="HttpModel\HttpTrackModel.cs" />
+    <Compile Include="HttpModel\HttpUnconfim.cs" />
+    <Compile Include="HttpModel\HttpZhilianCode.cs" />
+    <Compile Include="HttpModel\ProvinceCity.cs" />
+    <Compile Include="Messaging\IExecuteWithObject.cs" />
+    <Compile Include="Messaging\IMessag.cs" />
+    <Compile Include="Messaging\Messager.cs" />
+    <Compile Include="Messaging\MsgModel\MSBodyBase.cs" />
+    <Compile Include="Messaging\MsgModel\MSChangeAccount.cs" />
+    <Compile Include="Messaging\MsgModel\MSCloseWindow.cs" />
+    <Compile Include="Messaging\MsgModel\MSJobSearchConditionModel.cs" />
+    <Compile Include="Messaging\PropertyChangedMessage.cs" />
+    <Compile Include="Messaging\WeakAction.cs" />
+    <Compile Include="Messaging\WeakFunc.cs" />
+    <Compile Include="Model\AccountManageModel.cs" />
+    <Compile Include="Model\CodeModel.cs" />
+    <Compile Include="Model\CompanyInfoModel.cs" />
+    <Compile Include="Model\IMControlModel.cs" />
+    <Compile Include="Model\InterviewSessionTreeModel.cs" />
+    <Compile Include="Model\InterviewDetailModel.cs" />
+    <Compile Include="Model\InterviewMCoinDetailModel.cs" />
+    <Compile Include="Model\JobListModel.cs" />
+    <Compile Include="Model\RegisterModel.cs" />
+    <Compile Include="Model\ResumeTableModel.cs" />
+    <Compile Include="Model\ResumeDetailModel.cs" />
+    <Compile Include="Model\SearchConditioanModel.cs" />
+    <Compile Include="Model\SearchConditionSaveModel.cs" />
+    <Compile Include="Model\SearchTalentResumModel.cs" />
+    <Compile Include="Model\SelfInfoModel.cs" />
+    <Compile Include="TemplateUC\HintTextblock.xaml.cs">
+      <DependentUpon>HintTextblock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\DownResume\WinResumePrint.xaml.cs">
+      <DependentUpon>WinResumePrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\PhoneFailTemp.xaml.cs">
+      <DependentUpon>PhoneFailTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\PhoneSucessTemp.xaml.cs">
+      <DependentUpon>PhoneSucessTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinPhoneCall.xaml.cs">
+      <DependentUpon>WinPhoneCall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\UCSecretButtonIM.xaml.cs">
+      <DependentUpon>UCSecretButtonIM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\WinQrCode.xaml.cs">
+      <DependentUpon>WinQrCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\DownResume\WinJobTemplate.xaml.cs">
+      <DependentUpon>WinJobTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AssetsDetailViewModel.cs" />
+    <Compile Include="ViewModel\MCoinListViewModel.cs" />
+    <Compile Include="ViewModel\SysAccontSetModel.cs" />
+    <Compile Include="Model\TagsManagerModel.cs" />
+    <Compile Include="Model\TagsMenuModel.cs" />
+    <Compile Include="Model\GlobalBinding.cs" />
+    <Compile Include="TemplateUC\BlueRadioButton.xaml.cs">
+      <DependentUpon>BlueRadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\DownResume\WinSendEmail.xaml.cs">
+      <DependentUpon>WinSendEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinClearCollection.xaml.cs">
+      <DependentUpon>WinClearCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinMBNotice.xaml.cs">
+      <DependentUpon>WinMBNotice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinJobCheck.xaml.cs">
+      <DependentUpon>WinJobCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ResumeOperateBottomButton.xaml.cs">
+      <DependentUpon>ResumeOperateBottomButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\CollectionBottomButton.xaml.cs">
+      <DependentUpon>CollectionBottomButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ResumeOperateButton.xaml.cs">
+      <DependentUpon>ResumeOperateButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\CollectionButton.xaml.cs">
+      <DependentUpon>CollectionButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\DownResume\WinDownLoadPath.xaml.cs">
+      <DependentUpon>WinDownLoadPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\DownResume\WinDownLoadType.xaml.cs">
+      <DependentUpon>WinDownLoadType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinNewIM.xaml.cs">
+      <DependentUpon>WinNewIM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ResumeListButton.xaml.cs">
+      <DependentUpon>ResumeListButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\Loading\BusyIndicator.xaml.cs">
+      <DependentUpon>BusyIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\SystemTemp.xaml.cs">
+      <DependentUpon>SystemTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinArriveConfirm.xaml.cs">
+      <DependentUpon>WinArriveConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinUnArriveConfirm.xaml.cs">
+      <DependentUpon>WinUnArriveConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinMessageLink.xaml.cs">
+      <DependentUpon>WinMessageLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\BaiduMapUC\UCGmap.xaml.cs">
+      <DependentUpon>UCGmap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\BaiduMapUC\UCMarker.xaml.cs">
+      <DependentUpon>UCMarker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\JobListButton.xaml.cs">
+      <DependentUpon>JobListButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCAutAssociation.xaml.cs">
+      <DependentUpon>UCAutAssociation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCAuthen.xaml.cs">
+      <DependentUpon>UCAuthen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCIndustry.xaml.cs">
+      <DependentUpon>UCIndustry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCJobTree.xaml.cs">
+      <DependentUpon>UCJobTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCProvinceCity.xaml.cs">
+      <DependentUpon>UCProvinceCity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCStringItem.xaml.cs">
+      <DependentUpon>UCStringItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCMultSelectCombBox.xaml.cs">
+      <DependentUpon>UCMultSelectCombBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UntreatedRadioButton.xaml.cs">
+      <DependentUpon>UntreatedRadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\RecvTemp.xaml.cs">
+      <DependentUpon>RecvTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\SendTemp.xaml.cs">
+      <DependentUpon>SendTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageTemp\TimeTemp.xaml.cs">
+      <DependentUpon>TimeTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MinButton.xaml.cs">
+      <DependentUpon>MinButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MaxButton.xaml.cs">
+      <DependentUpon>MaxButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\CloseButton.xaml.cs">
+      <DependentUpon>CloseButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\HintInput\HintPasswordBox.xaml.cs">
+      <DependentUpon>HintPasswordBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ICResumeButton.xaml.cs">
+      <DependentUpon>ICResumeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\CountButton.xaml.cs">
+      <DependentUpon>CountButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\JobEditButton.xaml.cs">
+      <DependentUpon>JobEditButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinConfirmJudge.xaml.cs">
+      <DependentUpon>WinConfirmJudge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinEditPlatform.xaml.cs">
+      <DependentUpon>WinEditPlatform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinRefreshPlatform.xaml.cs">
+      <DependentUpon>WinRefreshPlatform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinConfirmTip.xaml.cs">
+      <DependentUpon>WinConfirmTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinErroTip.xaml.cs">
+      <DependentUpon>WinErroTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\HeadRadioButton.xaml.cs">
+      <DependentUpon>HeadRadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\JudgeButton.xaml.cs">
+      <DependentUpon>JudgeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MultiEditButton.xaml.cs">
+      <DependentUpon>MultiEditButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\SearchButton.xaml.cs">
+      <DependentUpon>SearchButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\HintInput\PasswordBoxHelper.cs" />
+    <Compile Include="TemplateUC\SecondModuleCB.xaml.cs">
+      <DependentUpon>SecondModuleCB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ThreeModuleRB.xaml.cs">
+      <DependentUpon>ThreeModuleRB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ResumeTouchButton.xaml.cs">
+      <DependentUpon>ResumeTouchButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MoreButton.xaml.cs">
+      <DependentUpon>MoreButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\DataButton.xaml.cs">
+      <DependentUpon>DataButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ResumeQusionButton.xaml.cs">
+      <DependentUpon>ResumeQusionButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\WhiteButton.xaml.cs">
+      <DependentUpon>WhiteButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\HintInput\HintTextBox.xaml.cs">
+      <DependentUpon>HintTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\IMRBMenu.xaml.cs">
+      <DependentUpon>IMRBMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\BlueButton.xaml.cs">
+      <DependentUpon>BlueButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\PreviewButton.xaml.cs">
+      <DependentUpon>PreviewButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\FloatCloseButton.xaml.cs">
+      <DependentUpon>FloatCloseButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\SecondModuleRB.xaml.cs">
+      <DependentUpon>SecondModuleRB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ModuleRadioButton.xaml.cs">
+      <DependentUpon>ModuleRadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\ResumeButton.xaml.cs">
+      <DependentUpon>ResumeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\PhoneVideoButton.xaml.cs">
+      <DependentUpon>PhoneVideoButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\LinkButton.xaml.cs">
+      <DependentUpon>LinkButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCHintComboBox.xaml.cs">
+      <DependentUpon>UCHintComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCMenuItem.xaml.cs">
+      <DependentUpon>UCMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCPageTurn.xaml.cs">
+      <DependentUpon>UCPageTurn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinActiveTip.xaml.cs">
+      <DependentUpon>WinActiveTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinNameEdit.xaml.cs">
+      <DependentUpon>WinNameEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinInterviewRefuse.xaml.cs">
+      <DependentUpon>WinInterviewRefuse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinAccountLock1.xaml.cs">
+      <DependentUpon>WinAccountLock1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinAccountLock2.xaml.cs">
+      <DependentUpon>WinAccountLock2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinCompletePassword.xaml.cs">
+      <DependentUpon>WinCompletePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinLoginInDetail.xaml.cs">
+      <DependentUpon>WinLoginInDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\WinGotoLogin.xaml.cs">
+      <DependentUpon>WinGotoLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewSingle\MainWindow\EmChatLiscen.cs" />
+    <Compile Include="ViewSingle\MainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MainWindow\NotifyIconPart.cs" />
+    <Compile Include="ViewSingle\SystemWindow\UCAccountSet.xaml.cs">
+      <DependentUpon>UCAccountSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\SystemWindow\UCBasicSet.xaml.cs">
+      <DependentUpon>UCBasicSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\SystemWindow\UCDownloadSet.xaml.cs">
+      <DependentUpon>UCDownloadSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MyAssets\UCAssetsDeclare.xaml.cs">
+      <DependentUpon>UCAssetsDeclare.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MyAssets\UCAssetsDetail.xaml.cs">
+      <DependentUpon>UCAssetsDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInfoSet\UCImageCrop.xaml.cs">
+      <DependentUpon>UCImageCrop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCIM\JobRecommend.cs" />
+    <Compile Include="ViewSingle\UCIM\JobDynamic.cs" />
+    <Compile Include="ViewSingle\UCIM\QuipReply.cs" />
+    <Compile Include="ViewSingle\UCIM\RecentList.cs" />
+    <Compile Include="ViewSingle\UCIM\SRMessage.cs" />
+    <Compile Include="ViewSingle\UCIM\UCIM.xaml.cs">
+      <DependentUpon>UCIM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MainWindow\UCQuipReplySetting.xaml.cs">
+      <DependentUpon>UCQuipReplySetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewQuesionView.xaml.cs">
+      <DependentUpon>UCInterviewQuesionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewResumeView.xaml.cs">
+      <DependentUpon>UCInterviewResumeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewMCoinDetail.xaml.cs">
+      <DependentUpon>UCInterviewMCoinDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewMCoinManage.xaml.cs">
+      <DependentUpon>UCInterviewMCoinManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewDetail.xaml.cs">
+      <DependentUpon>UCInterviewDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewHomePage.xaml.cs">
+      <DependentUpon>UCInterviewHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterview.xaml.cs">
+      <DependentUpon>UCInterview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInterview\UCInterviewUnconfirm.xaml.cs">
+      <DependentUpon>UCInterviewUnconfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MainWindow\UCRegister.xaml.cs">
+      <DependentUpon>UCRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\SystemWindow\UCModifyPasswordSet.xaml.cs">
+      <DependentUpon>UCModifyPasswordSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\SystemWindow\UCModifyTelephoneSet.xaml.cs">
+      <DependentUpon>UCModifyTelephoneSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MyAssets\UCMyAssets.xaml.cs">
+      <DependentUpon>UCMyAssets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCResume\ResumeDetialPrint.xaml.cs">
+      <DependentUpon>ResumeDetialPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCResume\ResumeDetialNull.xaml.cs">
+      <DependentUpon>ResumeDetialNull.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCResume\CollectionTable.xaml.cs">
+      <DependentUpon>CollectionTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCResumeBuy.xaml.cs">
+      <DependentUpon>UCResumeBuy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCSearchCondition2.xaml.cs">
+      <DependentUpon>UCSearchCondition2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSystem\UCSafeSet.xaml.cs">
+      <DependentUpon>UCSafeSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSystem\UCIMSetting.xaml.cs">
+      <DependentUpon>UCIMSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSystem\UCBasicSetting.xaml.cs">
+      <DependentUpon>UCBasicSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInfoSet\UCCompanyInfo.xaml.cs">
+      <DependentUpon>UCCompanyInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInfoSet\PictrueResizer.xaml.cs">
+      <DependentUpon>PictrueResizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInfoSet\UCInfoSet.xaml.cs">
+      <DependentUpon>UCInfoSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInfoSet\UCSelfImageUpload.xaml.cs">
+      <DependentUpon>UCSelfImageUpload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCJob\UCJob.xaml.cs">
+      <DependentUpon>UCJob.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCResume\ResumeDetial.xaml.cs">
+      <DependentUpon>ResumeDetial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCJobPublishSelect.xaml.cs">
+      <DependentUpon>UCJobPublishSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCJob\UCJobDetails.xaml.cs">
+      <DependentUpon>UCJobDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCRapidSearchCondition.xaml.cs">
+      <DependentUpon>UCRapidSearchCondition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCJob\UCJobClose.xaml.cs">
+      <DependentUpon>UCJobClose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCJob\UCJobOpen.xaml.cs">
+      <DependentUpon>UCJobOpen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCJob\UCJobPublish.xaml.cs">
+      <DependentUpon>UCJobPublish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCResume\ResumeTable.xaml.cs">
+      <DependentUpon>ResumeTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCResume\UCResume.xaml.cs">
+      <DependentUpon>UCResume.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCResumeCollection.xaml.cs">
+      <DependentUpon>UCResumeCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCSearch.xaml.cs">
+      <DependentUpon>UCSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCSearchCondition.xaml.cs">
+      <DependentUpon>UCSearchCondition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCSearchResult.xaml.cs">
+      <DependentUpon>UCSearchResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSearch\UCThumbnailResume.xaml.cs">
+      <DependentUpon>UCThumbnailResume.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCInfoSet\UCSelfInfo.xaml.cs">
+      <DependentUpon>UCSelfInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\UCSystem\UCSystem.xaml.cs">
+      <DependentUpon>UCSystem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MainWindow\UCTagsSetting.xaml.cs">
+      <DependentUpon>UCTagsSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MainWindow\WinTipBox.xaml.cs">
+      <DependentUpon>WinTipBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\MainWindow\WinRecommandTipBox.xaml.cs">
+      <DependentUpon>WinRecommandTipBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\NotifyIconMouseHelper.cs" />
+    <Compile Include="TemplateUC\UpdateTip.xaml.cs">
+      <DependentUpon>UpdateTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\DisappearShow.xaml.cs">
+      <DependentUpon>DisappearShow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinValidateMessage.xaml.cs">
+      <DependentUpon>WinValidateMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinPublishJobMessage.xaml.cs">
+      <DependentUpon>WinPublishJobMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinCloseMessageTip.xaml.cs">
+      <DependentUpon>WinCloseMessageTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\MessageWin\WinPayMB.xaml.cs">
+      <DependentUpon>WinPayMB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCMenuItemTag.xaml.cs">
+      <DependentUpon>UCMenuItemTag.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUC\UCRichTextBox.xaml.cs">
+      <DependentUpon>UCRichTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserSetting.cs" />
+    <Compile Include="TemplateUC\WpfExtensions.cs" />
+    <Compile Include="ViewSingle\IndexWindow\WinIndex.xaml.cs">
+      <DependentUpon>WinIndex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingle\SystemWindow\WinSystemSet.xaml.cs">
+      <DependentUpon>WinSystemSet.xaml</DependentUpon>
+    </Compile>
+    <Page Include="TemplateUC\BlueRadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\DownResume\WinResumePrint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\DownResume\WinJobTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\DownResume\WinSendEmail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\HintTextblock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\PhoneFailTemp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\PhoneSucessTemp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinClearCollection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinPhoneCall.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinMBNotice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinJobCheck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ResumeOperateBottomButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\CollectionBottomButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ResumeOperateButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\CollectionButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\DownResume\WinDownLoadPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\DownResume\WinDownLoadType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinNewIM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ResumeListButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\Loading\BusyIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\SystemTemp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinArriveConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinUnArriveConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinMessageLink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\BaiduMapUC\UCGmap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\BaiduMapUC\UCMarker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\JobListButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\UCAutAssociation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCAuthen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCIndustry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCJobTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCProvinceCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\UCSecretButtonIM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCStringItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\UCMultSelectCombBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UntreatedRadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\RecvTemp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\SendTemp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageTemp\TimeTemp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MinButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MaxButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\CloseButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\HintInput\HintPasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\ICResumeButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\CountButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\JobEditButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinConfirmJudge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinEditPlatform.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinRefreshPlatform.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinConfirmTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinErroTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\HeadRadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\JudgeButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MultiEditButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\SearchButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\SecondModuleCB.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ThreeModuleRB.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ResumeTouchButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MoreButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\DataButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ResumeQusionButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\WhiteButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\HintInput\HintTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\IMRBMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\BlueButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\PreviewButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\FloatCloseButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\SecondModuleRB.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ModuleRadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\ResumeButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\PhoneVideoButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\LinkButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCHintComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCPageTurn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinActiveTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinNameEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinInterviewRefuse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinAccountLock1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinAccountLock2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinCompletePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinLoginInDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\WinGotoLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\WinQrCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\CommonThemes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\MainWindow\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\SystemWindow\UCAccountSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\SystemWindow\UCBasicSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\SystemWindow\UCDownloadSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MyAssets\UCAssetsDeclare.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MyAssets\UCAssetsDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInfoSet\UCImageCrop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCIM\UCIM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MainWindow\UCQuipReplySetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewQuesionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewResumeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewMCoinDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewMCoinManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewHomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInterview\UCInterviewUnconfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MainWindow\UCRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\SystemWindow\UCModifyPasswordSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\SystemWindow\UCModifyTelephoneSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MyAssets\UCMyAssets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCResume\ResumeDetialPrint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCResume\ResumeDetialNull.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCResume\CollectionTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCResumeBuy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCSearchCondition2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSystem\UCSafeSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSystem\UCIMSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSystem\UCBasicSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInfoSet\UCCompanyInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInfoSet\PictrueResizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInfoSet\UCInfoSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInfoSet\UCSelfImageUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCJob\UCJob.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCResume\ResumeDetial.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCJobPublishSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCJob\UCJobDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCRapidSearchCondition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCJob\UCJobClose.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCJob\UCJobOpen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCJob\UCJobPublish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCResume\ResumeTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCResume\UCResume.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCResumeCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCSearchCondition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCSearchResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSearch\UCThumbnailResume.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCInfoSet\UCSelfInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\UCSystem\UCSystem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MainWindow\UCTagsSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MainWindow\WinTipBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\MainWindow\WinRecommandTipBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UpdateTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\DisappearShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinValidateMessage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinPublishJobMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinCloseMessageTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\MessageWin\WinPayMB.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateUC\UCMenuItemTag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateUC\UCRichTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\IndexWindow\WinIndex.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewSingle\SystemWindow\WinSystemSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\NotifyBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\hpg1.png" />
+    <Resource Include="Resources\ImageSingle\hpg2.png" />
+    <Resource Include="Resources\ImageSingle\hpg3.png" />
+    <Resource Include="Resources\ImageSingle\hpg4.png" />
+    <Resource Include="Resources\ImageSingle\hpg5.png" />
+    <Resource Include="Resources\ImageSingle\morebtn.png" />
+    <Resource Include="Resources\Images\UserDefault.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MagicCube.DAL\MagicCube.DAL.csproj">
+      <Project>{32f83633-b26b-456b-b954-a06470f0acc3}</Project>
+      <Name>MagicCube.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicCube.ViewModel\MagicCube.ViewModel.csproj">
+      <Project>{baf399c4-b06f-4368-8cad-f0893fd14e69}</Project>
+      <Name>MagicCube.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Resumeforinterview_press.png" />
+    <Resource Include="Resources\Images\Resumeforinterview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Recentcontact.png" />
+    <Resource Include="Resources\Images\Recentcontact_press.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MLBTN1.png" />
+    <Resource Include="Resources\Images\MLBTN2.png" />
+    <Resource Include="Resources\Images\MLBTN3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBBTN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_position.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\freecall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\education.png" />
+    <Resource Include="Resources\Images\experience.png" />
+    <Resource Include="Resources\Images\place.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RLbooking.png" />
+    <Resource Include="Resources\Images\RLcancel.png" />
+    <Resource Include="Resources\Images\RLeliminate.png" />
+    <Resource Include="Resources\Images\RLevaluation.png" />
+    <Resource Include="Resources\Images\RLpass.png" />
+    <Resource Include="Resources\Images\RLPending resume.png" />
+    <Resource Include="Resources\Images\RLrecommended.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\GreyIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\box_eliminate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\seecall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBBTN2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MMBTN1.png" />
+    <Resource Include="Resources\Images\MMBTN2.png" />
+    <Resource Include="Resources\Images\MMBTN3.png" />
+    <Resource Include="Resources\Images\MMBTN4.png" />
+    <Resource Include="Resources\Images\MMBTN5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RV1.png" />
+    <Resource Include="Resources\Images\RV2.png" />
+    <Resource Include="Resources\Images\RV3.png" />
+    <Resource Include="Resources\Images\RV4.png" />
+    <Resource Include="Resources\Images\RV5.png" />
+    <Resource Include="Resources\Images\RV6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RVFail.png" />
+    <Resource Include="Resources\Images\RVPass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MsgHint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGMsg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGJudge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RVEmail.png" />
+    <Resource Include="Resources\Images\RVPhone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\noresume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\companydefult.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MLBTN4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RLSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Mlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Mjob.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Iindex.png" />
+    <Resource Include="Resources\Images\Ipass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\IndexLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\iconPhone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\iconConnect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Mainlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Mhead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\iconMessageHistory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGRefresh.png" />
+    <Resource Include="Resources\Images\RDGRefreshNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGOutLine.png" />
+    <Resource Include="Resources\Images\RDGOutLineNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RMpagedown.png" />
+    <Resource Include="Resources\Images\RMpageup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Mcheck.png" />
+    <Resource Include="Resources\Images\Mcheckno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MRB1.png" />
+    <Resource Include="Resources\Images\MRB2.png" />
+    <Resource Include="Resources\Images\MRB3.png" />
+    <Resource Include="Resources\Images\MRB4.png" />
+    <Resource Include="Resources\Images\MRB5.png" />
+    <Resource Include="Resources\Images\MRB6.png" />
+    <Resource Include="Resources\Images\MRB7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGRepublish.png" />
+    <Resource Include="Resources\Images\RDGRepublishNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\WDetial.png" />
+    <Resource Include="Resources\Images\WDetialNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\wDetialIco1.png" />
+    <Resource Include="Resources\Images\wDetialIco2.png" />
+    <Resource Include="Resources\Images\wDetialIco3.png" />
+    <Resource Include="Resources\Images\wDetialIco4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RMRecvPop.png" />
+    <Resource Include="Resources\Images\RMSendPop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\listbullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\listnumbered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\underline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\wordAndArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGClear.png" />
+    <Resource Include="Resources\Images\RDGPreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MGSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\UploadBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\CompanyUploadPicWord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RTTG1.png" />
+    <Resource Include="Resources\Images\RTTG2.png" />
+    <Resource Include="Resources\Images\RTTG3.png" />
+    <Resource Include="Resources\Images\RTTG4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\TipHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\BtnClose.png" />
+    <Resource Include="Resources\Images\BtnMin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\SearchClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RGVList.png" />
+    <Resource Include="Resources\Images\RGVListNo.png" />
+    <Resource Include="Resources\Images\RGVTable.png" />
+    <Resource Include="Resources\Images\RGVTableNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RVIcon1.png" />
+    <Resource Include="Resources\Images\RVIcon2.png" />
+    <Resource Include="Resources\Images\RVIcon3.png" />
+    <Resource Include="Resources\Images\RVIcon4.png" />
+    <Resource Include="Resources\Images\RVIcon5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\FBZWBD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\IndexBD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\IndexCheck.png" />
+    <Resource Include="Resources\Images\IndexCheckNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\HRDefault.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\iconMin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\iconMax.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\CompanyPictureShow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MainAccountWord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ZhilianLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MofangLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Binding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Settingbj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Msesarch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\SearchCondition_Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon-xinfeng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\DGEdit1.png" />
+    <Resource Include="Resources\Images\DGEdit1h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\DGEdit3.png" />
+    <Resource Include="Resources\Images\DGEdit3h.png" />
+    <Resource Include="Resources\Images\DGEdit3n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\DGEdit2.png" />
+    <Resource Include="Resources\Images\DGEdit2h.png" />
+    <Resource Include="Resources\Images\DGEdit4.png" />
+    <Resource Include="Resources\Images\DGEdit4h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBIh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBBTN2h.png" />
+    <Resource Include="Resources\Images\MBBTNh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_FreePhone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Job.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_No_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_No_Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Info_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Info_Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_OK2_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_OK2_Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\TransparentIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\JGVlogo1.png" />
+    <Resource Include="Resources\Images\JGVlogo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\SynchronousN.png" />
+    <Resource Include="Resources\Images\SynchronousY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGJudgeNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Chart_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MBLeft.png" />
+    <Resource Include="Resources\Images\MBTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MTB1.png" />
+    <Resource Include="Resources\Images\MTB1n.png" />
+    <Resource Include="Resources\Images\MTB3.png" />
+    <Resource Include="Resources\Images\MTB3n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MTB3E.png" />
+    <Resource Include="Resources\Images\MTB3En.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MTB2.png" />
+    <Resource Include="Resources\Images\MTB2n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_RedFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_BlueAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_RedFlag_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Manage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_AddTags.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\PublishZLbd.png" />
+    <Resource Include="Resources\Images\PublishZLY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RDGReturn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\DownArrow_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\UnInfomation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_unfitble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_fitable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_TagResum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_ResumBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_Talk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\send_resume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ManageLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\validStatus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_catton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\JGVlogo2n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\IMPhoneBtn.png" />
+    <Resource Include="Resources\ImageSingle\IMPhoneBtnH.png" />
+    <Resource Include="Resources\ImageSingle\IMVideoBtn.png" />
+    <Resource Include="Resources\ImageSingle\IMVideoBtnH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\IMResumeBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB1.png" />
+    <Resource Include="Resources\ImageSingle\MainRB1C.png" />
+    <Resource Include="Resources\ImageSingle\MainRB2.png" />
+    <Resource Include="Resources\ImageSingle\MainRB2C.png" />
+    <Resource Include="Resources\ImageSingle\MainRB3.png" />
+    <Resource Include="Resources\ImageSingle\MainRB3C.png" />
+    <Resource Include="Resources\ImageSingle\MainRB4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB4C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB1-hover.png" />
+    <Resource Include="Resources\ImageSingle\MainRB2-hover.png" />
+    <Resource Include="Resources\ImageSingle\MainRB3-hover.png" />
+    <Resource Include="Resources\ImageSingle\MainRB4-hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\IMResumeBtnH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MBicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB6C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB6-hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\MGSearchHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MBPrice1.png" />
+    <Resource Include="Resources\ImageSingle\MBPrice2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB5C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\IMAnchor1.png" />
+    <Resource Include="Resources\ImageSingle\IMAnchor2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\Pictrue1.png" />
+    <Resource Include="Resources\ImageSingle\Pictrue2.png" />
+    <Resource Include="Resources\ImageSingle\Pictrue3.png" />
+    <Resource Include="Resources\ImageSingle\Pictrue4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\btnclose.png" />
+    <Resource Include="Resources\ImageSingle\btncloseh.png" />
+    <Resource Include="Resources\ImageSingle\btnmax.png" />
+    <Resource Include="Resources\ImageSingle\btnmaxh.png" />
+    <Resource Include="Resources\ImageSingle\btnmin.png" />
+    <Resource Include="Resources\ImageSingle\btnminh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconModifyi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\pbbtn1.png" />
+    <Resource Include="Resources\ImageSingle\pbbtn1h.png" />
+    <Resource Include="Resources\ImageSingle\pbbtn2.png" />
+    <Resource Include="Resources\ImageSingle\pbbtn2h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconShutup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconModifyPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconExchangeAccount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ResumeMenu1.png" />
+    <Resource Include="Resources\ImageSingle\ResumeMenu2.png" />
+    <Resource Include="Resources\ImageSingle\ResumeMenu3.png" />
+    <Resource Include="Resources\ImageSingle\ResumeMenu4.png" />
+    <Resource Include="Resources\ImageSingle\ResumeMenu5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconfont-tianjia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\validStatus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\RTTG1.png" />
+    <Resource Include="Resources\ImageSingle\RTTG1H.png" />
+    <Resource Include="Resources\ImageSingle\RTTG2.png" />
+    <Resource Include="Resources\ImageSingle\RTTG2H.png" />
+    <Resource Include="Resources\ImageSingle\RTTG3.png" />
+    <Resource Include="Resources\ImageSingle\RTTG3H.png" />
+    <Resource Include="Resources\ImageSingle\RTTG4.png" />
+    <Resource Include="Resources\ImageSingle\RTTG4H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\AddImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\uploadBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\TalentInvent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ZhilianBind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ZhilianUnBind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ArrowLeftGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ArrowRightBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ArrowRightGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\ArrowLeftBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB7C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\data.png" />
+    <Resource Include="Resources\ImageSingle\datac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\Micon2.png" />
+    <Resource Include="Resources\ImageSingle\Micon3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\Micon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\MainRB7-hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\Micon4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\newIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\vhp1.png" />
+    <Resource Include="Resources\ImageSingle\vhp2.png" />
+    <Resource Include="Resources\ImageSingle\vhp3.png" />
+    <Resource Include="Resources\ImageSingle\vhp4.png" />
+    <Resource Include="Resources\ImageSingle\vhp5.png" />
+    <Resource Include="Resources\ImageSingle\vhp6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\vdp3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\integral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\Mlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\iconfont-dingwei-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\GroupCopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\Opeartion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\jobbtn1.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn1h.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn1n.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn2.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn2h.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn3.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn3h.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn4.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn4h.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn5.png" />
+    <Resource Include="Resources\ImageSingle\jobbtn5h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\resumemore.png" />
+    <Resource Include="Resources\ImageSingle\resumemoreh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\freeze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImageSingle\RadioButtonN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GreyIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HRDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\ImageSingle\WelcomePage.png" />
+    <Content Include="UserDefaultFemale.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\ImageSingle\mmb.png" />
+    <Resource Include="Resources\ImageSingle\mmbh.png" />
+    <Resource Include="Resources\ImageSingle\mmb1.png" />
+    <Resource Include="Resources\ImageSingle\mmb2.png" />
+    <Resource Include="Resources\ImageSingle\mmb3.png" />
+    <Resource Include="Resources\ImageSingle\seecallnew.png" />
+    <Resource Include="Resources\ImageSingle\RadioButtonY.png" />
+    <Resource Include="Resources\ImageSingle\countshow.png" />
+    <Resource Include="Resources\ImageSingle\iconfont-shenhezhong.png" />
+    <Resource Include="Resources\ImageSingle\AuthSuccess.png" />
+    <Resource Include="Resources\ImageSingle\resumect.png" />
+    <Resource Include="Resources\ImageSingle\resumectn.png" />
+    <Resource Include="Resources\ImageSingle\SeeExample.png" />
+    <Resource Include="Resources\ImageSingle\rdo1.png" />
+    <Resource Include="Resources\ImageSingle\AuthenFail.png" />
+    <Resource Include="Resources\ImageSingle\Example4.png" />
+    <Resource Include="Resources\ImageSingle\Example3.png" />
+    <Resource Include="Resources\ImageSingle\Example1.png" />
+    <Resource Include="Resources\ImageSingle\Example2.png" />
+    <Resource Include="Resources\ImageSingle\validStatusno.png" />
+    <Resource Include="Resources\ImageSingle\rdo2.png" />
+    <Resource Include="Resources\ImageSingle\HTML.png" />
+    <Resource Include="Resources\ImageSingle\PDF.png" />
+    <Resource Include="Resources\ImageSingle\WORD.png" />
+    <Resource Include="Resources\ImageSingle\ucm1.png" />
+    <Resource Include="Resources\ImageSingle\ucm2.png" />
+    <Resource Include="Resources\ImageSingle\ucm3.png" />
+    <Resource Include="Resources\ImageSingle\ucm4.png" />
+    <Resource Include="Resources\ImageSingle\ucm5.png" />
+    <Resource Include="Resources\ImageSingle\imnew.png" />
+    <Resource Include="Resources\Images\UserDefaultFemale.png" />
+    <Resource Include="Resources\ImageSingle\confirmV.png" />
+    <Resource Include="Resources\ImageSingle\imgVertifyCodeNone.png" />
+    <Resource Include="Resources\ImageSingle\addjob.png" />
+    <Resource Include="Resources\ImageSingle\logo_mofang_medium.png" />
+    <Resource Include="Resources\ImageSingle\icon_share_default.png" />
+    <Resource Include="Resources\ImageSingle\icon_share_highlight.png" />
+    <Resource Include="Resources\ImageSingle\mf_icon_download.png" />
+    <Resource Include="Resources\ImageSingle\mf_icon_integral.png" />
+    <Resource Include="Resources\ImageSingle\mf_icon_m currency.png" />
+    <Resource Include="Resources\ImageSingle\account rights_icon_lock.png" />
+    <Resource Include="Resources\ImageSingle\phnoesucess.png" />
+    <Resource Include="Resources\ImageSingle\phonefail.png" />
+    <Resource Include="Resources\ImageSingle\rdo3.png" />
+    <Resource Include="Resources\ImageSingle\rdo4.png" />
+    <Resource Include="Resources\ImageSingle\IMSecretHead .png" />
+    <Content Include="TransparentIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.103\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.103\build\net40\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

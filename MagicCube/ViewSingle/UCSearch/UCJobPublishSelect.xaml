@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCJobPublishSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templateUC="clr-namespace:MagicCube.TemplateUC"
+             d:DesignHeight="675"
+             d:DesignWidth="1018"
+             mc:Ignorable="d">
+    <Grid x:Name="gdShade"
+          Width="1018"
+          Height="675"
+          Margin="10"
+          Panel.ZIndex="4"
+          Background="#7f333840"
+          Visibility="Visible">
+        <Grid Width="500"
+              Height="336"
+              Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Grid Background="#ffffff">
+                <TextBlock x:Name="tbTitile"
+                           Margin="20,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           Foreground="#666666"
+                           Text="选择沟通职位" />
+                <Button Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Click="BtnClose_Click"
+                        Focusable="False"
+                        Template="{StaticResource btnClose}" />
+                <Rectangle Height="1"
+                           VerticalAlignment="Bottom"
+                           Fill="#eeeeee" />
+            </Grid>
+            <StackPanel Grid.Row="1">
+                <TextBlock x:Name="tbMain"
+                           Margin="32,23,0,0"
+                           FontSize="14"
+                           Foreground="#666666"
+                           Text="请选择您想与对方沟通的职位:" />
+
+                <ListView x:Name="RusumelstJobPublish"
+                          Grid.Row="1"
+                          Height="155"
+                          Margin="30,20,5,0"
+                          BorderThickness="0"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          Template="{StaticResource ListViewTemp}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border Margin="0,0,0,15" Background="{TemplateBinding Background}">
+                                            <Grid>
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                  TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                <Border x:Name="bd"
+                                                        Width="18"
+                                                        Height="18"
+                                                        HorizontalAlignment="Left"
+                                                        BorderBrush="#dddddd"
+                                                        BorderThickness="1"
+                                                        CornerRadius="9">
+                                                    <Rectangle x:Name="rec"
+                                                               Width="10"
+                                                               Height="10"
+                                                               Fill="#00beff"
+                                                               RadiusX="5"
+                                                               RadiusY="5"
+                                                               Stroke="#00beff"
+                                                               StrokeThickness="1"
+                                                               Visibility="Collapsed" />
+                                                </Border>
+
+                                            </Grid>
+
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter TargetName="bd" Property="BorderBrush" Value="#00beff" />
+                                                <Setter TargetName="rec" Property="Visibility" Value="Visible" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver" Value="True" />
+                                        <Condition Property="IsSelected" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="Transparent" />
+                                </MultiTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel x:Name="gd" Orientation="Horizontal">
+
+                                <TextBlock x:Name="tb"
+                                           VerticalAlignment="Center"
+                                           FontSize="14"
+                                           Foreground="#666666"
+                                           Padding="30,0,0,0"
+                                           Text="{Binding jobName}"
+                                           TextTrimming="WordEllipsis">
+                                    <TextBlock.ToolTip>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding jobName}" />
+                                        </StackPanel>
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
+                            </StackPanel>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="gd" Property="Background" Value="Transparent" />
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackPanel>
+
+            <Grid Grid.Row="2">
+                <StackPanel Margin="10"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                    <templateUC:BlueButton Width="80"
+                                           Height="34"
+                                           Margin="150, 0, 10, 0"
+                                           Click="BtnOK_Click"
+                                           Text="确定" />
+                    <templateUC:WhiteButton Width="80"
+                                            Height="34"
+                                            Click="BtnClose_Click"
+                                            Text="取消" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Busy:BusyIndicator xmlns:Busy="clr-namespace:BusyIndicatorCtrl"
+                            x:Name="busyCtrl"
+                            Grid.RowSpan="5"
+                            Margin="0,0,0,0"
+                            Panel.ZIndex="10"
+                            d:IsHidden="True" />
+
+    </Grid>
+</UserControl>

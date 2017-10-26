@@ -1,0 +1,468 @@
+﻿<UserControl x:Class="MagicCube.TemplateUC.UCAuthen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.TemplateUC"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewSingle="clr-namespace:MagicCube.ViewSingle"
+             x:Name="ucLocal"
+             d:DesignHeight="824"
+             d:DesignWidth="697"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.Resources>
+            <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <BConvert:URLToImageConverter x:Key="URLToImageConverter" />
+            <BConvert:URLToUploadImageConverter x:Key="URLToUploadImageConverter" />
+            <BConvert:URLToUploadVisibleConverter x:Key="URLToUploadVisibleConverter" />
+            <BConvert:StringNullToVisibilityConverter x:Key="StringNullToVisibilityConverter" />
+            <BConvert:StringVisibilityConverter x:Key="StringVisibilityConverter" />
+            <BConvert:ListCountNegativeToVisibleConverter x:Key="ListCountNegativeToVisibleConverter" />
+        </Grid.Resources>
+
+
+        <Popup x:Name="popExample1"
+               Width="601"
+               Height="416"
+               AllowsTransparency="True">
+
+            <Grid Background="Transparent">
+                <Border Width="581"
+                        Height="396"
+                        Background="White"
+                        BorderBrush="#e5e5e5"
+                        BorderThickness="0"
+                        CornerRadius="8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10"
+                                          Direction="0"
+                                          ShadowDepth="0"
+                                          Color="#b2eeeeee" />
+                    </Border.Effect>
+
+                    <Image Width="500"
+                           Height="340"
+                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                           RenderOptions.EdgeMode="Aliased"
+                           Source="/MagicCube;component/Resources/ImageSingle/Example1.png" />
+                </Border>
+            </Grid>
+
+        </Popup>
+        <Popup x:Name="popExample2"
+               Width="601"
+               Height="416"
+               AllowsTransparency="True">
+            <Grid Background="Transparent">
+                <Border Width="581"
+                        Height="396"
+                        Background="White"
+                        BorderBrush="#e5e5e5"
+                        BorderThickness="0"
+                        CornerRadius="8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10"
+                                          Direction="0"
+                                          ShadowDepth="0"
+                                          Color="#b2eeeeee" />
+                    </Border.Effect>
+
+                    <Image Width="500"
+                           Height="340"
+                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                           RenderOptions.EdgeMode="Aliased"
+                           Source="/MagicCube;component/Resources/ImageSingle/Example2.png" />
+                </Border>
+            </Grid>
+
+        </Popup>
+
+        <Popup x:Name="popExample3"
+               Width="601"
+               Height="416"
+               AllowsTransparency="True">
+            <Grid Background="Transparent">
+                <Border Width="581"
+                        Height="396"
+                        Background="White"
+                        BorderBrush="#e5e5e5"
+                        BorderThickness="0"
+                        CornerRadius="8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10"
+                                          Direction="0"
+                                          ShadowDepth="0"
+                                          Color="#b2eeeeee" />
+                    </Border.Effect>
+
+                    <Image Width="500"
+                           Height="340"
+                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                           RenderOptions.EdgeMode="Aliased"
+                           Source="/MagicCube;component/Resources/ImageSingle/Example3.png" />
+                </Border>
+            </Grid>
+
+        </Popup>
+
+        <Popup x:Name="popExample4"
+               Width="416"
+               Height="601"
+               AllowsTransparency="True">
+            <Grid Background="Transparent">
+                <Border Width="396"
+                        Height="581"
+                        Background="White"
+                        BorderBrush="#e5e5e5"
+                        BorderThickness="0"
+                        CornerRadius="8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10"
+                                          Direction="0"
+                                          ShadowDepth="0"
+                                          Color="#b2eeeeee" />
+                    </Border.Effect>
+
+                    <Image Width="292"
+                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                           RenderOptions.EdgeMode="Aliased"
+                           Source="/MagicCube;component/Resources/ImageSingle/Example4.png" />
+                </Border>
+            </Grid>
+
+        </Popup>
+
+        <viewSingle:UCSelfImageUpload x:Name="ucPictureUpload"
+                                      Grid.Column="1"
+                                      Margin="0,0,0,0"
+                                      Panel.ZIndex="10"
+                                      Background="White"
+                                      Visibility="Collapsed" />
+        <Busy:BusyIndicator xmlns:Busy="clr-namespace:BusyIndicatorCtrl"
+                            x:Name="busyCtrl"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            Panel.ZIndex="10"
+                            d:IsHidden="True" />
+
+        <StackPanel x:Name="gdAuthCheck"
+                    Grid.Row="1"
+                    Background="White"
+                    Visibility="Visible">
+            <Border Height="44" Background="#fffdf3">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Image Width="16"
+                           Height="16"
+                           Source="/MagicCube;component/Resources/ImageSingle/iconfont-shenhezhong.png" />
+                    <TextBlock Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="#ff6500"
+                               Text="认证申请已提交，将在2个工作日审核完成" />
+                </StackPanel>
+            </Border>
+            <Border Width="140"
+                    Height="140"
+                    Margin="0,60,0,0"
+                    BorderBrush="AliceBlue"
+                    BorderThickness="0"
+                    CornerRadius="4">
+                <Border.Background>
+                    <ImageBrush ImageSource="/MagicCube;component/Resources/ImageSingle/confirmV.png" />
+                </Border.Background>
+                <Image Width="140"
+                       Height="140"
+                       Margin="0,0,0,0"
+                       Source="{Binding ElementName=ucLocal,
+                                        Path=AuthPicture}"
+                       Stretch="UniformToFill" />
+            </Border>
+
+        </StackPanel>
+
+        <StackPanel x:Name="gdAuthSuccess"
+                    Grid.Row="1"
+                    Background="White"
+                    Visibility="Collapsed">
+            <Border Height="44" Background="#fffdf3">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Image Width="16"
+                           Height="16"
+                           Source="/MagicCube;component/Resources/ImageSingle/AuthSuccess.png" />
+                    <TextBlock Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="#3fbe7d"
+                               Text="认证成功" />
+                </StackPanel>
+            </Border>
+            <Border Width="140"
+                    Height="140"
+                    Margin="0,60,0,0"
+                    BorderBrush="AliceBlue"
+                    BorderThickness="0"
+                    CornerRadius="4">
+                <Border.Background>
+                    <ImageBrush ImageSource="/MagicCube;component/Resources/ImageSingle/confirmV.png" />
+                </Border.Background>
+                <Image Width="140"
+                       Height="140"
+                       Margin="0,0,0,0"
+                       Source="{Binding ElementName=ucLocal,
+                                        Path=AuthPicture}"
+                       Stretch="UniformToFill" />
+            </Border>
+        </StackPanel>
+
+        <StackPanel x:Name="gdAuthMain"
+                    Grid.Row="1"
+                    Background="White"
+                    Visibility="Visible">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <StackPanel x:Name="stk">
+                                    <TextBlock Foreground="#00beff"
+                                               Text="{TemplateBinding Content}"
+                                               TextDecorations="Underline" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Border Background="#fffdf3">
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel x:Name="stkFail"
+                                Margin="0,14,0,-7"
+                                Orientation="Horizontal">
+                        <Image Width="16"
+                               Height="16"
+                               Source="/MagicCube;component/Resources/ImageSingle/AuthenFail.png" />
+                        <TextBlock Margin="10.5,0,0,0"
+                                   FontSize="14"
+                                   Foreground="#f25751"
+                                   Text="您的认证申请未通过" />
+                        <TextBlock FontSize="14"
+                                   Foreground="#f25751"
+                                   Text="，原因："
+                                   Visibility="{Binding ElementName=ucLocal,
+                                                        Path=FailReason,
+                                                        Converter={StaticResource StringVisibilityConverter}}" />
+                        <TextBlock Margin="5,0,0,0"
+                                   FontSize="14"
+                                   Foreground="#f25751"
+                                   Text="{Binding ElementName=ucLocal,
+                                                  Path=FailReason}" />
+                    </StackPanel>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock FontSize="12"
+                                   Foreground="#666666"
+                                   Text="请上传以下四种证明文件中的任意一种，以证明您确实在 [" />
+                        <TextBlock MaxWidth="200"
+                                   FontSize="12"
+                                   Foreground="#666666"
+                                   Text="{Binding ElementName=ucLocal,
+                                                  Path=CompanyName}"
+                                   TextTrimming="WordEllipsis" />
+                        <TextBlock FontSize="12"
+                                   Foreground="#666666"
+                                   Text="] 工作:" />
+                    </StackPanel>
+
+                    <TextBlock x:Name="tbFourPic"
+                               Margin="0,5,0,14"
+                               FontSize="12"
+                               Foreground="#ff6500"
+                               Text="1.加盖公章的营业执照   2.工牌照片   3.名片照片   4.加盖公章的在职证明" />
+                </StackPanel>
+            </Border>
+            <Rectangle Height="1"
+                       Fill="#FBF5D8"
+                       StrokeThickness="0" />
+            <StackPanel Margin="0,37,0,0" Orientation="Horizontal">
+
+                <TextBlock Margin="40,0,0,0"
+                           VerticalAlignment="Center"
+                           Foreground="#666666"
+                           Text="上传认证图片" />
+                <Button x:Name="btnAddLOGOPicture"
+                        Width="80"
+                        Height="80"
+                        Margin="24,0,0,0"
+                        HorizontalAlignment="Left"
+                        Click="btnAddAuthenPicture_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border Width="80"
+                                    Height="80"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    BorderThickness="0"
+                                    CornerRadius="3">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding ElementName=ucLocal, Path=AuthPicture, Converter={StaticResource URLToUploadImageConverter}}" />
+                                </Border.Background>
+                                <!--<Image Width="80" Source="/MagicCube;component/Resources/Images/UploadBtn.png" />-->
+                                <Grid>
+
+                                    <Grid Visibility="{Binding ElementName=ucLocal, Path=AuthPicture, Converter={StaticResource URLToUploadVisibleConverter}}">
+                                        <Rectangle Fill="Black"
+                                                   Opacity="0.5"
+                                                   RadiusX="3"
+                                                   RadiusY="3" />
+                                        <Image Width="27"
+                                               Height="27"
+                                               Source="/MagicCube;component/Resources/ImageSingle/uploadBackground.png" />
+
+                                    </Grid>
+                                </Grid>
+
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <StackPanel Margin="16,5,0,0">
+                    <TextBlock Margin="0,15,0,3"
+                               Foreground="#999999"
+                               Style="{x:Null}"
+                               Text="支持JPG/PNG格式" />
+
+                    <TextBlock Margin="0,3,0,3"
+                               Foreground="#ff6500"
+                               Style="{x:Null}"
+                               Text="支持上传营业执照、工牌、名片、在职证明" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="135,31,0,20" Orientation="Horizontal">
+                <local:BlueButton Width="91"
+                                  Height="34"
+                                  Click="btnUpLoadOK_Click"
+                                  Text="提交认证" />
+                <local:WhiteButton Width="210"
+                                   Height="34"
+                                   Margin="14,0,0,0"
+                                   Click="btnGotoJob_Click"
+                                   Text="暂不认证，先去发个职位试试"
+                                   Visibility="{Binding ElementName=ucLocal,
+                                                        Path=GoToJobIsVisible}" />
+            </StackPanel>
+            <Line Margin="25,0,25,20"
+                  Stroke="#ebebeb"
+                  StrokeDashArray="3,2"
+                  StrokeThickness="2"
+                  X1="0"
+                  X2="{Binding ElementName=ucLocal,
+                               Path=ActualWidth}" />
+            <StackPanel Margin="40,0,0,0">
+                <TextBlock Margin="0,0,0,0"
+                           FontSize="14"
+                           Foreground="#333333"
+                           Text="认证须知" />
+                <TextBlock Margin="0,25,0,0"
+                           FontSize="14"
+                           Foreground="#333333"
+                           Text="1.认证好处" />
+                <TextBlock Margin="0,18,0,0"
+                           FontSize="12"
+                           Foreground="#666666"
+                           Text="a. 个人身份加V，增加求职者信任感，招聘效果更好" />
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="12"
+                           Foreground="#666666"
+                           Text="b. 职位排名靠前，增加职位曝光度，让更多求职者看到您的职位" />
+                <TextBlock Margin="0,10,0,0"
+                           FontSize="12"
+                           Foreground="#666666"
+                           Text="c. 享有特权，认证后，可发布更多职位，完成任务时还可获得更多积分" />
+                <StackPanel Margin="0,26,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="14"
+                               Foreground="#333333"
+                               Text="2.认证规则" />
+                    <TextBlock Margin="5,0,0,0"
+                               FontSize="14"
+                               Foreground="#ff6500"
+                               Text="(您可以任选一种认证方式)" />
+                </StackPanel>
+
+                <StackPanel Margin="0,18,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Text="营业执照：" />
+                    <TextBlock Width="560"
+                               Foreground="#666666"
+                               Text="请上传加盖了清晰公司红色公章（非当地工商局红章）的营业执照（副本）复印件，请确保营业执照上的" />
+                </StackPanel>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Margin="60,0,0,0"
+                               Foreground="#666666"
+                               Text="“公司全称”，与系统中填写的公司全称保持一致。查看示例。" />
+                    <Button Click="btnSeeExample1_Click" Content="查看示例" />
+                    <Image x:Name="imgExample1"
+                           Margin="10,0,0,0"
+                           Source="/MagicCube;component/Resources/ImageSingle/SeeExample.png" />
+                </StackPanel>
+                <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Text="在职证明：" />
+                    <TextBlock Width="560"
+                               Foreground="#666666"
+                               Text="请上传加了公司红章的在职证明，在职证明中需包含您的姓名、职位、手机号信息，且与您在系统中填写" />
+                </StackPanel>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Margin="60,0,0,0"
+                               Foreground="#666666"
+                               Text="的个人信息一致。公司名称与系统中填写的公司全称保持一致。" />
+                    <Button Click="btnSeeExample2_Click" Content="查看示例" />
+                    <Image Margin="10,0,0,0" Source="/MagicCube;component/Resources/ImageSingle/SeeExample.png" />
+                </StackPanel>
+                <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Text="名       片：" />
+                    <TextBlock Width="560"
+                               Foreground="#666666"
+                               Text="请上传名片正面图片，并保证清晰可辨认。请确保名片中您的姓名、职位、手机号信息与您在系统中填写" />
+                </StackPanel>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Margin="60,0,0,0"
+                               Foreground="#666666"
+                               Text="的个人信息一致。公司名称与系统中填写的公司全称保持一致，不可上传电子截屏。" />
+                    <Button Click="btnSeeExample3_Click" Content="查看示例" />
+                    <Image Margin="10,0,0,0" Source="/MagicCube;component/Resources/ImageSingle/SeeExample.png" />
+                </StackPanel>
+                <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Text="工       牌：" />
+                    <TextBlock Width="560"
+                               Foreground="#666666"
+                               Text="请上传工牌证明图片，并确保清晰可辨认。请确保工牌中您的姓名、职位与您在系统中填写的个人信息一" />
+                </StackPanel>
+                <StackPanel Margin="0,5,0,70" Orientation="Horizontal">
+                    <TextBlock Margin="60,0,0,0"
+                               Foreground="#666666"
+                               Text="致。公司名称与系统中填写的公司全称保持一致。" />
+                    <Button Click="btnSeeExample4_Click" Content="查看示例" />
+                    <Image Margin="10,0,0,0" Source="/MagicCube;component/Resources/ImageSingle/SeeExample.png" />
+                </StackPanel>
+            </StackPanel>
+
+
+        </StackPanel>
+        <StackPanel x:Name="gdAuthFail"
+                    Grid.Row="1"
+                    Background="White"
+                    Visibility="Collapsed" />
+    </Grid>
+</UserControl>

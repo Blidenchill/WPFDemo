@@ -1,0 +1,623 @@
+﻿<UserControl
+    x:Class="MagicCube.ViewSingle.UCJobClose"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+    xmlns:UC="clr-namespace:MagicCube.TemplateUC"
+    xmlns:UCViewSingle="clr-namespace:MagicCube.ViewSingle"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BConvert:JobstringConverter x:Key="JobstringConverter" />
+        <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <BConvert:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
+        <BConvert:ThirdSitesConverter x:Key="ThirdSitesConverter" />
+        <BConvert:StringNullToVisibilityConverter x:Key="StringNullToVisibilityConverter" />
+        <BConvert:CountToBoolConverter x:Key="CountToBoolConverter" />
+    </UserControl.Resources>
+    <Grid Background="#ffffff">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid Background="#f5f5f5">
+            <Button
+                Width="120"
+                Height="34"
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right"
+                Click="PublicJob_Click"
+                FocusVisualStyle="{x:Null}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border
+                                        x:Name="PART_Border"
+                                        Padding="0"
+                                        Background="#00beff"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        CornerRadius="2"
+                                        SnapsToDevicePixels="True">
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Orientation="Horizontal">
+                                            <Image
+                                                Width="14"
+                                                Height="14"
+                                                Source="/MagicCube;component/Resources/ImageSingle/addJob.png" />
+                                            <TextBlock
+                                                x:Name="tb"
+                                                Margin="6,0,0,0"
+                                                FontSize="12"
+                                                Foreground="#ffffff"
+                                                SnapsToDevicePixels="True"
+                                                Text="发布职位" />
+                                        </StackPanel>
+
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="PART_Border" Property="Background" Value="#cc00beff" />
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="PART_Border" Property="Background" Value="#1898C9" />
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter TargetName="PART_Border" Property="Background" Value="#dddddd" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+        <Grid
+            x:Name="gdDetialView"
+            Grid.RowSpan="4"
+            Panel.ZIndex="8"
+            Background="Transparent"
+            Visibility="Collapsed">
+
+            <UCViewSingle:UCJobDetails
+                x:Name="ucPreView"
+                Width="480"
+                HorizontalAlignment="Right">
+                <UCViewSingle:UCJobDetails.Effect>
+                    <DropShadowEffect
+                        BlurRadius="7"
+                        Direction="180"
+                        ShadowDepth="4"
+                        Color="#e6eced" />
+                </UCViewSingle:UCJobDetails.Effect>
+            </UCViewSingle:UCJobDetails>
+
+            <UC:FloatCloseButton
+                Margin="0,20,16,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="BtnDetialViewClose_Click"
+                Focusable="False" />
+            <Border
+                x:Name="bdEdit"
+                Width="480"
+                Height="50"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="#484a4b">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <UC:JobEditButton
+                        Margin="0,0,9,0"
+                        Click="btnDetialRePublish_Click"
+                        Text="重新发布" />
+                    <UC:JobEditButton
+                        Margin="0,0,9,0"
+                        Click="btnDetialEdit_Click"
+                        Text="编辑" />
+
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Busy:BusyIndicator
+            xmlns:Busy="clr-namespace:BusyIndicatorCtrl"
+            x:Name="busyCtrl"
+            Grid.RowSpan="5"
+            Margin="-228,-0,0,0"
+            Panel.ZIndex="10"
+            d:IsHidden="True" />
+        <Grid Grid.Row="1" Background="#ffffff">
+            <Grid
+                x:Name="spSearch"
+                Height="34"
+                Margin="12,0"
+                HorizontalAlignment="Right">
+                <Border
+                    x:Name="bdInput"
+                    Width="180"
+                    Padding="1"
+                    Background="White"
+                    BorderBrush="#e5e5e5"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                    <Grid>
+                        <TextBox
+                            x:Name="txtPartialValue"
+                            Padding="8,0,0,0"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            FontSize="12"
+                            GotFocus="txtPartialValue_GotFocus"
+                            KeyDown="txtPartialValue_KeyDown"
+                            LostFocus="txtPartialValue_LostFocus"
+                            MaxLength="10"
+                            PreviewMouseLeftButtonDown="txtPartialValue_PreviewMouseLeftButtonDown" />
+                        <TextBlock
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="#b4b4b4"
+                            IsHitTestVisible="False"
+                            Style="{x:Null}"
+                            Text="请输入职位名称"
+                            Visibility="{Binding ElementName=txtPartialValue, Path=Text, Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+                </Border>
+                <UC:SearchButton
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Click="SearchTextBlock_Click"
+                    Focusable="True" />
+                <Button
+                    x:Name="btnSearch"
+                    Width="0"
+                    Height="20"
+                    Focusable="True" />
+                <Border
+                    x:Name="SearchResult"
+                    Width="178"
+                    Margin="1"
+                    HorizontalAlignment="Left"
+                    Background="#ffffff"
+                    CornerRadius="0"
+                    Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="tbSearchResult"
+                            Width="140"
+                            Margin="5,0"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="#333333"
+                            Text="name" />
+                        <Rectangle
+                            Width="1"
+                            Margin="0,4"
+                            VerticalAlignment="Stretch"
+                            Fill="#e4e4e4" />
+                        <UC:FloatCloseButton
+                            Width="15"
+                            Height="15"
+                            Margin="2,0"
+                            Click="ClearTextBlock_Click"
+                            Focusable="False" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Rectangle
+                Height="1"
+                VerticalAlignment="Bottom"
+                Fill="#e7e7e7" />
+        </Grid>
+        <Grid
+            x:Name="GdNoSearchResult"
+            Grid.Row="2"
+            Grid.RowSpan="5"
+            Panel.ZIndex="6"
+            Background="#ffffff"
+            Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image
+                    Width="90"
+                    Height="79"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/MagicCube;component/Resources/Images/UnInfomation.png"
+                    Stretch="Uniform" />
+                <StackPanel
+                    Margin="0,30,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <StackPanel>
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="#999999"
+                            Text="抱歉，暂时没有找到符合条件的信息" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid
+            x:Name="GdNoJob"
+            Grid.Row="2"
+            Grid.RowSpan="5"
+            Panel.ZIndex="6"
+            Background="#ffffff"
+            Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image
+                    Width="90"
+                    Height="79"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/MagicCube;component/Resources/Images/UnInfomation.png"
+                    Stretch="Uniform" />
+                <StackPanel
+                    Margin="0,16,0,100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="16"
+                        Foreground="#74829c"
+                        Text="暂无已下线的职位" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid
+            x:Name="gdView"
+            Grid.Row="2"
+            Background="#f6f6f6"
+            Visibility="Visible">
+            <ScrollViewer
+                x:Name="svjob"
+                Grid.Row="2"
+                Margin="0,0,0,0"
+                Template="{DynamicResource ScrollViewerControlTemplate1}"
+                VerticalScrollBarVisibility="Auto">
+                <ItemsControl
+                    Name="lstJob"
+                    Background="#f6f6f6"
+                    MouseDown="lstJob_MouseDown"
+                    MouseRightButtonDown="lstJob_MouseRightButtonDown">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel VerticalAlignment="Top" Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                x:Name="bdRow"
+                                Width="{Binding ElementName=gdView, Path=ActualWidth}"
+                                Height="110"
+                                Margin="0,0,0,12"
+                                Background="White">
+
+                                <StackPanel
+                                    Margin="12,15,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Orientation="Horizontal">
+                                    <Button
+                                        MaxWidth="220"
+                                        Margin="0,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Click="Detial_MouseLeftButtonUp"
+                                        Cursor="Hand"
+                                        FontSize="12"
+                                        Foreground="#333333">
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                            <Border
+                                                                x:Name="PART_Border"
+                                                                Padding="0"
+                                                                Background="Transparent"
+                                                                BorderBrush="Transparent"
+                                                                BorderThickness="0"
+                                                                CornerRadius="2">
+                                                                <TextBlock
+                                                                    x:Name="tb"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    FontSize="12"
+                                                                    Foreground="#333333"
+                                                                    Text="{Binding jobName}"
+                                                                    TextTrimming="WordEllipsis" />
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="tb" Property="Foreground" Value="#00beff" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel
+                                    Margin="12,43,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="{Binding jobNeed}" />
+
+                                </StackPanel>
+                                <StackPanel
+                                    Margin="0,16,30,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Orientation="Horizontal">
+                                    <StackPanel>
+                                        <UC:CountButton
+                                            Width="30"
+                                            Click="CountButton_Click"
+                                            IsEnabled="{Binding initiative, Converter={StaticResource CountToBoolConverter}}"
+                                            Tag="initiative"
+                                            Text="{Binding initiative}" />
+                                        <TextBlock
+                                            Margin="0,3,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="主动应聘" />
+                                    </StackPanel>
+                                    <Rectangle
+                                        Width="1"
+                                        Height="12"
+                                        Margin="13,1"
+                                        VerticalAlignment="Bottom"
+                                        Fill="#d8d8d8" />
+                                    <StackPanel>
+                                        <UC:CountButton
+                                            Width="30"
+                                            Click="CountButton_Click"
+                                            IsEnabled="{Binding invite, Converter={StaticResource CountToBoolConverter}}"
+                                            Tag="invite"
+                                            Text="{Binding invite}" />
+                                        <TextBlock
+                                            Margin="0,3,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="邀请投递" />
+                                    </StackPanel>
+                                    <Rectangle
+                                        Width="1"
+                                        Height="12"
+                                        Margin="13,2"
+                                        VerticalAlignment="Bottom"
+                                        Fill="#d8d8d8" />
+                                    <StackPanel>
+                                        <UC:CountButton
+                                            Width="30"
+                                            Click="CountButton_Click"
+                                            Tag="pass"
+                                            Text="{Binding countPass}" />
+                                        <TextBlock
+                                            Margin="0,3,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="合适" />
+                                    </StackPanel>
+                                    <Rectangle
+                                        Width="1"
+                                        Height="12"
+                                        Margin="13,2"
+                                        VerticalAlignment="Bottom"
+                                        Fill="#d8d8d8" />
+                                    <StackPanel>
+                                        <UC:CountButton
+                                            Width="30"
+                                            Click="CountButton_Click"
+                                            Tag="fail"
+                                            Text="{Binding countFail}" />
+                                        <TextBlock
+                                            Margin="0,3,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="不合适" />
+                                    </StackPanel>
+                                    <Rectangle
+                                        Width="1"
+                                        Height="12"
+                                        Margin="13,2"
+                                        VerticalAlignment="Bottom"
+                                        Fill="#d8d8d8" />
+                                    <StackPanel>
+                                        <UC:CountButton
+                                            Width="30"
+                                            Click="CountButton_Click"
+                                            Tag="reserve_fail"
+                                            Text="{Binding countReserveFail}" />
+                                        <TextBlock
+                                            Margin="0,3,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="自动过滤" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <Rectangle
+                                    Height="1"
+                                    Margin="0,0,0,36"
+                                    VerticalAlignment="Bottom"
+                                    Fill="#e7e7e7" />
+                                <StackPanel
+                                    Margin="12,0,0,10"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="下线时间：" />
+                                    <TextBlock
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="{Binding updateTimeShow}" />
+
+                                </StackPanel>
+                                <StackPanel
+                                    Margin="0,0,12,8"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Horizontal">
+                                    <UC:JobListButton
+                                        Margin="0,0,14,0"
+                                        Click="menuRePublish_MenuClick"
+                                        ImageHover="/MagicCube;component/Resources/ImageSingle/jobbtn5h.png"
+                                        ImageSource="/MagicCube;component/Resources/ImageSingle/jobbtn5.png"
+                                        Text="重新发布" />
+                                    <UC:JobListButton
+                                        Margin="0,0,14,0"
+                                        Click="menuEdit_MenuClick"
+                                        ImageHover="/MagicCube;component/Resources/ImageSingle/jobbtn3h.png"
+                                        ImageSource="/MagicCube;component/Resources/ImageSingle/jobbtn3.png"
+                                        Text="编辑" />
+                                    <UC:JobListButton
+                                        Margin="0,0,0,0"
+                                        Click="menuDetials_MenuClick"
+                                        ImageHover="/MagicCube;component/Resources/ImageSingle/jobbtn4h.png"
+                                        ImageSource="/MagicCube;component/Resources/ImageSingle/jobbtn4.png"
+                                        Text="详情" />
+                                </StackPanel>
+                                <Rectangle
+                                    x:Name="rl"
+                                    Margin="0,0,1,0"
+                                    Stroke="#85E0FF"
+                                    StrokeThickness="1"
+                                    Visibility="Collapsed" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="rl" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ContextMenu>
+                        <ContextMenu Opened="ContextMenu_Opened">
+                            <MenuItem Click="menuRePublish_MenuClick">
+                                <MenuItem.Template>
+                                    <ControlTemplate>
+                                        <Border
+                                            x:Name="bd"
+                                            Width="160"
+                                            Height="40"
+                                            Background="Transparent">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image
+                                                    Width="13"
+                                                    Height="13"
+                                                    Margin="14,0,0,0" />
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="#303342"
+                                                    Text="重新发布" />
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="bd" Property="Background" Value="#f3f6fc" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </MenuItem.Template>
+                            </MenuItem>
+                            <MenuItem Click="menuDetials_MenuClick">
+                                <MenuItem.Template>
+                                    <ControlTemplate>
+                                        <Border
+                                            x:Name="bd"
+                                            Width="160"
+                                            Height="40"
+                                            Background="Transparent">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image
+                                                    Width="13"
+                                                    Height="13"
+                                                    Margin="14,0,0,0" />
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="#303342"
+                                                    Text="查看职位详情" />
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="bd" Property="Background" Value="#f3f6fc" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </MenuItem.Template>
+                            </MenuItem>
+                            <MenuItem Click="menuEdit_MenuClick">
+                                <MenuItem.Template>
+                                    <ControlTemplate>
+                                        <Border
+                                            x:Name="bd"
+                                            Width="160"
+                                            Height="40"
+                                            Background="Transparent">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image
+                                                    Width="13"
+                                                    Height="13"
+                                                    Margin="14,0,0,0" />
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="#303342"
+                                                    Text="编辑职位" />
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="bd" Property="Background" Value="#f3f6fc" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </MenuItem.Template>
+                            </MenuItem>
+                        </ContextMenu>
+                    </ItemsControl.ContextMenu>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+        <UC:UCPageTurn x:Name="ucUCPageTurn" Grid.Row="4" />
+    </Grid>
+
+</UserControl>

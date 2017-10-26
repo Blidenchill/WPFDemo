@@ -1,0 +1,70 @@
+﻿<Window x:Class="MagicCube.TemplateUC.WinGotoLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MagicCube.TemplateUC"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="WinGotoLogin"
+        Width="420"
+        Height="223"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Icon="/MagicCube;component/Resources/Icon/Icon.ico"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        mc:Ignorable="d">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="10"
+                          Direction="0"
+                          ShadowDepth="0"
+                          Color="#7fcccccc" />
+    </Window.Effect>
+    <Border Padding="10">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <TextBlock Margin="20,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           Foreground="#666666"
+                           Text="温馨提示" />
+                <local:FloatCloseButton Width="20"
+                                        Height="20"
+                                        Margin="5,5,5,5"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Click="BtnClose_Click"
+                                        Focusable="False" />
+                <Rectangle Height="1"
+                           VerticalAlignment="Bottom"
+                           Fill="#eeeeee" />
+            </Grid>
+
+            <StackPanel Grid.Row="1" Margin="0,40,0,0">
+                <TextBlock HorizontalAlignment="Center"
+                           FontSize="14"
+                           Foreground="#666666"
+                           Text="该手机号已存在" />
+                <StackPanel Margin="30"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                    <local:WhiteButton Width="94"
+                                       Height="34"
+                                       Click="btnGotoLogin_Cick"
+                                       Text="去登录" />
+                    <local:WhiteButton Width="94"
+                                       Height="34"
+                                       Margin="10,0,0,0"
+                                       Click="btnRePut_Click"
+                                       Text="重新输入" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

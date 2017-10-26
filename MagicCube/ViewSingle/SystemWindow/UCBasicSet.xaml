@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCBasicSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="ucMain"
+             d:DesignHeight="470"
+             d:DesignWidth="440"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BConvert:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="20,40,0,0">
+            <TextBlock FontSize="14"
+                       Foreground="#333333"
+                       Text="登录设置" />
+            <CheckBox x:Name="AutoLogin"
+                      Margin="30,12,0,5"
+                      HorizontalAlignment="Left"
+                      Content="自动登录"
+                      Cursor="Hand"
+                      FontSize="12"
+                      Foreground="#333333"
+                      IsChecked="{Binding AutoLogin}" />
+            <CheckBox x:Name="chkAutoRun"
+                      Margin="30,12,0,5"
+                      HorizontalAlignment="Left"
+                      Content="开机时自动启动魔方小聘"
+                      Cursor="Hand"
+                      FontSize="12"
+                      Foreground="#333333"
+                      IsChecked="{Binding AutoRunSetting}" />
+            <TextBlock Margin="0,50,0,0"
+                       FontSize="14"
+                       Foreground="#333333"
+                       Text="发送消息设置" />
+            <RadioButton Name="chkEnterSend"
+                         Margin="30,12,0,5"
+                         HorizontalAlignment="Left"
+                         Click="BOX_Checked"
+                         Content="按Enter键"
+                         Cursor="Hand"
+                         FontSize="12" />
+            <RadioButton Name="chkCtrlEnterSend"
+                         Margin="30,12,0,5"
+                         HorizontalAlignment="Left"
+                         Click="BOX_Checked"
+                         Content="按Ctrl+Enter键"
+                         Cursor="Hand"
+                         FontSize="12"
+                         Foreground="#333333" />
+        </StackPanel>
+    </Grid>
+</UserControl>

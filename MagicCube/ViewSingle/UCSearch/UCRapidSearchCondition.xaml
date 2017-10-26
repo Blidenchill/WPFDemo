@@ -1,0 +1,241 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCRapidSearchCondition"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templateUC="clr-namespace:MagicCube.TemplateUC"
+             d:DesignHeight="600"
+             d:DesignWidth="480"
+             mc:Ignorable="d">
+    <Grid x:Name="SVSearchItem">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Width" Value="100" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="TextAlignment" Value="Right" />
+                <Setter Property="Padding" Value="0,9,5,0" />
+                <Setter Property="Height" Value="34" />
+                <Setter Property="Margin" Value="0,0,10,0" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="#333333" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="#333840" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="Rectangle">
+                <Setter Property="Height" Value="34" />
+                <Setter Property="Fill" Value="White" />
+                <Setter Property="RadiusX" Value="4" />
+                <Setter Property="RadiusY" Value="4" />
+                <Setter Property="Stroke" Value="#e5e5e5" />
+                <Setter Property="StrokeThickness" Value="1" />
+            </Style>
+            <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        </Grid.Resources>
+        <StackPanel Margin="57,9,5,0">
+
+            <StackPanel x:Name="stkSaveSearch"
+                        Height="34"
+                        Margin="0,0,0,0"
+                        Orientation="Horizontal">
+                <TextBlock Text="快捷搜索" />
+                <Grid Width="252">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbSaveSearchCondition"
+                                               Width="252"
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               DisplayMemberPath="LocalHead"
+                                               SelectedValuePath="LocalHead"
+                                               SelectionChanged="cmbSaveSearchCondition_SelectionChanged"
+                                               hintText="请选择已保存的搜索条件" />
+                </Grid>
+            </StackPanel>
+            <Line x:Name="lineSaveSearch"
+                  Margin="0,16,0,16"
+                  Stroke="#e5e5e5"
+                  StrokeDashArray="2 2"
+                  StrokeThickness="1"
+                  X1="16"
+                  X2="464"
+                  Y1="0"
+                  Y2="0" />
+
+
+            <StackPanel Height="34"
+                        Margin="0,0,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="关键词" />
+                <Grid Width="252">
+                    <Rectangle Fill="White" />
+                    <templateUC:HintTextBox Margin="8,0,0,0"
+                                            VerticalContentAlignment="Center"
+                                            BorderThickness="0"
+                                            Hint="请输入职位名称、公司名称或工作技能等"
+                                            Text="{Binding partialValue}" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="工作经验" />
+                <Grid Width="252">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbWorkExp"
+                                               Width="252"
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               SelectedItem="{Binding workingExp}"
+                                               hintText="不限" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="学历" />
+                <Grid Width="116">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbMinDegree"
+                                               Width="116"
+                                               SelectedItem="{Binding minDegree}"
+                                               SelectionChanged="Degree_DataChanged"
+                                               hintText="不限" />
+                </Grid>
+                <Rectangle Width="10"
+                           Height="1"
+                           Margin="5,0,5,0"
+                           Stroke="Gray" />
+                <Grid Width="116">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbMaxDegree"
+                                               Width="116"
+                                               SelectedItem="{Binding maxDegree}"
+                                               hintText="不限" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="年龄" />
+                <Grid Width="116">
+                    <Rectangle />
+                    <templateUC:HintTextBox x:Name="txtMinAge"
+                                            Margin="10,0,0,0"
+                                            VerticalContentAlignment="Center"
+                                            BorderThickness="0"
+                                            Hint="不限"
+                                            LostFocus="txtAge_LostFocus"
+                                            MaxLength="2"
+                                            PreviewKeyDown="txt_PreviewKeyDown"
+                                            Text="{Binding minAge,
+                                                           Mode=TwoWay}" />
+                </Grid>
+                <Rectangle Width="10"
+                           Height="1"
+                           Margin="5,0,5,0"
+                           Stroke="Gray" />
+                <Grid Width="116">
+                    <Rectangle />
+                    <templateUC:HintTextBox x:Name="txtMaxAge"
+                                            Margin="10,0,0,0"
+                                            VerticalContentAlignment="Center"
+                                            BorderThickness="0"
+                                            Hint="不限"
+                                            LostFocus="txtAge_LostFocus"
+                                            MaxLength="2"
+                                            PreviewKeyDown="txt_PreviewKeyDown"
+                                            Text="{Binding maxAge,
+                                                           Mode=TwoWay}" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="期望城市" />
+                <Grid Width="252">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbTargetWorkLocation"
+                                               Width="252"
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               SelectedItem="{Binding targetWorkLocation}"
+                                               hintText="不限" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="现居地" />
+                <Grid Width="252">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbLocation"
+                                               Width="252"
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               SelectedItem="{Binding location}"
+                                               hintText="不限" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="期望薪资" />
+                <Grid Width="252">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbTargetSalary"
+                                               Width="252"
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               SelectedItem="{Binding targetSalary}"
+                                               hintText="不限" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,7,0,7"
+                        Orientation="Horizontal">
+                <TextBlock Text="简历更新时间" />
+                <Grid Width="252">
+                    <Rectangle />
+                    <templateUC:UCHintComboBox x:Name="cmbTimeInterval"
+                                               Width="252"
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               SelectedItem="{Binding timeInterval}"
+                                               hintText="不限" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="34"
+                        Margin="0,5,0,0"
+                        Orientation="Horizontal">
+                <CheckBox x:Name="chkSaveCondition"
+                          Margin="110,0,0,0"
+                          VerticalAlignment="Center"
+                          Content="保存搜索条件"
+                          FontSize="12"
+                          Foreground="#333333" />
+
+            </StackPanel>
+            <Grid Width="200" Visibility="{Binding ElementName=chkSaveCondition, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Rectangle Fill="White" />
+                <templateUC:HintTextBox x:Name="txtSaveConditionHead"
+                                        Width="180"
+                                        VerticalContentAlignment="Center"
+                                        BorderThickness="0"
+                                        Hint="设置搜索条件名称" />
+            </Grid>
+
+            <templateUC:BlueButton Width="84"
+                                   Height="34"
+                                   Margin="110,10,0,0"
+                                   HorizontalAlignment="Left"
+                                   Click="SearchResumStart"
+                                   Text="搜索" />
+        </StackPanel>
+    </Grid>
+
+</UserControl>

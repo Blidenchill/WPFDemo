@@ -1,0 +1,109 @@
+﻿<UserControl
+    x:Class="MagicCube.ViewSingle.UCResume"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+    xmlns:UC="clr-namespace:MagicCube.TemplateUC"
+    xmlns:UCViewSingle="clr-namespace:MagicCube.ViewSingle"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="655"
+    d:DesignWidth="926"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="228" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Background="#f6f6f6">
+            <StackPanel x:Name="spNavigation">
+                <UC:SecondModuleCB x:Name="cb1" Text="候选人" />
+
+                <StackPanel Visibility="{Binding ElementName=cb1, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <UC:ThreeModuleRB
+                        x:Name="rbOrderResume"
+                        Click="ResumeType_Click"
+                        GroupName="main"
+                        Text="待筛选" />
+                    <UC:ThreeModuleRB
+                        x:Name="rbOrderResumepass"
+                        Click="ResumeType_Click"
+                        GroupName="main"
+                        Text="合适" />
+                    <UC:ThreeModuleRB
+                        x:Name="rbOrderResumefail"
+                        Click="ResumeType_Click"
+                        GroupName="main"
+                        Text="不合适" />
+                    <UC:ThreeModuleRB
+                        x:Name="rbOrderResumereserve"
+                        Click="ResumeType_Click"
+                        GroupName="main"
+                        Text="自动过滤" />
+                </StackPanel>
+                <UC:SecondModuleRB
+                    x:Name="RBCollection"
+                    Click="RBCollection_Click"
+                    Count=""
+                    GroupName="main"
+                    Text="收藏夹" />
+            </StackPanel>
+        </Border>
+        <Rectangle
+            Width="1"
+            HorizontalAlignment="Right"
+            Fill="#eeeeee" />
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                x:Name="tbTtile"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                Foreground="#333333"
+                IsHitTestVisible="False"
+                Text="简历管理" />
+            <Grid x:Name="gdResumeCollection" Grid.Row="1">
+                <UCViewSingle:CollectionTable x:Name="ucCollectionTable" />
+            </Grid>
+            <Grid x:Name="gdResumeDeliver" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid
+                    x:Name="gdSelect"
+                    Grid.Row="0"
+                    Height="40"
+                    Background="White"
+                    Visibility="Visible">
+                    <StackPanel Orientation="Horizontal">
+                        <UC:UntreatedRadioButton
+                            x:Name="rbActive"
+                            Margin="12,0,30,0"
+                            Click="rbActive_Checked"
+                            IsChecked="True"
+                            Text="主动应聘" />
+                        <UC:UntreatedRadioButton
+                            x:Name="rbInvite"
+                            Click="rbInvite_Checked"
+                            Text="邀请投递" />
+                    </StackPanel>
+                    <Rectangle
+                        Height="1"
+                        VerticalAlignment="Bottom"
+                        Fill="#e7e7e7" />
+                </Grid>
+                <Grid Grid.Row="1" Background="White">
+                    <UCViewSingle:ResumeTable x:Name="ucResumeGridView" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,101 @@
+﻿<Button
+    x:Class="MagicCube.TemplateUC.CollectionButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="RB"
+    d:DesignHeight="60"
+    d:DesignWidth="60"
+    Cursor="Hand"
+    FocusVisualStyle="{x:Null}"
+    mc:Ignorable="d">
+    <Button.Resources>
+        <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <BConvert:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
+    </Button.Resources>
+    <Button.Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            x:Name="bd"
+                            Width="40"
+                            Height="40"
+                            Background="#696c6e"
+                            BorderThickness="0"
+                            CornerRadius="4,0,0,4">
+                            <Grid>
+                                <Grid x:Name="gd" Visibility="Collapsed">
+                                    <TextBlock
+                                        x:Name="tbCollected"
+                                        Margin="0,0,0,10"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        FontSize="12"
+                                        Foreground="#ffffff"
+                                        Text="收藏简历"
+                                        Visibility="{Binding ElementName=RB, Path=isCollection, Converter={StaticResource BoolToCollapsedConverter}}" />
+                                    <TextBlock
+                                        x:Name="tbUnCollected"
+                                        Margin="0,0,0,10"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        FontSize="12"
+                                        Foreground="#ffffff"
+                                        Text="取消收藏"
+                                        Visibility="{Binding ElementName=RB, Path=isCollection, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                </Grid>
+
+                                <Image
+                                    x:Name="imgCollected"
+                                    Width="18"
+                                    Height="18"
+                                    Margin="0,10,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Source="/MagicCube;component/Resources/ImageSingle/resumect.png"
+                                    Visibility="{Binding ElementName=RB, Path=isCollection, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                <Image
+                                    x:Name="imgUnCollected"
+                                    Width="18"
+                                    Height="18"
+                                    Margin="0,10,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Source="/MagicCube;component/Resources/ImageSingle/resumectn.png"
+                                    Visibility="{Binding ElementName=RB, Path=isCollection, Converter={StaticResource BoolToCollapsedConverter}}" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#00beff" />
+                                <Setter TargetName="gd" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="bd" Property="Width" Value="60" />
+                                <Setter TargetName="bd" Property="Height" Value="60" />
+                                <Setter TargetName="imgCollected" Property="Width" Value="22" />
+                                <Setter TargetName="imgCollected" Property="Height" Value="22" />
+                                <Setter TargetName="imgUnCollected" Property="Width" Value="22" />
+                                <Setter TargetName="imgUnCollected" Property="Height" Value="22" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#00beff" />
+                                <Setter TargetName="gd" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="bd" Property="Width" Value="60" />
+                                <Setter TargetName="bd" Property="Height" Value="60" />
+                                <Setter TargetName="imgCollected" Property="Width" Value="22" />
+                                <Setter TargetName="imgCollected" Property="Height" Value="22" />
+                                <Setter TargetName="imgUnCollected" Property="Width" Value="22" />
+                                <Setter TargetName="imgUnCollected" Property="Height" Value="22" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Button.Style>
+</Button>

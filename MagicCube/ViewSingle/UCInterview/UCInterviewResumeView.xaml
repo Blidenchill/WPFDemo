@@ -1,0 +1,583 @@
+﻿<UserControl
+    x:Class="MagicCube.ViewSingle.UCInterviewResumeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+    xmlns:UC="clr-namespace:MagicCube.TemplateUC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+    d:DesignHeight="700"
+    d:DesignWidth="450"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BConvert:ListToStringConverter x:Key="ListToStringConverter" />
+        <BConvert:ResumeTimeConverter x:Key="ResumeTimeConverter" />
+        <BConvert:StringVisibilityConverter x:Key="StringVisibilityConverter" />
+        <BConvert:StringNullToVisibilityConverter x:Key="StringNullToVisibilityConverter" />
+        <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <BConvert:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
+        <BConvert:HTML2RTFConverter x:Key="HTML2RTFConverter" />
+        <BConvert:TagVidToVisibilityConverter x:Key="TagVidToVisibilityConverter" />
+        <BConvert:TagVidToCollapsedConverter x:Key="TagVidToCollapsedConverter" />
+        <BConvert:PriceTipConverter x:Key="PriceTipConverter" />
+        <BConvert:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+        <BConvert:CostTipConverter x:Key="CostTipConverter" />
+        <BConvert:JobDetailCityConverter x:Key="JobDetailCityConverter" />
+        <BConvert:VisibilityToCollapseConverter x:Key="VisibilityToCollapseConverter" />
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Microsoft YaHei" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="#f2f6f7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="140" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="1"
+            Margin="0,0,0,5"
+            Background="White">
+            <Border
+                x:Name="PhotoImage"
+                Width="66"
+                Height="66"
+                Margin="16,16,0,16"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                BorderBrush="AliceBlue"
+                BorderThickness="1"
+                CornerRadius="4">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding avatar}" />
+                </Border.Background>
+            </Border>
+            <Grid
+                Margin="98,30,0,16"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+                <StackPanel>
+
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="0,0,0,8"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            MaxWidth="240"
+                            VerticalAlignment="Bottom"
+                            FontSize="14"
+                            Foreground="#666666"
+                            Text="{Binding name}"
+                            TextTrimming="WordEllipsis" />
+                        <TextBlock
+                            Margin="14,0,0,0"
+                            VerticalAlignment="Bottom"
+                            FontSize="14"
+                            Foreground="#666666"
+                            Text="{Binding genderDesc}" />
+                        <TextBlock
+                            Margin="14,0,0,0"
+                            VerticalAlignment="Bottom"
+                            FontSize="14"
+                            Foreground="#666666"
+                            Text="{Binding age}" />
+                        <TextBlock
+                            VerticalAlignment="Bottom"
+                            FontSize="14"
+                            Foreground="#666666"
+                            Text="岁"
+                            Visibility="{Binding age, Converter={StaticResource StringVisibilityConverter}}" />
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0,0,0,10"
+                        Orientation="Horizontal">
+                        <UC:UCStringItem
+                            DataContext="{Binding lstPerInfo}"
+                            RectangleColor="#e7e7e7"
+                            TextColor="#333333" />
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+            <StackPanel
+                Margin="0,19,60,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Orientation="Horizontal"
+                Visibility="{Binding resumeTime, Converter={StaticResource StringVisibilityConverter}}">
+                <TextBlock Foreground="#999999" Text="{Binding resumeTime}" />
+                <TextBlock
+                    Margin="3,0,0,0"
+                    Foreground="#999999"
+                    Text="{Binding timeType}" />
+            </StackPanel>
+            <StackPanel
+                Margin="0,42,60,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+                <TextBlock
+                    Foreground="#999999"
+                    Text="来源："
+                    Visibility="{Binding resumeSourceDesc, Converter={StaticResource StringVisibilityConverter}}" />
+                <TextBlock
+                    Margin="3,0,0,0"
+                    Foreground="#999999"
+                    Text="{Binding resumeSourceDesc}" />
+            </StackPanel>
+
+        </Grid>
+        <Grid
+            Grid.Row="2"
+            Margin="0,5,0,5"
+            Background="White"
+            Visibility="{Binding advantage, Converter={StaticResource StringVisibilityConverter}}">
+            <StackPanel Margin="16,0,16,0">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="14"
+                    Foreground="#333333"
+                    Text="个人优势" />
+                <TextBlock
+                    Margin="6,10,5,10"
+                    FontSize="12"
+                    Foreground="#333333"
+                    LineHeight="19"
+                    Text="{Binding advantage}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="3"
+            Margin="0,5,0,5"
+            Background="White">
+            <Grid
+                Width="Auto"
+                Margin="16,15,0,15"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="0,0,3,0"
+                    VerticalAlignment="Bottom"
+                    FontSize="14"
+                    Foreground="#333333"
+                    Text="求职意向" />
+                <Grid
+                    Grid.Row="1"
+                    Width="Auto"
+                    Margin="0,1,2,1"
+                    HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Row="0"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Stretch">
+                        <TextBlock
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#999999"
+                            Text="期望城市" />
+                        <TextBlock
+                            Width="Auto"
+                            Margin="60,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#333333"
+                            Text="{Binding exptArea}"
+                            TextWrapping="Wrap" />
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,10,0,0">
+                        <TextBlock
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#999999"
+                            Text="期望月薪" />
+                        <TextBlock
+                            Margin="60,0,0,0"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#333333"
+                            Text="{Binding Salary}" />
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,10,0,0">
+                        <TextBlock
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#999999"
+                            Text="期望职类" />
+                        <TextBlock
+                            Margin="60,0,0,0"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#333333"
+                            Text="{Binding exptPositionDesc}"
+                            TextWrapping="WrapWithOverflow" />
+                    </Grid>
+                    <Grid Grid.Row="3" Margin="0,10,0,0">
+                        <TextBlock
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#999999"
+                            Text="求职状态" />
+                        <TextBlock
+                            Width="Auto"
+                            Margin="60,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#333333"
+                            Text="{Binding statusDesc}"
+                            TextWrapping="WrapWithOverflow" />
+                    </Grid>
+                    <Grid Grid.Row="4" Margin="0,10,0,0">
+                        <TextBlock
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#999999"
+                            Text="期望行业" />
+                        <TextBlock
+                            Width="Auto"
+                            Margin="60,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            Foreground="#333333"
+                            Text="{Binding exptIndustryDesc}"
+                            TextWrapping="WrapWithOverflow" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="4"
+            Margin="0,5,0,5"
+            Background="White"
+            Visibility="{Binding personExperienceJobVis}">
+            <StackPanel Margin="16,0,16,0">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="14"
+                    Foreground="#333333"
+                    Text="工作经验" />
+                <ItemsControl Margin="0,0,0,0" ItemsSource="{Binding personExperienceJob}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Grid
+                                    MinHeight="32"
+                                    Margin="0,10,0,0"
+                                    Background="#f2f2f2">
+                                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
+                                        <TextBlock
+                                            MaxWidth="235"
+                                            Margin="0,3"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontSize="13"
+                                            Foreground="#333333"
+                                            Text="{Binding companyName}"
+                                            TextWrapping="Wrap" />
+                                        <TextBlock
+                                            Margin="9,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="13"
+                                            Foreground="#333333"
+                                            Text="{Binding timeSpn}" />
+                                    </StackPanel>
+                                    <StackPanel
+                                        Margin="0,0,9,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            FontSize="13"
+                                            Foreground="#333333"
+                                            Text="{Binding workTime}" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Margin="0,10,0,0" Visibility="{Binding jobName, Converter={StaticResource StringVisibilityConverter}}">
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="职位名称" />
+                                    <TextBlock
+                                        Margin="60,0,9,0"
+                                        FontSize="12"
+                                        Foreground="#333333"
+                                        Text="{Binding name}" />
+                                </Grid>
+                                <Grid Margin="0,10,0,10">
+                                    <TextBlock
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="工作描述" />
+                                    <toolkit:RichTextBox
+                                        Margin="56,0,5,0"
+                                        Padding="0"
+                                        HorizontalAlignment="Left"
+                                        BorderBrush="Gray"
+                                        BorderThickness="0"
+                                        FontSize="12"
+                                        Foreground="#666666"
+                                        IsReadOnly="True"
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        Text="{Binding workDesc, Converter={StaticResource HTML2RTFConverter}}">
+                                        <FlowDocument LineHeight="19" />
+                                        <toolkit:RichTextBox.TextFormatter>
+                                            <toolkit:RtfFormatter />
+                                        </toolkit:RichTextBox.TextFormatter>
+                                    </toolkit:RichTextBox>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="5"
+            Margin="0,5,0,5"
+            Background="White"
+            Visibility="{Binding personExperienceProjectVis}">
+            <StackPanel Margin="16,0,16,0">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="14"
+                    Foreground="#333333"
+                    Text="项目经历" />
+                <ItemsControl ItemsSource="{Binding personExperienceProject}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,0">
+                                <Grid
+                                    MinHeight="32"
+                                    Margin="0,10,0,0"
+                                    Background="#f2f2f2">
+                                    <TextBlock
+                                        MaxWidth="250"
+                                        Margin="6,3,0,3"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontSize="13"
+                                        Foreground="#333333"
+                                        Text="{Binding projectName}"
+                                        TextWrapping="Wrap" />
+                                    <StackPanel
+                                        Margin="0,0,9,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            FontSize="13"
+                                            Foreground="#333333"
+                                            Text="{Binding projectTime}" />
+
+                                    </StackPanel>
+                                </Grid>
+                                <Grid
+                                    Margin="0,8,0,0"
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding projectRole, Converter={StaticResource StringVisibilityConverter}}">
+                                    <TextBlock
+                                        HorizontalAlignment="Left"
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="项目职务" />
+                                    <TextBlock
+                                        Margin="60,0,9,0"
+                                        HorizontalAlignment="Left"
+                                        FontSize="12"
+                                        Foreground="#333333"
+                                        LineHeight="19"
+                                        Text="{Binding projectRole}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                                <Grid Margin="0,8,0,10">
+                                    <TextBlock
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        FontSize="12"
+                                        Foreground="#999999"
+                                        Text="项目描述" />
+                                    <toolkit:RichTextBox
+                                        Margin="56,0,5,0"
+                                        Padding="0"
+                                        HorizontalAlignment="Left"
+                                        BorderBrush="Gray"
+                                        BorderThickness="0"
+                                        FontSize="12"
+                                        Foreground="#333333"
+                                        IsReadOnly="True"
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        Text="{Binding projectDesc, Converter={StaticResource HTML2RTFConverter}}">
+                                        <FlowDocument LineHeight="19" />
+                                        <toolkit:RichTextBox.TextFormatter>
+                                            <toolkit:RtfFormatter />
+                                        </toolkit:RichTextBox.TextFormatter>
+                                    </toolkit:RichTextBox>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="6"
+            Margin="0,5,0,5"
+            Background="White"
+            Visibility="{Binding personExperienceEducationVis}">
+            <StackPanel Margin="16,0,16,0">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="14"
+                    Foreground="#333333"
+                    Text="教育经历" />
+                <ItemsControl ItemsSource="{Binding personExperienceEducation}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,0">
+                                <Grid
+                                    MinHeight="32"
+                                    Margin="0,10,0,0"
+                                    Background="#f2f2f2">
+                                    <TextBlock
+                                        MaxWidth="250"
+                                        Margin="6,3,0,3"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontSize="13"
+                                        Foreground="#333333"
+                                        Text="{Binding school}"
+                                        TextWrapping="Wrap" />
+                                    <StackPanel
+                                        Margin="0,0,9,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            FontSize="13"
+                                            Foreground="#333333"
+                                            Text="{Binding educationTime}" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Margin="0,8,0,10">
+                                    <StackPanel
+                                        Margin="0,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,0,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="专业" />
+                                        <TextBlock
+                                            MaxWidth="140"
+                                            Margin="14,0,0,0"
+                                            FontSize="12"
+                                            Foreground="#333333"
+                                            Text="{Binding major}"
+                                            TextWrapping="Wrap" />
+                                    </StackPanel>
+                                    <StackPanel
+                                        Margin="200,0,9,0"
+                                        HorizontalAlignment="Left"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,0,0,0"
+                                            FontSize="12"
+                                            Foreground="#999999"
+                                            Text="学历" />
+                                        <TextBlock
+                                            Margin="14,0,0,0"
+                                            FontSize="12"
+                                            Foreground="#333333"
+                                            Text="{Binding educationDesc}" />
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="7"
+            Margin="0,5,0,5"
+            Background="White"
+            Visibility="{Binding selfEvallanguageVis}">
+            <StackPanel Margin="16,0,16,0">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="14"
+                    Foreground="#333333"
+                    Text="其他信息" />
+                <StackPanel Margin="0,10,5,10" Visibility="{Binding selfEval, Converter={StaticResource StringVisibilityConverter}}">
+                    <TextBlock
+                        VerticalAlignment="Top"
+                        FontSize="12"
+                        Foreground="#999999"
+                        LineHeight="19"
+                        Text="自我评价"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        Margin="6,0,0,0"
+                        FontSize="12"
+                        Foreground="#333333"
+                        LineHeight="19"
+                        Text="{Binding selfEval}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

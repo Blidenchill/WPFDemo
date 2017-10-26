@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="MagicCube.TemplateUC.UCMultSelectCombBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.TemplateUC"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templeUC="clr-namespace:MagicCube.TemplateUC"
+             x:Name="ucMain"
+             mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel.Resources>
+            <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <Style TargetType="{x:Type CheckBox}">
+                <Setter Property="OverridesDefaultStyle" Value="True" />
+                <Setter Property="Margin" Value="0,8,0,8" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="Foreground" Value="#666666" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <BulletDecorator VerticalAlignment="Center"
+                                             Background="Transparent"
+                                             FlowDirection="LeftToRight">
+                                <BulletDecorator.Bullet>
+                                    <Image x:Name="img"
+                                           Width="16"
+                                           Height="16"
+                                           Margin="0,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Source="/MagicCube;component/Resources/Images/Mcheckno.png" />
+                                </BulletDecorator.Bullet>
+                                <ContentPresenter Margin="10,0" VerticalAlignment="Center" />
+                            </BulletDecorator>
+                            <!--
+                                控件触发器
+                            -->
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <!--  画上一个勾  -->
+                                    <Setter TargetName="img" Property="Source" Value="/MagicCube;component/Resources/Images/Mcheck.png" />
+                                    <!--<Setter TargetName="bd" Property="Background" Value="#5192ff" />-->
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </StackPanel.Resources>
+        <CheckBox x:Name="chk"
+                  VerticalContentAlignment="Center"
+                  Content="{Binding ElementName=ucMain,
+                                    Path=SelectContent}"
+                  FontSize="12"
+                  IsChecked="true"
+                  Padding="10,0,0,0"
+                  Style="{x:Null}">
+            <CheckBox.Template>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Border Width="324"
+                            Height="34"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="White"
+                            BorderBrush="#e5e5e5"
+                            BorderThickness="1">
+                        <Grid>
+                            <Path x:Name="BtnArrow"
+                                  Width="6"
+                                  Margin="0,0,7,0"
+                                  HorizontalAlignment="Right"
+                                  Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "
+                                  Fill="#c9ced7"
+                                  Stretch="Uniform" />
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Focusable="False"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
+
+                    </Border>
+                </ControlTemplate>
+            </CheckBox.Template>
+        </CheckBox>
+
+        <Border Width="540"
+                Height="469"
+                Background="#f8f9fc"
+                BorderBrush="#e5e5e5"
+                BorderThickness="1"
+                Visibility="{Binding ElementName=chk,
+                                     Path=IsChecked,
+                                     Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel>
+                <TextBlock Margin="13,18,0,8"
+                           FontSize="14"
+                           Foreground="#666666"
+                           Text="请选择公司所属行业，最多可选3个" />
+                <StackPanel x:Name="stkChkList"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                    <StackPanel Width="150" Margin="15,0,0,0">
+                        <CheckBox Content="互联网" IsChecked="True" />
+                        <CheckBox Content="硬件" />
+                        <CheckBox Content="金融" />
+                        <CheckBox Content="人力资源/招聘" />
+                        <CheckBox Content="快消/耐消" />
+                        <CheckBox Content="教育/培训/院校" />
+                        <CheckBox Content="医疗/健康" />
+                        <CheckBox Content="旅游/度假" />
+                        <CheckBox Content="能源/矿产/环保" />
+                        <CheckBox Content="其他" />
+                    </StackPanel>
+                    <StackPanel Width="150" Margin="15,0,0,0">
+                        <CheckBox Content="IT/软件" />
+                        <CheckBox Content="通信" />
+                        <CheckBox Content="房地产/建筑" />
+                        <CheckBox Content="广告/公关/会展" />
+                        <CheckBox Content="贸易/进出口" />
+                        <CheckBox Content="汽车/摩托车" />
+                        <CheckBox Content="供应链/物流" />
+                        <CheckBox Content="媒体/传媒" />
+                        <CheckBox Content="振幅/非盈利机构" />
+                    </StackPanel>
+                    <StackPanel Width="150" Margin="15,0,0,0">
+                        <CheckBox Content="电子" />
+                        <CheckBox Content="游戏" />
+                        <CheckBox Content="咨询/翻译/法律" />
+                        <CheckBox Content="专业服务" />
+                        <CheckBox Content="零售/批发/租赁" />
+                        <CheckBox Content="生产/加工/制造" />
+                        <CheckBox Content="服务业" />
+                        <CheckBox Content="文化/体育/娱乐" />
+                        <CheckBox Content="O2O" />
+                    </StackPanel>
+                </StackPanel>
+                <ItemsControl x:Name="itemControl" Margin="15,0,15,0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="160">
+                                <CheckBox Content="{Binding}" />
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <StackPanel Margin="158, 20,0,0" Orientation="Horizontal">
+                    <templeUC:BlueButton Width="80"
+                                         Height="34"
+                                         Click="BlueButton_Click"
+                                         Text="确定" />
+                    <templeUC:WhiteButton Width="80"
+                                          Height="34"
+                                          Margin="10,0,0,0"
+                                          Click="WhiteButton_Click"
+                                          Text="取消" />
+                </StackPanel>
+            </StackPanel>
+
+        </Border>
+    </StackPanel>
+</UserControl>

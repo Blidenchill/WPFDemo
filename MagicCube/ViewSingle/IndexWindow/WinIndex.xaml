@@ -1,0 +1,966 @@
+﻿<Window x:Class="MagicCube.ViewSingle.WinIndex"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+        xmlns:UC="clr-namespace:MagicCube.TemplateUC"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MagicCube.ViewSingle"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="winLocal"
+        Title="魔方小聘登录"
+        Width="526"
+        Height="556"
+        d:DesignHeight="506"
+        d:DesignWidth="526"
+        Activated="Window_Activated"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Closing="Window_Closing"
+        Icon="/MagicCube;component/Resources/Icon/Icon.ico"
+        KeyDown="cPassWord_KeyDown"
+        MouseDown="Window_MouseDown"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="10"
+                          Direction="0"
+                          ShadowDepth="0"
+                          Color="#949494" />
+    </Window.Effect>
+    <Border Padding="10">
+        <Grid>
+            <Grid.Resources>
+                <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                <BConvert:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+                <BConvert:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
+            </Grid.Resources>
+            <Border x:Name="bdMainLogin"
+                    VerticalAlignment="Top"
+                    Background="White"
+                    CornerRadius="4"
+                    Visibility="Collapsed">
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal">
+                        <UC:MinButton Click="BtnMin_Click" Focusable="False" />
+                        <UC:CloseButton Click="BtnClose_Click" Focusable="False" />
+                    </StackPanel>
+                    <StackPanel Margin="0,17,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal">
+                        <Image Margin="0,0,14,0"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/Mlogo.png"
+                               UseLayoutRounding="True" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="PingFangSC"
+                                   FontSize="20"
+                                   Foreground="#00beff"
+                                   Text="魔方小聘" />
+                    </StackPanel>
+                    <StackPanel x:Name="uiSign">
+                        <Border Width="312"
+                                Height="34"
+                                Margin="0,45,0,0"
+                                VerticalAlignment="Top"
+                                Background="#f5f5f5"
+                                CornerRadius="17">
+                            <Grid>
+                                <RadioButton x:Name="rbPhoneLogin"
+                                             HorizontalAlignment="Left"
+                                             Click="rbPhoneLogin_Click"
+                                             GroupName="xm"
+                                             IsChecked="True">
+                                    <RadioButton.Template>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border x:Name="templateRoot"
+                                                    Width="156"
+                                                    Height="34"
+                                                    Background="#f5f5f5"
+                                                    CornerRadius="17"
+                                                    Cursor="Hand">
+                                                <TextBlock x:Name="tbContent"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="14"
+                                                           Foreground="#999999"
+                                                           Text="验证码登录" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter TargetName="templateRoot" Property="Background" Value="#00beff" />
+                                                    <Setter TargetName="tbContent" Property="Foreground" Value="White" />
+                                                    <Setter TargetName="templateRoot" Property="Cursor" Value="Arrow" />
+                                                </Trigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsChecked" Value="True" />
+                                                        <Condition Property="IsMouseOver" Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <MultiTrigger.Setters>
+                                                        <Setter TargetName="templateRoot" Property="Background" Value="#cc00beff" />
+                                                    </MultiTrigger.Setters>
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+
+                                    </RadioButton.Template>
+                                </RadioButton>
+                                <RadioButton x:Name="rbPasswordLogin"
+                                             HorizontalAlignment="right"
+                                             Click="rbPasswordLogin_Click"
+                                             GroupName="xm"
+                                             MouseEnter="rbPasswordLogin_MouseEnter"
+                                             MouseLeave="rbPasswordLogin_MouseLeave">
+                                    <RadioButton.Template>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border x:Name="templateRoot"
+                                                    Width="156"
+                                                    Height="34"
+                                                    Background="#f5f5f5"
+                                                    CornerRadius="17"
+                                                    Cursor="Hand">
+                                                <TextBlock x:Name="tbContent"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="14"
+                                                           Foreground="#999999"
+                                                           Text="密码登录" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter TargetName="templateRoot" Property="Background" Value="#00beff" />
+                                                    <Setter TargetName="tbContent" Property="Foreground" Value="White" />
+                                                    <Setter TargetName="templateRoot" Property="Cursor" Value="Arrow" />
+                                                </Trigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsChecked" Value="True" />
+                                                        <Condition Property="IsMouseOver" Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <MultiTrigger.Setters>
+                                                        <Setter TargetName="templateRoot" Property="Background" Value="#cc00beff" />
+                                                    </MultiTrigger.Setters>
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+
+                                    </RadioButton.Template>
+                                </RadioButton>
+                            </Grid>
+
+                        </Border>
+
+                        <StackPanel Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Visibility="{Binding ElementName=rbPhoneLogin,
+                                                         Path=IsChecked,
+                                                         Converter={StaticResource BoolToVisibilityConverter}}">
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical">
+                                <Border x:Name="bdTelephone"
+                                        Width="312"
+                                        Height="34"
+                                        BorderBrush="#e7e7e7"
+                                        BorderThickness="1"
+                                        CornerRadius="2">
+                                    <UC:HintTextBox x:Name="txtTelephone"
+                                                    Width="280"
+                                                    Margin="5,0,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    BorderThickness="0"
+                                                    FontSize="12"
+                                                    Foreground="#333840"
+                                                    GotFocus="Input_GotFocus"
+                                                    Hint="手机号"
+                                                    LostFocus="txtTelephone_LostFocus"
+                                                    MaxLength="11" />
+                                </Border>
+                                <TextBlock x:Name="tbErroTelephone"
+                                           Margin="0,8,0,0"
+                                           Foreground="#f25751"
+                                           Text="手机号不能为空"
+                                           Visibility="Collapsed" />
+                                <StackPanel x:Name="stkPicVertify"
+                                            Margin="0,20,0,0"
+                                            HorizontalAlignment="Center"
+                                            Orientation="Horizontal"
+                                            Visibility="Collapsed">
+                                    <Border x:Name="bdPicVertify"
+                                            Width="188"
+                                            Height="34"
+                                            Margin="0,0,4,0"
+                                            BorderBrush="#e7e7e7"
+                                            BorderThickness="1"
+                                            CornerRadius="2">
+                                        <UC:HintTextBox x:Name="txtPicVertify"
+                                                        Width="170"
+                                                        Margin="5,0,0,0"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        BorderThickness="0"
+                                                        FontSize="12"
+                                                        Foreground="#333840"
+                                                        GotFocus="Input_GotFocus"
+                                                        Hint="请输入右侧验证码" />
+                                    </Border>
+                                    <Grid>
+                                        <Button Click="btnPicVertifycodeUpdate_Click" Cursor="Hand">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Border Width="121"
+                                                            Height="34"
+                                                            BorderBrush="#e7e7e7"
+                                                            BorderThickness="1"
+                                                            CornerRadius="2">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="/MagicCube;component/Resources/ImageSingle/imgVertifyCodeNone.png" />
+                                                        </Border.Background>
+
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                        <Image x:Name="imgPicVertify"
+                                               Width="121"
+                                               Height="34"
+                                               IsHitTestVisible="False" />
+                                    </Grid>
+
+
+                                </StackPanel>
+                                <TextBlock x:Name="tbErrorPicVertify"
+                                           Margin="0,8,0,0"
+                                           Foreground="#f25751"
+                                           Text="请输入右侧验证码"
+                                           Visibility="Collapsed" />
+
+                                <StackPanel Margin="0,20,0,0"
+                                            HorizontalAlignment="Center"
+                                            Orientation="Horizontal">
+                                    <Border x:Name="bdVertifyCode"
+                                            Width="188"
+                                            Height="34"
+                                            Margin="0,0,4,0"
+                                            BorderBrush="#e7e7e7"
+                                            BorderThickness="1,1,1,1"
+                                            CornerRadius="2">
+                                        <UC:HintTextBox x:Name="txtVertifyCode"
+                                                        Width="170"
+                                                        Margin="5,0,0,0"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        BorderThickness="0"
+                                                        FontSize="12"
+                                                        Foreground="#333840"
+                                                        GotFocus="Input_GotFocus"
+                                                        Hint="手机验证码" />
+
+                                    </Border>
+                                    <CheckBox x:Name="chkGetVertifyCode"
+                                              VerticalAlignment="Bottom"
+                                              Click="chkGetVertifyCode_Click"
+                                              Cursor="Hand"
+                                              IsChecked="False">
+                                        <CheckBox.Template>
+                                            <ControlTemplate TargetType="CheckBox">
+                                                <Border Width="121"
+                                                        Height="34"
+                                                        Background="White"
+                                                        BorderBrush="#e7e7e7"
+                                                        BorderThickness="1"
+                                                        CornerRadius="2">
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="12"
+                                                               Foreground="#00beff"
+                                                               Text="获取验证码" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked" Value="true">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </CheckBox.Template>
+                                    </CheckBox>
+                                    <Border Width="121"
+                                            Height="34"
+                                            VerticalAlignment="Bottom"
+                                            Background="White"
+                                            BorderBrush="#e7e7e7"
+                                            BorderThickness="1"
+                                            CornerRadius="2"
+                                            Visibility="{Binding ElementName=chkGetVertifyCode,
+                                                                 Path=IsChecked,
+                                                                 Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center"
+                                                       Foreground="#999999"
+                                                       Text="已发送" />
+                                            <TextBlock x:Name="tbClickNum"
+                                                       Margin="5,0,0,0"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="#999999"
+                                                       Text="(60s)" />
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                                <TextBlock x:Name="tbErroVertifyCode"
+                                           Margin="0,8,0,0"
+                                           Foreground="#f25751"
+                                           Text="验证码错误，请重新输入"
+                                           Visibility="Collapsed" />
+
+
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Visibility="{Binding ElementName=rbPasswordLogin,
+                                                         Path=IsChecked,
+                                                         Converter={StaticResource BoolToVisibilityConverter}}">
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical">
+                                <Border x:Name="bdUserAccount"
+                                        Width="312"
+                                        Height="34"
+                                        BorderBrush="#e7e7e7"
+                                        BorderThickness="1"
+                                        CornerRadius="2">
+                                    <UC:HintTextBox x:Name="txtUserAccount"
+                                                    Width="280"
+                                                    Margin="5,0,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    BorderThickness="0"
+                                                    FontSize="12"
+                                                    Foreground="#333840"
+                                                    GotFocus="Input_GotFocus"
+                                                    Hint="魔方账号"
+                                                    LostFocus="txtUserAccount_LostFocus" />
+                                </Border>
+                                <TextBlock x:Name="tbErroAccount"
+                                           Margin="0,8,0,0"
+                                           Foreground="#f25751"
+                                           Text="账号不能为空"
+                                           Visibility="Collapsed" />
+
+                                <Border x:Name="bdPassword"
+                                        Width="312"
+                                        Height="34"
+                                        Margin="0,20,0,0"
+                                        BorderBrush="#e7e7e7"
+                                        BorderThickness="1"
+                                        CornerRadius="2">
+                                    <UC:HintPasswordBox x:Name="txtPassWord"
+                                                        Width="280"
+                                                        Margin="5,0,0,0"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        BorderThickness="0"
+                                                        FontSize="12"
+                                                        Foreground="#333840"
+                                                        GotFocus="Input_GotFocus"
+                                                        Hint="密码" />
+                                </Border>
+                                <TextBlock x:Name="tbErroPassword"
+                                           Margin="0,8,0,0"
+                                           Foreground="#f25751"
+                                           Text="账号和密码不匹配"
+                                           Visibility="Collapsed" />
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <StackPanel Margin="98,10,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+
+                            <CheckBox x:Name="AutoLogin"
+                                      Margin="0,0,0,0"
+                                      Click="Check_Click"
+                                      Content="自动登录"
+                                      Cursor="Hand"
+                                      FontSize="12"
+                                      Foreground="#333333" />
+                            <UC:LinkButton Margin="180,0,0,0"
+                                           Click="LinkClick"
+                                           Content="忘记密码"
+                                           FontSize="12"
+                                           Foreground="#666666"
+                                           Visibility="{Binding ElementName=rbPasswordLogin,
+                                                                Path=IsChecked,
+                                                                Converter={StaticResource BoolToVisibilityConverter}}" />
+                        </StackPanel>
+
+
+                        <UC:BlueButton x:Name="btnSend"
+                                       Width="312"
+                                       Height="34"
+                                       Margin="0,30,0,0"
+                                       Click="SignClick"
+                                       Text="登录" />
+                        <StackPanel Margin="0,25,0,0"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Visibility="{Binding ElementName=rbPhoneLogin,
+                                                         Path=IsChecked,
+                                                         Converter={StaticResource BoolToVisibilityConverter}}">
+                            <TextBlock Foreground="#666666" Text="收不到验证码？使用" />
+                            <Button Click="BtnVoicCode_Click" Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <TextBlock Foreground="#ff6500" Text="语言验证码" />
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <TextBlock Foreground="#666666" Text="吧" />
+                        </StackPanel>
+                        <UC:LinkButton x:Name="btnLoginUpLink"
+                                       Margin="0,20,0,54"
+                                       Click="LinkClick"
+                                       Content="注册账号"
+                                       FontSize="14"
+                                       MouseEnter="btnLoginUpLink_MouseEnter"
+                                       MouseLeave="btnLoginUpLink_MouseLeave" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="bdMainRegist"
+                    VerticalAlignment="Top"
+                    Background="White"
+                    CornerRadius="4"
+                    IsVisibleChanged="bdMainRegist_IsVisibleChanged"
+                    Visibility="Collapsed">
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal">
+                        <UC:MinButton Click="BtnMin_Click" Focusable="False" />
+                        <UC:CloseButton Click="BtnClose_Click" Focusable="False" />
+                    </StackPanel>
+                    <StackPanel Margin="0,30,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal">
+                        <Image Margin="0,0,14,0"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/Mlogo.png"
+                               UseLayoutRounding="True" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="PingFangSC"
+                                   FontSize="20"
+                                   Foreground="#00beff"
+                                   Text="魔方小聘" />
+                    </StackPanel>
+                    <StackPanel Margin="0,40,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <Border x:Name="bdRegistTel"
+                                Width="312"
+                                Height="34"
+                                BorderBrush="#e7e7e7"
+                                BorderThickness="1"
+                                CornerRadius="2">
+                            <UC:HintTextBox x:Name="txtRegistTel"
+                                            Width="280"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            BorderThickness="0"
+                                            FontSize="12"
+                                            Foreground="#333840"
+                                            GotFocus="Input_GotFocus"
+                                            Hint="手机号"
+                                            MaxLength="11" />
+                        </Border>
+                        <TextBlock x:Name="tbErrowRegistTel"
+                                   Margin="0,8,0,0"
+                                   Foreground="#f25751"
+                                   Text="手机号不能为空"
+                                   Visibility="Collapsed" />
+                        <StackPanel x:Name="stkRegistPicVertify"
+                                    Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Visibility="Collapsed">
+                            <Border x:Name="bdRegistPicVertify"
+                                    Width="188"
+                                    Height="34"
+                                    Margin="0,0,4,0"
+                                    BorderBrush="#e7e7e7"
+                                    BorderThickness="1"
+                                    CornerRadius="2">
+                                <UC:HintTextBox x:Name="txtRegistPicVertify"
+                                                Width="170"
+                                                Margin="5,0,0,0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                BorderThickness="0"
+                                                FontSize="12"
+                                                Foreground="#333840"
+                                                GotFocus="Input_GotFocus"
+                                                Hint="请输入右侧验证码" />
+                            </Border>
+                            <Grid>
+                                <Button Click="btnRegistPicVertifycodeUpdate_Click" Cursor="Hand">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border Width="121"
+                                                    Height="34"
+                                                    BorderBrush="#e7e7e7"
+                                                    BorderThickness="1"
+                                                    CornerRadius="2">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="/MagicCube;component/Resources/ImageSingle/imgVertifyCodeNone.png" />
+                                                </Border.Background>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Image x:Name="imgRegistPicVertify"
+                                       Width="121"
+                                       Height="34"
+                                       IsHitTestVisible="False" />
+                            </Grid>
+
+
+                        </StackPanel>
+                        <TextBlock x:Name="tbErrorRegistPicVertify"
+                                   Margin="0,8,0,0"
+                                   Foreground="#f25751"
+                                   Text="请输入右侧验证码"
+                                   Visibility="Collapsed" />
+                        <StackPanel Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
+                            <Border x:Name="bdRegistVertifyCode"
+                                    Width="188"
+                                    Height="34"
+                                    Margin="0,0,4,0"
+                                    BorderBrush="#e7e7e7"
+                                    BorderThickness="1,1,1,1"
+                                    CornerRadius="2">
+                                <UC:HintTextBox x:Name="txtRegistVertifyCode"
+                                                Width="170"
+                                                Margin="5,0,0,0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                BorderThickness="0"
+                                                FontSize="12"
+                                                Foreground="#333840"
+                                                GotFocus="Input_GotFocus"
+                                                Hint="手机验证码" />
+
+                            </Border>
+                            <CheckBox x:Name="chkRegistVertifyCode"
+                                      VerticalAlignment="Bottom"
+                                      Click="chkRegistVertifyCode_Click"
+                                      Cursor="Hand"
+                                      IsChecked="False">
+                                <CheckBox.Template>
+                                    <ControlTemplate TargetType="CheckBox">
+                                        <Border Width="121"
+                                                Height="34"
+                                                Background="White"
+                                                BorderBrush="#e7e7e7"
+                                                BorderThickness="1"
+                                                CornerRadius="2">
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="12"
+                                                       Foreground="#00beff"
+                                                       Text="获取验证码" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsChecked" Value="true">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </CheckBox.Template>
+                            </CheckBox>
+                            <Border Width="121"
+                                    Height="34"
+                                    VerticalAlignment="Bottom"
+                                    Background="White"
+                                    BorderBrush="#e7e7e7"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Visibility="{Binding ElementName=chkRegistVertifyCode,
+                                                         Path=IsChecked,
+                                                         Converter={StaticResource BoolToVisibilityConverter}}">
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center"
+                                               Foreground="#999999"
+                                               Text="已发送" />
+                                    <TextBlock x:Name="tbClickNum2"
+                                               Margin="5,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Foreground="#999999"
+                                               Text="(60s)" />
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                        <TextBlock x:Name="tbRegistErrorVertifyCode"
+                                   Margin="0,8,0,0"
+                                   Foreground="#f25751"
+                                   Text="验证码错误，请重新输入"
+                                   Visibility="Collapsed" />
+
+
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10,100,0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <TextBlock Foreground="#666666" Text="收不到验证码？使用" />
+                        <Button Click="BtnRegistVoicCode_Click" Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <TextBlock Foreground="#ff6500" Text="语言验证码" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <TextBlock Foreground="#666666" Text="吧" />
+                    </StackPanel>
+                    <Border x:Name="bdRegistNewPassword"
+                            Width="312"
+                            Height="34"
+                            Margin="0,10,0,0"
+                            BorderBrush="#e7e7e7"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                        <UC:HintPasswordBox x:Name="txtRegistNewPassword"
+                                            Width="280"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            BorderThickness="0"
+                                            FontSize="12"
+                                            Foreground="#333840"
+                                            GotFocus="Input_GotFocus"
+                                            Hint="请设置登录密码，6-20位字符" />
+                    </Border>
+                    <TextBlock x:Name="tbErrorRegistNewPassword"
+                               Margin="100,8,0,0"
+                               Foreground="#f25751"
+                               Text="请输入6-20位字母、数字或特殊字符"
+                               Visibility="Collapsed" />
+                    <StackPanel Margin="100,10,0,0" Orientation="Horizontal">
+                        <CheckBox x:Name="chkReadAgree"
+                                  Content="我已阅读并同意"
+                                  FontSize="12"
+                                  Foreground="#333333"
+                                  GotFocus="chkReadAgree_GotFocus"
+                                  IsChecked="True" />
+                        <UC:LinkButton Margin="-10,0,0,0"
+                                       Click="btnReadAgree_Click"
+                                       Content="《魔方用户协议》"
+                                       Cursor="Hand"
+                                       FontSize="12" />
+                    </StackPanel>
+                    <TextBlock x:Name="tbErrorReadAgree"
+                               Margin="100,5,0,0"
+                               Foreground="Red"
+                               Text="请接受魔方用户协议"
+                               Visibility="{Binding ElementName=chkReadAgree,
+                                                    Path=IsChecked,
+                                                    Converter={StaticResource BoolToCollapsedConverter}}" />
+                    <UC:BlueButton x:Name="btnRegist"
+                                   Width="312"
+                                   Height="34"
+                                   Margin="0,30,0,20"
+                                   Click="btnRegist_Click"
+                                   Text="注册" />
+                    <UC:LinkButton Margin="0,0,0,60"
+                                   Click="BtnReturnLogin_Click"
+                                   Content="登录账号"
+                                   Cursor="Hand" />
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="bdForgetPassword"
+                    VerticalAlignment="Top"
+                    Background="White"
+                    CornerRadius="4"
+                    IsVisibleChanged="bdForgetPassword_IsVisibleChanged"
+                    Visibility="Visible">
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal">
+                        <UC:MinButton Click="BtnMin_Click" Focusable="False" />
+                        <UC:CloseButton Click="BtnClose_Click" Focusable="False" />
+                    </StackPanel>
+                    <StackPanel Margin="0,30,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal">
+                        <Image Margin="0,0,14,0"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/Mlogo.png"
+                               UseLayoutRounding="True" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontFamily="PingFangSC"
+                                   FontSize="20"
+                                   Foreground="#00beff"
+                                   Text="魔方小聘" />
+                    </StackPanel>
+                    <StackPanel Margin="0,40,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <Border x:Name="bdForgetPwTel"
+                                Width="312"
+                                Height="34"
+                                BorderBrush="#e7e7e7"
+                                BorderThickness="1"
+                                CornerRadius="2">
+                            <UC:HintTextBox x:Name="txtForgetPwTel"
+                                            Width="280"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            BorderThickness="0"
+                                            FontSize="12"
+                                            Foreground="#333840"
+                                            GotFocus="Input_GotFocus"
+                                            Hint="手机号"
+                                            MaxLength="11" />
+                        </Border>
+                        <TextBlock x:Name="tbErrorForgetPw"
+                                   Margin="0,8,0,0"
+                                   Foreground="#f25751"
+                                   Text="手机号不能为空"
+                                   Visibility="Collapsed" />
+                        <StackPanel x:Name="stkForgetPwPicVertify"
+                                    Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Visibility="Collapsed">
+                            <Border x:Name="bdForgetPwPicVertify"
+                                    Width="188"
+                                    Height="34"
+                                    Margin="0,0,4,0"
+                                    BorderBrush="#e7e7e7"
+                                    BorderThickness="1"
+                                    CornerRadius="2">
+                                <UC:HintTextBox x:Name="txtForgetPwPicVertify"
+                                                Width="170"
+                                                Margin="5,0,0,0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                BorderThickness="0"
+                                                FontSize="12"
+                                                Foreground="#333840"
+                                                GotFocus="Input_GotFocus"
+                                                Hint="请输入右侧验证码" />
+                            </Border>
+                            <Grid>
+                                <Button Click="btnForgetPwPicVertifycodeUpdate_Click" Cursor="Hand">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border Width="121"
+                                                    Height="34"
+                                                    BorderBrush="#e7e7e7"
+                                                    BorderThickness="1"
+                                                    CornerRadius="2">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="/MagicCube;component/Resources/ImageSingle/imgVertifyCodeNone.png" />
+                                                </Border.Background>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Image x:Name="imgForgetPwPicVertify"
+                                       Width="121"
+                                       Height="34"
+                                       IsHitTestVisible="False" />
+                            </Grid>
+
+
+                        </StackPanel>
+                        <TextBlock x:Name="tbErrorForegetPwPicVertify"
+                                   Margin="0,8,0,0"
+                                   Foreground="#f25751"
+                                   Text="请输入右侧验证码"
+                                   Visibility="Collapsed" />
+                        <StackPanel Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
+                            <Border x:Name="bdForegetPwVertifyCode"
+                                    Width="188"
+                                    Height="34"
+                                    Margin="0,0,4,0"
+                                    BorderBrush="#e7e7e7"
+                                    BorderThickness="1,1,1,1"
+                                    CornerRadius="2">
+                                <UC:HintTextBox x:Name="txtForegetPwVertifyCode"
+                                                Width="170"
+                                                Margin="5,0,0,0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                BorderThickness="0"
+                                                FontSize="12"
+                                                Foreground="#333840"
+                                                GotFocus="Input_GotFocus"
+                                                Hint="手机验证码" />
+
+                            </Border>
+                            <CheckBox x:Name="chkForegetPwVertifyCode"
+                                      VerticalAlignment="Bottom"
+                                      Click="chkForegetPwVertifyCode_Click"
+                                      Cursor="Hand"
+                                      IsChecked="False">
+                                <CheckBox.Template>
+                                    <ControlTemplate TargetType="CheckBox">
+                                        <Border Width="121"
+                                                Height="34"
+                                                Background="White"
+                                                BorderBrush="#e7e7e7"
+                                                BorderThickness="1"
+                                                CornerRadius="2">
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="12"
+                                                       Foreground="#00beff"
+                                                       Text="获取验证码" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsChecked" Value="true">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </CheckBox.Template>
+                            </CheckBox>
+                            <Border Width="121"
+                                    Height="34"
+                                    VerticalAlignment="Bottom"
+                                    Background="White"
+                                    BorderBrush="#e7e7e7"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Visibility="{Binding ElementName=chkForegetPwVertifyCode,
+                                                         Path=IsChecked,
+                                                         Converter={StaticResource BoolToVisibilityConverter}}">
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center"
+                                               Foreground="#999999"
+                                               Text="已发送" />
+                                    <TextBlock x:Name="tbClickNum3"
+                                               Margin="5,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Foreground="#999999"
+                                               Text="(60s)" />
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                        <TextBlock x:Name="tbErrorForegetPwVertifyCode"
+                                   Margin="0,8,0,0"
+                                   Foreground="#f25751"
+                                   Text="验证码错误，请重新输入"
+                                   Visibility="Collapsed" />
+
+
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10,100,0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <TextBlock Foreground="#666666" Text="收不到验证码？使用" />
+                        <Button Click="BtnForgetPwVoicCode_Click" Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <TextBlock Foreground="#ff6500" Text="语言验证码" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <TextBlock Foreground="#666666" Text="吧" />
+                    </StackPanel>
+                    <Border x:Name="bdForegetPwNewPassword"
+                            Width="312"
+                            Height="34"
+                            Margin="0,10,0,0"
+                            BorderBrush="#e7e7e7"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                        <UC:HintPasswordBox x:Name="txtForegetPwNewPassword"
+                                            Width="280"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            BorderThickness="0"
+                                            FontSize="12"
+                                            Foreground="#333840"
+                                            GotFocus="Input_GotFocus"
+                                            Hint="请设置登录密码，6-20位字符" />
+                    </Border>
+                    <TextBlock x:Name="tbErrorForegetPwNewPassword"
+                               Margin="100,8,0,0"
+                               Foreground="#f25751"
+                               Text="请输入6-20位字母、数字或特殊字符"
+                               Visibility="Collapsed" />
+                    <Border x:Name="bdForegetPwConfirmPassword"
+                            Width="312"
+                            Height="34"
+                            Margin="0,20,0,0"
+                            BorderBrush="#e7e7e7"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                        <UC:HintPasswordBox x:Name="txtForegetPwConfirmPassword"
+                                            Width="280"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            BorderThickness="0"
+                                            FontSize="12"
+                                            Foreground="#333840"
+                                            GotFocus="Input_GotFocus"
+                                            Hint="请再次输入新密码" />
+                    </Border>
+                    <TextBlock x:Name="tbErrorForegetPwConfirmPassword"
+                               Margin="100,8,0,0"
+                               Foreground="#f25751"
+                               Text="两次输入的密码不一致，请重新输入"
+                               Visibility="Collapsed" />
+                    <UC:BlueButton Width="312"
+                                   Height="34"
+                                   Margin="0,30,0,20"
+                                   Click="btnModifyPwAndLogin_Click"
+                                   Text="修改密码并登录" />
+                    <UC:LinkButton Margin="0,0,0,60"
+                                   Click="BtnReturnLogin_Click"
+                                   Content="登录账号"
+                                   Cursor="Hand" />
+                </StackPanel>
+            </Border>
+
+            <Busy:BusyIndicator xmlns:Busy="clr-namespace:BusyIndicatorCtrl"
+                                x:Name="busyCtrl"
+                                Panel.ZIndex="10"
+                                d:IsHidden="True" />
+        </Grid>
+    </Border>
+
+</Window>

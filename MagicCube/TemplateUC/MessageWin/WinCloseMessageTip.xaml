@@ -1,0 +1,88 @@
+﻿<Window x:Class="MagicCube.WinCloseMessageTip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UC="clr-namespace:MagicCube.TemplateUC"
+        Width="400"
+        Height="250"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Icon="/MagicCube;component/Resources/Icon/Icon.ico"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="10"
+                          Direction="0"
+                          ShadowDepth="0"
+                          Color="#949494" />
+    </Window.Effect>
+    <Border Padding="10">
+        <Grid>
+
+            <Border Height="44"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="White"
+                    CornerRadius="2,2,0,0"
+                    MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                <Grid>
+                    <TextBlock Margin="20,12"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               FontSize="16"
+                               Foreground="#666666"
+                               Text="提示" />
+                    <UC:FloatCloseButton Width="20"
+                                         Height="20"
+                                         Margin="10"
+                                         HorizontalAlignment="Right"
+                                         VerticalAlignment="Top"
+                                         Click="BtnClose_Click"
+                                         Focusable="False"
+                                          />
+                    <Rectangle Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#eeeeee" />
+                </Grid>
+            </Border>
+            <Grid Margin="0,44,0,0">
+                <Border Background="White" CornerRadius="0,0,4,4" />
+                <TextBlock x:Name="tbMsg"
+                           MaxWidth="264"
+                           MaxHeight="41"
+                           Margin="0,0,0,50"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="15"
+                           TextWrapping="Wrap" />
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <UC:BlueButton Width="80"
+                                   Height="34"
+                                   Margin="0,0,0,40"
+                                   VerticalAlignment="Bottom"
+                                   Background="Transparent"
+                                   Click="BtnConfirm_Click"
+                                   Tag="updata"
+                                   Text="确定" />
+                    <UC:WhiteButton Width="80"
+                                    Height="34"
+                                    Margin="20,0,0,40"
+                                    VerticalAlignment="Bottom"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    Click="BtnClose_Click"
+                                    Text="取消" />
+                </StackPanel>
+                <CheckBox x:Name="chkExistTip"
+                          Margin="20,0,0,10"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Bottom"
+                          Click="chkExistTip_Click"
+                          Content="退出时，总是出现此提示"
+                          Cursor="Hand" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCImageCrop"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="ucLocal"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <Canvas Name="movBg">
+        <Image x:Name="imgBg"
+               Width="{Binding ElementName=movBg,
+                               Path=ActualWidth}"
+               Height="{Binding ElementName=movBg,
+                                Path=ActualHeight}"
+               Source="{Binding ElementName=ucLocal,
+                                Path=ImageSource}"
+               Stretch="UniformToFill" />
+        <Rectangle Width="{Binding ElementName=movBg,
+                                   Path=ActualWidth}"
+                   Height="{Binding ElementName=movBg,
+                                    Path=ActualHeight}"
+                   Panel.ZIndex="1"
+                   Fill="Black"
+                   Opacity="0.5" />
+        <Image x:Name="imgOverlay"
+               Width="{Binding ElementName=movBg,
+                               Path=ActualWidth}"
+               Height="{Binding ElementName=movBg,
+                                Path=ActualHeight}"
+               Panel.ZIndex="2"
+               Source="{Binding ElementName=ucLocal,
+                                Path=ImageSource}"
+               Stretch="UniformToFill"
+               Visibility="Visible">
+            <Image.Clip>
+                <RectangleGeometry Rect="50,50,200,200" />
+            </Image.Clip>
+        </Image>
+        <Canvas Name="cvSelection"
+                Canvas.Left="10"
+                Canvas.Top="10"
+                Width="20"
+                Height="20"
+                MaxWidth="300"
+                MaxHeight="300"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Panel.ZIndex="3"
+                Background="Transparent"
+                LostMouseCapture="cvSelection_LostMouseCapture"
+                MouseLeftButtonDown="mov_MouseLeftButtonDown"
+                MouseLeftButtonUp="mov_MouseLeftButtonUp"
+                MouseMove="mov_MouseMove"
+                MouseWheel="mov_MouseWheel">
+            <Border Width="{Binding ElementName=cvSelection,
+                                    Path=Width}"
+                    Height="{Binding ElementName=cvSelection,
+                                     Path=Height}"
+                    MaxWidth="{Binding ElementName=cvSelection,
+                                       Path=MaxWidth}"
+                    MaxHeight="{Binding ElementName=cvSelection,
+                                        Path=MaxHeight}"
+                    BorderBrush="#00beff"
+                    BorderThickness="1" />
+        </Canvas>
+    </Canvas>
+</UserControl>

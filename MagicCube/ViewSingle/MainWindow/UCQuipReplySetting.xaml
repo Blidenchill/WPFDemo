@@ -1,0 +1,251 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCQuipReplySetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templeUC="clr-namespace:MagicCube.TemplateUC"
+             d:DesignHeight="555"
+             d:DesignWidth="614"
+             mc:Ignorable="d">
+    <Grid Background="#7f333840">
+
+        <Border Width="610"
+                Height="549"
+                Background="#ffffff"
+                CornerRadius="2">
+            <Border.Resources>
+                <BConvert:StringNullToVisibilityConverter x:Key="StringNullToVisibilityConverter" />
+            </Border.Resources>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10"
+                                  Direction="0"
+                                  Color="#999999" />
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="44" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <templeUC:FloatCloseButton Width="25"
+                                               Height="25"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Top"
+                                               Click="BtnCancel_Click" />
+                    <TextBlock Width="100"
+                               Margin="20,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="#666666"
+                               Text="快捷回复设置" />
+                    <Rectangle Height="1"
+                               VerticalAlignment="Bottom"
+                               Fill="#ebebeb" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="BorderBrush" Value="#ebebeb" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="VerticalContentAlignment" Value="Top" />
+                            <Setter Property="FontSize" Value="14" />
+                            <Setter Property="Background" Value="#ffffff" />
+                            <Setter Property="Foreground" Value="#999999" />
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="Padding" Value="0,0,0,0" />
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="96" />
+                        <RowDefinition Height="96" />
+                        <RowDefinition Height="96" />
+                        <RowDefinition Height="96" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="136" />
+                        <ColumnDefinition Width="434" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="1"
+                            Grid.Column="1"
+                            BorderBrush="#ebebeb"
+                            BorderThickness="1">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#999999"
+                                   IsEnabled="False"
+                                   Text="完善简历" />
+                    </Border>
+                    <Border Grid.Row="1"
+                            Grid.Column="2"
+                            BorderBrush="#ebebeb"
+                            BorderThickness="1">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#999999"
+                                   IsEnabled="False"
+                                   Text="您好，我对您的情况还不太了解，请先完善简历，谢谢。" />
+                    </Border>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <TextBox x:Name="txtTitle1"
+                                 MaxLength="5"
+                                 Text="" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#bbbbbb"
+                                   IsHitTestVisible="False"
+                                   Text="最多5个字"
+                                   Visibility="{Binding ElementName=txtTitle1,
+                                                        Path=Text,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+
+
+                    <Grid Grid.Row="2" Grid.Column="2">
+                        <Rectangle Stroke="#ebebeb" StrokeThickness="1" />
+                        <Rectangle Margin="12"
+                                   Fill="#f8f9fc"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#ebebeb"
+                                   StrokeThickness="1" />
+                        <TextBox x:Name="txtContent1"
+                                 Width="386"
+                                 Height="60"
+                                 Margin="24,18"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 MaxLength="200"
+                                 Text="" />
+                        <TextBlock Margin="26,18"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   FontSize="14"
+                                   Foreground="#bbbbbb"
+                                   IsHitTestVisible="False"
+                                   Text="最多200个字"
+                                   Visibility="{Binding ElementName=txtContent1,
+                                                        Path=Text,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <TextBox x:Name="txtTitle2"
+                                 MaxLength="5"
+                                 Text="" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#bbbbbb"
+                                   IsHitTestVisible="False"
+                                   Text="最多5个字"
+                                   Visibility="{Binding ElementName=txtTitle2,
+                                                        Path=Text,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="2">
+                        <Rectangle Stroke="#ebebeb" StrokeThickness="1" />
+                        <Rectangle Margin="12"
+                                   Fill="#f8f9fc"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#ebebeb"
+                                   StrokeThickness="1" />
+                        <TextBox x:Name="txtContent2"
+                                 Width="386"
+                                 Height="60"
+                                 Margin="24,18"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 MaxLength="200"
+                                 Text="" />
+                        <TextBlock Margin="26,18"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   FontSize="14"
+                                   Foreground="#bbbbbb"
+                                   IsHitTestVisible="False"
+                                   Text="最多200个字"
+                                   Visibility="{Binding ElementName=txtContent2,
+                                                        Path=Text,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+
+                    <Grid Grid.Row="4" Grid.Column="1">
+                        <TextBox x:Name="txtTitle3"
+                                 MaxLength="5"
+                                 Text="" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#bbbbbb"
+                                   IsHitTestVisible="False"
+                                   Text="最多5个字"
+                                   Visibility="{Binding ElementName=txtTitle3,
+                                                        Path=Text,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="2">
+                        <Rectangle Stroke="#ebebeb" StrokeThickness="1" />
+                        <Rectangle Margin="12"
+                                   Fill="#f8f9fc"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#ebebeb"
+                                   StrokeThickness="1" />
+                        <TextBox x:Name="txtContent3"
+                                 Width="386"
+                                 Height="60"
+                                 Margin="24,18"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 MaxLength="200"
+                                 Text="" />
+                        <TextBlock Margin="26,18"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   FontSize="14"
+                                   Foreground="#bbbbbb"
+                                   IsHitTestVisible="False"
+                                   Text="最多200个字"
+                                   Visibility="{Binding ElementName=txtContent3,
+                                                        Path=Text,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="2">
+                        <StackPanel Margin="64,0,0,0" Orientation="Horizontal">
+                            <templeUC:BlueButton Width="80"
+                                                 Height="34"
+                                                 Click="BtnOK_Click"
+                                                 Text="确定" />
+                            <templeUC:WhiteButton Width="80"
+                                                  Height="34"
+                                                  Margin="10,0,0,0"
+                                                  Click="BtnCancel_Click"
+                                                  Text="取消" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Border>
+    </Grid>
+
+</UserControl>

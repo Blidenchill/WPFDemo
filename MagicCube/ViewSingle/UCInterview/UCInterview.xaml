@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCInterview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:UCViewSingle="clr-namespace:MagicCube.ViewSingle"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="655"
+             d:DesignWidth="926"
+             mc:Ignorable="d">
+    <Grid>
+        <UCViewSingle:UCInterviewHomePage x:Name="ucHomePage" Visibility="Visible" />
+        <UCViewSingle:UCInterviewUnconfirm x:Name="ucUnconfirm" Visibility="Collapsed" />
+        <UCViewSingle:UCInterviewDetail x:Name="ucDetail" Visibility="Collapsed" />
+        <UCViewSingle:UCInterviewMCoinManage x:Name="ucMCoinManage" Visibility="Collapsed" />
+        <Grid x:Name="gdNoOpen"
+              Margin="0,60,0,0"
+              Background="White"
+              Visibility="Visible">
+            <Border Width="734"
+                    Height="96"
+                    Margin="0,36,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Background="#fffdf3"
+                    BorderBrush="#faf4d6"
+                    BorderThickness="1">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock FontSize="16"
+                               Foreground="#ff6500"
+                               Text="您尚未开通付费招聘服务，如需开通，请联系销售" />
+                    <TextBlock Margin="0,8,0,0"
+                               HorizontalAlignment="Center"
+                               FontSize="14"
+                               Foreground="#ff6500"
+                               Text="电话：010-59423287" />
+                </StackPanel>
+
+            </Border>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="0,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                    <Rectangle Width="4"
+                               Height="4"
+                               VerticalAlignment="Center"
+                               Fill="#666666"
+                               RadiusX="6"
+                               RadiusY="6" />
+                    <TextBlock Margin="10,0"
+                               FontSize="22"
+                               Foreground="#666666"
+                               Text="服务流程" />
+                    <Rectangle Width="4"
+                               Height="4"
+                               VerticalAlignment="Center"
+                               Fill="#666666"
+                               RadiusX="6"
+                               RadiusY="6" />
+                </StackPanel>
+                <Grid Margin="0,82,0,0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="42" />
+                        <RowDefinition Height="34" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Image Width="70"
+                               Height="70"
+                               HorizontalAlignment="Left"
+                               
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg1.png"
+                                />
+                        <Image Width="38"
+                               Height="12"
+                               Margin="108,0,0,0"
+                               HorizontalAlignment="Left"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg5.png"
+                               UseLayoutRounding="True" />
+                        <Image Width="70"
+                               Height="70"
+                               Margin="190,0,0,0"
+                               HorizontalAlignment="Left"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg2.png"
+                               UseLayoutRounding="True" />
+                        <Image Width="38"
+                               Height="12"
+                               Margin="298,0,0,0"
+                               HorizontalAlignment="Left"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg5.png"
+                               UseLayoutRounding="True" />
+                        <Image Width="70"
+                               Height="70"
+                               Margin="383,0,0,0"
+                               HorizontalAlignment="Left"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg3.png"
+                               UseLayoutRounding="True" />
+                        <Image Width="38"
+                               Height="12"
+                               Margin="492,0,0,0"
+                               HorizontalAlignment="Left"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg5.png"
+                               UseLayoutRounding="True" />
+                        <Image Width="70"
+                               Height="70"
+                               Margin="577,0,0,0"
+                               HorizontalAlignment="Left"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="/MagicCube;component/Resources/ImageSingle/hpg4.png"
+                               UseLayoutRounding="True" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <TextBlock HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#666666"
+                                   Text="发起服务" />
+                        <TextBlock Margin="190,0,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#666666"
+                                   Text="客户经理服务" />
+                        <TextBlock Margin="383,0,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#666666"
+                                   Text="约见面试" />
+                        <TextBlock Margin="577,0,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#666666"
+                                   Text="到场扣费" />
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="根据您的职位需求匹配" />
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="最专业的客户经理为您全程服务" />
+                        </StackPanel>
+                        <StackPanel Margin="190,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="客户经理快速多渠道为您" />
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="寻找最匹配的候选人" />
+                        </StackPanel>
+                        <StackPanel Margin="383,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="寻找最合适企业的人选" />
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="客户经理为您全程跟踪" />
+                        </StackPanel>
+                        <StackPanel Margin="577,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="以到场面试为节点" />
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#999999"
+                                       Text="人选未到场不收取任何服务费" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

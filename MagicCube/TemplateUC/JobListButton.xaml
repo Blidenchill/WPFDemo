@@ -1,0 +1,60 @@
+﻿<Button x:Class="MagicCube.TemplateUC.JobListButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="RB"
+        FocusVisualStyle="{x:Null}"
+        d:DesignHeight="25"
+        d:DesignWidth="60"
+        mc:Ignorable="d">
+    <Button.Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Focusable" Value="False" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="PART_Border"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                CornerRadius="4"
+                                Padding="0">
+                            <StackPanel Margin="5,0" Orientation="Horizontal">
+                                <Image x:Name="img"
+                                       Width="12"
+                                       Height="12"
+                                       Margin="0,0,8,0"
+                                       VerticalAlignment="Center"
+                                       Source="{Binding ImageSource,
+                                                        ElementName=RB}" />
+                                <TextBlock x:Name="tb"
+                                           VerticalAlignment="Center"
+                                           FontSize="12"
+                                           Foreground="#12b7f5"
+                                           Text="{Binding Text,
+                                                          ElementName=RB}" />
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="img" Property="Source" Value="{Binding ImageHover, ElementName=RB}" />
+                                <Setter TargetName="tb" Property="Foreground" Value="#0098CC" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="img" Property="Source" Value="{Binding ImageEnable, ElementName=RB}" />
+                                <Setter TargetName="tb" Property="Foreground" Value="#b4b4b4" />
+                                <Setter TargetName="tb" Property="Text" Value="已刷新" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Button.Style>
+</Button>

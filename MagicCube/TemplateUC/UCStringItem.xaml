@@ -1,0 +1,49 @@
+﻿<UserControl
+    x:Class="MagicCube.TemplateUC.UCStringItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="UCIC"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    FocusVisualStyle="{x:Null}"
+    mc:Ignorable="d">
+    <StackPanel Orientation="Horizontal">
+        <ItemsControl x:Name="icContent">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            MaxWidth="140"
+                            Margin="0,0,0,0"
+                            VerticalAlignment="Bottom"
+                            FontSize="12"
+                            Foreground="{Binding TextColor, ElementName=UCIC}"
+                            Text="{Binding ItemContent}"
+                            TextTrimming="WordEllipsis" />
+                        <Rectangle
+                            Width="1"
+                            Height="10"
+                            Margin="6,0,6,0"
+                            Fill="{Binding RectangleColor, ElementName=UCIC}"
+                            Visibility="{Binding ItemVisiblity}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <TextBlock
+            x:Name="tb"
+            FontSize="12"
+            Foreground="#666666"
+            Text="未填写" />
+    </StackPanel>
+</UserControl>

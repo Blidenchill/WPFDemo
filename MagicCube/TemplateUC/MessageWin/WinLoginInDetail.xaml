@@ -1,0 +1,94 @@
+﻿<Window x:Class="MagicCube.TemplateUC.WinLoginInDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MagicCube.TemplateUC"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="WinLoginInDetail"
+        Width="331"
+        Height="68"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Focusable="True"
+        Icon="/MagicCube;component/Resources/Icon/Icon.ico"
+        MouseDown="Window_MouseDown"
+        ResizeMode="NoResize"
+        Topmost="True"
+        WindowStyle="None"
+        mc:Ignorable="d">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="10"
+                          Direction="0"
+                          Opacity="0.6"
+                          ShadowDepth="2"
+                          Color="#949494" />
+    </Window.Effect>
+    <Border Background="AliceBlue" CornerRadius="4">
+        <Grid>
+            <Grid>
+                <Image Width="28"
+                       Height="28"
+                       Margin="20,0,0,0"
+                       HorizontalAlignment="Left"
+                       Source="/MagicCube;component/Resources/ImageSingle/Mlogo.png" />
+
+                <local:FloatCloseButton Width="20"
+                                        Height="20"
+                                        Margin="0,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Click="BtnClose_Click"
+                                        Focusable="False" />
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <StackPanel x:Name="stk1"
+                            Margin="61,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="14"
+                               Foreground="#303342"
+                               Text="再连续登录" />
+                    <TextBlock x:Name="tbDay"
+                               FontSize="14"
+                               Foreground="#ff6500"
+                               Text="3" />
+                    <TextBlock FontSize="14"
+                               Foreground="#ff6500"
+                               Text="天" />
+                    <TextBlock FontSize="14"
+                               Foreground="#303342"
+                               Text="即可领取" />
+                    <TextBlock x:Name="tbCount"
+                               FontSize="14"
+                               Foreground="#303342"
+                               Text="25"
+                               Visibility="Collapsed" />
+                    <TextBlock FontSize="14"
+                               Foreground="#303342"
+                               Text="积分奖励" />
+                </StackPanel>
+                <StackPanel x:Name="stk2"
+                            Margin="61,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                    <TextBlock FontSize="14"
+                               Foreground="#303342"
+                               Text="您已连续登录5天，赠您"
+                               Visibility="Visible" />
+                    <TextBlock x:Name="tbCount2"
+                               FontSize="14"
+                               Foreground="#303342"
+                               Text="25" />
+                    <TextBlock FontSize="14"
+                               Foreground="#303342"
+                               Text="积分" />
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

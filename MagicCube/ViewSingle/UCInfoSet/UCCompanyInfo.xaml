@@ -1,0 +1,1801 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCCompanyInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templateUC="clr-namespace:MagicCube.TemplateUC"
+             xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:view="clr-namespace:MagicCube.View"
+             d:DesignHeight="1800"
+             d:DesignWidth="700"
+             mc:Ignorable="d">
+    <Grid x:Name="gdMain">
+        <Grid.Resources>
+            <BConvert:URLToImageConverter x:Key="URLToImageConverter" />
+            <BConvert:CompanyLogoConverter x:Key="CompanyLogoConverter" />
+            <BConvert:HTML2RTFConverter x:Key="HTML2RTFConverter" />
+            <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <BConvert:StringNullToVisibilityConverter x:Key="StringNullToVisibilityConverter" />
+            <BConvert:CompanyImageChooseLeftBtnVisibleConverter x:Key="CompanyImageChooseLeftBtnVisibleConverter" />
+            <BConvert:CompanyImageChooseRightBtnVisibleConverter x:Key="CompanyImageChooseRightBtnVisibleConverter" />
+            <BConvert:ComanyImageBackImageVisibleConverter x:Key="ComanyImageBackImageVisibleConverter" />
+            <BConvert:StringVisibilityConverter x:Key="StringVisibilityConverter" />
+            <BConvert:StringNullToUnEditConverter x:Key="StringNullToUnEditConverter" />
+            <BConvert:URLToUploadImageConverter x:Key="URLToUploadImageConverter" />
+            <BConvert:URLToUploadVisibleConverter x:Key="URLToUploadVisibleConverter" />
+            <BConvert:ListCount1ToUnVisibleConverter x:Key="ListCount1ToUnVisibleConverter" />
+            <BConvert:CompanyProvinceToCityConverter x:Key="CompanyProvinceToCityConverter" />
+            <BConvert:CompanyCityToStringConverter x:Key="CompanyCityToStringConverter" />
+            <BConvert:ListCountNegativeToVisibleConverter x:Key="ListCountNegativeToVisibleConverter" />
+
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Foreground="#333333"
+                   Text="公司信息" />
+        <Rectangle Height="1"
+                   VerticalAlignment="Bottom"
+                   Stroke="#e7e7e7" />
+
+        <Grid x:Name="gdProvinceCity"
+              Grid.RowSpan="2"
+              Margin="-300,0,0,0"
+              Panel.ZIndex="1"
+              d:IsHidden="True"
+              Background="#82000000"
+              Visibility="{Binding ElementName=chkProvineCity,
+                                   Path=IsChecked,
+                                   Converter={StaticResource BoolToVisibilityConverter}}">
+            <templateUC:UCProvinceCity x:Name="ucProvinceCity"
+                                       Width="620"
+                                       Height="581"
+                                       ForceSecondSelcted="True"
+                                       MostSelectedNum="1"
+                                       StrTitle="最多选择1项" />
+        </Grid>
+        <Busy:BusyIndicator xmlns:Busy="clr-namespace:BusyIndicatorCtrl"
+                            x:Name="busyCtrl"
+                            Grid.Row="0"
+                            Grid.RowSpan="10"
+                            Panel.ZIndex="130"
+                            d:IsHidden="True" />
+
+        <Grid x:Name="gdCompany"
+              Grid.Row="1"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Background="#ffffff"
+              Visibility="Visible">
+            <ScrollViewer Grid.Row="1"
+                          Margin="0,0,0,0"
+                          Template="{DynamicResource ScrollViewerControlTemplate1}"
+                          VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Left">
+                    <StackPanel Width="700"
+                                Height="78"
+                                Margin="0,20,0,0"
+                                HorizontalAlignment="Left"
+                                Orientation="Horizontal">
+                        <Grid Margin="38,0,0,0">
+                            <Border Width="78"
+                                    Height="78"
+                                    BorderBrush="Black"
+                                    BorderThickness="0"
+                                    CornerRadius="3">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding SmallCompanyLogoUrl, Converter={StaticResource CompanyLogoConverter}}" />
+                                </Border.Background>
+                            </Border>
+
+                        </Grid>
+                        <StackPanel Margin="24,0,0,0">
+                            <StackPanel Margin="0,5.3,0,9" Orientation="Horizontal">
+                                <TextBlock MaxWidth="280"
+                                           HorizontalAlignment="Left"
+                                           FontSize="14"
+                                           Foreground="#333333"
+                                           Text="{Binding CompanyName}"
+                                           TextTrimming="WordEllipsis" />
+                                <TextBlock FontSize="14"
+                                           Foreground="#333333"
+                                           Text=" (" />
+                                <TextBlock MaxWidth="100"
+                                           FontSize="14"
+                                           Foreground="#333333"
+                                           Text="{Binding BriefName}"
+                                           TextTrimming="CharacterEllipsis" />
+                                <TextBlock FontSize="14"
+                                           Foreground="#333333"
+                                           Text=")" />
+                            </StackPanel>
+
+                            <StackPanel Width="400"
+                                        Margin="0,0,5,11"
+                                        Orientation="Horizontal">
+                                <TextBlock MaxWidth="150"
+                                           FontSize="12"
+                                           Foreground="#666666"
+                                           Text="{Binding FullCity}"
+                                           TextTrimming="WordEllipsis" />
+                                <Rectangle Width="1"
+                                           Height="12"
+                                           Margin="10,0,10,0"
+                                           Fill="#eeeeee"
+                                           Visibility="{Binding FullCity,
+                                                                Converter={StaticResource StringVisibilityConverter}}" />
+                                <TextBlock FontSize="12"
+                                           Foreground="#666666"
+                                           Text="{Binding Industries}" />
+                                <Rectangle Width="1"
+                                           Height="12"
+                                           Margin="10,0,10,0"
+                                           Fill="#eeeeee"
+                                           Visibility="{Binding Industries,
+                                                                Converter={StaticResource StringVisibilityConverter}}" />
+                                <TextBlock FontSize="12"
+                                           Foreground="#666666"
+                                           Text="{Binding Nature.name}" />
+                                <Rectangle Width="1"
+                                           Height="12"
+                                           Margin="10,0,10,0"
+                                           Fill="#eeeeee"
+                                           Visibility="{Binding Nature.name,
+                                                                Converter={StaticResource StringVisibilityConverter}}" />
+                                <TextBlock FontSize="12"
+                                           Foreground="#666666"
+                                           Text="{Binding Size.name}" />
+                            </StackPanel>
+                            <TextBlock Margin="0,0,0,15"
+                                       HorizontalAlignment="Left"
+                                       FontSize="12"
+                                       Foreground="#666666"
+                                       Text="{Binding Location}" />
+                        </StackPanel>
+                        <templateUC:BlueButton x:Name="btnModify"
+                                               Width="114"
+                                               Height="34"
+                                               Margin="0,10"
+                                               VerticalAlignment="Top"
+                                               Click="BtnModify_Click"
+                                               Text="修改公司信息" />
+                    </StackPanel>
+                    <Grid Width="700"
+                          Margin="0,9,0,0"
+                          HorizontalAlignment="Left">
+                        <Border Width="80"
+                                Height="26"
+                                Margin="38,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="Transparent"
+                                BorderBrush="#f8af1c"
+                                BorderThickness="1"
+                                CornerRadius="13"
+                                Visibility="{Binding FinancingState.name,
+                                                     Converter={StaticResource StringVisibilityConverter}}">
+                            <TextBlock Margin="10,5,10,5"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#f8af1c"
+                                       Text="{Binding FinancingState.name}" />
+                        </Border>
+
+                        <ItemsControl x:Name="TagsList"
+                                      Width="500"
+                                      Margin="137,0,0,0"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Tags}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel MaxHeight="500" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border x:Name="bd"
+                                            Height="26"
+                                            Margin="5,0,5,10"
+                                            BorderBrush="#00beff"
+                                            BorderThickness="1"
+                                            CornerRadius="13"
+                                            Padding="5,0,5,0">
+                                        <TextBlock Margin="10,0,10,0"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="12"
+                                                   Foreground="#00beff"
+                                                   Text="{Binding}" />
+                                    </Border>
+                                </DataTemplate>
+
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                    <Rectangle Height="1"
+                               Margin="0,15,0,20"
+                               Stroke="#e7e7e7" />
+                    <TextBlock Margin="36,0,0,0"
+                               FontSize="14"
+                               Foreground="#333333"
+                               Text="公司简介" />
+                    <toolkit:RichTextBox Grid.Row="1"
+                                         MinHeight="102"
+                                         Margin="33,10,36,25"
+                                         Background="White"
+                                         BorderBrush="White"
+                                         BorderThickness="0"
+                                         Focusable="False"
+                                         FontSize="12"
+                                         Foreground="#666666"
+                                         IsReadOnly="True"
+                                         Padding="1"
+                                         Text="{Binding Intro,
+                                                        Converter={StaticResource HTML2RTFConverter}}">
+                        <toolkit:RichTextBox.TextFormatter>
+                            <toolkit:RtfFormatter />
+                        </toolkit:RichTextBox.TextFormatter>
+                        <FlowDocument LineHeight="20" />
+                    </toolkit:RichTextBox>
+                    <StackPanel>
+                        <Grid Height="190"
+                              Margin="65,0,65,0"
+                              HorizontalAlignment="Stretch">
+                            <Grid.Resources>
+                                <DataTemplate x:Key="ImageDetailView">
+                                    <Border>
+                                        <Image Width="264"
+                                               Height="190"
+                                               Source="{Binding}"
+                                               Stretch="Uniform" />
+                                    </Border>
+                                </DataTemplate>
+
+                            </Grid.Resources>
+                            <UserControl x:Name="ucCompanyImageChoose"
+                                         Content="{Binding SelectedItem,
+                                                           ElementName=listImageList}"
+                                         ContentTemplate="{StaticResource ImageDetailView}" />
+                            <UserControl x:Name="ucCompanyImageBntChoose"
+                                         Panel.ZIndex="3"
+                                         Background="Transparent"
+                                         Visibility="Visible">
+                                <UserControl.Template>
+                                    <ControlTemplate>
+                                        <Grid x:Name="gdCompanyImageBtnChoose"
+                                              Background="Transparent"
+                                              Opacity="1"
+                                              Visibility="Visible">
+                                            <Button HorizontalAlignment="Left"
+                                                    Click="LeftCompanyImageChoose_Click"
+                                                    Visibility="{Binding SelectedIndex,
+                                                                         Converter={StaticResource CompanyImageChooseLeftBtnVisibleConverter},
+                                                                         ElementName=listImageList}">
+                                                <Button.Template>
+                                                    <ControlTemplate>
+                                                        <Border Width="25" Height="47">
+                                                            <Image x:Name="img" Source="/MagicCube;component/Resources/ImageSingle/ArrowLeftGray.png" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="img" Property="Source" Value="/MagicCube;component/Resources/ImageSingle/ArrowLeftBlue.png" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                            <Button x:Name="btnRightCompanyImageChoose"
+                                                    HorizontalAlignment="Right"
+                                                    Click="RightCompanyImageChoose_Click"
+                                                    Visibility="{Binding Tag,
+                                                                         ElementName=ucCompanyImageBntChoose}">
+                                                <!--<Button.Visibility>
+                                                <MultiBinding Converter="{StaticResource CompanyImageChooseRightBtnVisibleConverter}">
+                                                    <Binding Path="SelectedIndex" ElementName="listImageList"/>
+                                                    <Binding Path="Items" ElementName="listImageList"/>
+                                                </MultiBinding>
+                                            </Button.Visibility>-->
+                                                <!--
+                                                    Visibility="{Binding ElementName=ucCompanyImageBntChoose,
+                                                    Path=Tag}"
+                                                -->
+                                                <Button.Template>
+                                                    <ControlTemplate>
+                                                        <Border Width="25" Height="47">
+                                                            <Image x:Name="img" Source="/MagicCube;component/Resources/ImageSingle/ArrowRightGray.png" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="img" Property="Source" Value="/MagicCube;component/Resources/ImageSingle/ArrowRightBlue.png" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="gdCompanyImageBtnChoose" Property="Opacity" Value="1" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </UserControl.Template>
+
+                            </UserControl>
+
+                        </Grid>
+
+                        <ListView x:Name="listImageList"
+                                  Height="25"
+                                  Margin="40,0,0,0"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  ItemsSource="{Binding ImageUrls}"
+                                  MouseLeftButtonUp="listImageList_MouseLeftButtonUp"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  Visibility="{Binding ImgUrlCount,
+                                                       Converter={StaticResource ListCount1ToUnVisibleConverter}}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Width="100"
+                                                Height="20"
+                                                Background="Transparent"
+                                                Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border Height="8" Background="{TemplateBinding Background}">
+                                                    <Grid>
+                                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                          TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                        <Border x:Name="bd"
+                                                                Width="8"
+                                                                Height="8"
+                                                                Margin="3,0,3,0"
+                                                                HorizontalAlignment="Left"
+                                                                Background="#e7e7e7"
+                                                                BorderThickness="0"
+                                                                CornerRadius="4" />
+
+                                                    </Grid>
+
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter TargetName="bd" Property="Background" Value="#00beff" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="true">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsMouseOver" Value="True" />
+                                                <Condition Property="IsSelected" Value="True" />
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </MultiTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border x:Name="bd"
+                                            Width="8"
+                                            Height="8"
+                                            Margin="3,0,3,0"
+                                            HorizontalAlignment="Left"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            CornerRadius="4" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+
+
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid x:Name="gdEditCompany"
+              Grid.Row="1"
+              HorizontalAlignment="Stretch"
+              Background="#ffffff"
+              Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="0,9,5,0" />
+                    <Setter Property="Height" Value="34" />
+                    <Setter Property="Margin" Value="0,0,0,0" />
+                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="Foreground" Value="#666666" />
+                </Style>
+                <Style TargetType="{x:Type ComboBox}">
+                    <Setter Property="SnapsToDevicePixels" Value="true" />
+                    <Setter Property="Focusable" Value="False" />
+                    <Setter Property="Foreground" Value="#333333" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ComboBox}">
+                                <ControlTemplate.Resources>
+                                    <Storyboard x:Key="FocusedOn">
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                       Storyboard.TargetName="FocusVisualElement"
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                    <Storyboard x:Key="FocusedOff">
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                       Storyboard.TargetName="FocusVisualElement"
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </ControlTemplate.Resources>
+                                <Border BorderBrush="#E5E5E5"
+                                        BorderThickness="1"
+                                        CornerRadius="1">
+                                    <Grid Background="White">
+                                        <ToggleButton x:Name="ToggleButton"
+                                                      Background="Transparent"
+                                                      ClickMode="Press"
+                                                      Focusable="False"
+                                                      IsChecked="{Binding IsDropDownOpen,
+                                                                          Mode=TwoWay,
+                                                                          RelativeSource={RelativeSource TemplatedParent}}">
+                                            <ToggleButton.Template>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                    <ControlTemplate.Resources>
+                                                        <Storyboard x:Key="HoverOn">
+                                                            <DoubleAnimation Duration="00:00:00.1000000"
+                                                                             Storyboard.TargetName="BtnOver"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0.8" />
+                                                            <DoubleAnimation Duration="00:00:00.1000000"
+                                                                             Storyboard.TargetName="Background_over"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="1" />
+                                                        </Storyboard>
+                                                        <Storyboard x:Key="HoverOff">
+                                                            <DoubleAnimation Duration="00:00:00.4000000"
+                                                                             Storyboard.TargetName="BtnOver"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0" />
+                                                            <DoubleAnimation Duration="00:00:00.4000000"
+                                                                             Storyboard.TargetName="Background_over"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0" />
+                                                        </Storyboard>
+                                                        <Storyboard x:Key="PressedOn">
+                                                            <DoubleAnimation Duration="00:00:00.1000000"
+                                                                             Storyboard.TargetName="BtnPress"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0.8" />
+                                                            <DoubleAnimation Duration="00:00:00.1000000"
+                                                                             Storyboard.TargetName="Background_press"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="1" />
+                                                            <DoubleAnimation Duration="00:00:00.1000000"
+                                                                             Storyboard.TargetName="BtnPress_highlight"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="1" />
+                                                        </Storyboard>
+                                                        <Storyboard x:Key="PressedOff">
+                                                            <DoubleAnimation Duration="00:00:00.4000000"
+                                                                             Storyboard.TargetName="BtnPress"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0" />
+                                                            <DoubleAnimation Duration="00:00:00.4000000"
+                                                                             Storyboard.TargetName="Background_press"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0" />
+                                                            <DoubleAnimation Duration="00:00:00.4000000"
+                                                                             Storyboard.TargetName="BtnPress_highlight"
+                                                                             Storyboard.TargetProperty="Opacity"
+                                                                             To="0" />
+                                                        </Storyboard>
+                                                    </ControlTemplate.Resources>
+                                                    <Grid>
+                                                        <Rectangle x:Name="Background"
+                                                                   IsHitTestVisible="false"
+                                                                   RadiusX="3"
+                                                                   RadiusY="3"
+                                                                   Stroke="#FFABAEB3"
+                                                                   StrokeThickness="0" />
+                                                        <Rectangle x:Name="Background_over"
+                                                                   IsHitTestVisible="False"
+                                                                   Opacity="0"
+                                                                   RadiusX="3"
+                                                                   RadiusY="3"
+                                                                   Stroke="#FFABACAD"
+                                                                   StrokeThickness="0" />
+                                                        <Rectangle x:Name="Background_press"
+                                                                   IsHitTestVisible="False"
+                                                                   Opacity="0"
+                                                                   RadiusX="3"
+                                                                   RadiusY="3"
+                                                                   Stroke="#FFABABAB"
+                                                                   StrokeThickness="0" />
+                                                        <Border x:Name="BtnOver"
+                                                                Width="{TemplateBinding ActualWidth}"
+                                                                HorizontalAlignment="Right"
+                                                                Background="AliceBlue"
+                                                                BorderBrush="#FFABABAB"
+                                                                BorderThickness="0"
+                                                                CornerRadius="3"
+                                                                Opacity="0" />
+                                                        <Border x:Name="BtnPress"
+                                                                Width="{TemplateBinding ActualWidth}"
+                                                                HorizontalAlignment="Right"
+                                                                Background="AliceBlue"
+                                                                BorderBrush="#FF595A5B"
+                                                                BorderThickness="0"
+                                                                CornerRadius="3"
+                                                                Opacity="0" />
+                                                        <Border x:Name="BtnPress_highlight"
+                                                                Margin="1"
+                                                                HorizontalAlignment="Right"
+                                                                CornerRadius="2"
+                                                                Opacity="0">
+                                                            <Border.Background>
+                                                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                                    <GradientStop Offset="0" Color="#FF919191" />
+                                                                    <GradientStop Offset="0.088" Color="#A5CED1D2" />
+                                                                    <GradientStop Offset="0.221" Color="#0095D9FF" />
+                                                                    <GradientStop Offset="0.779" Color="#0095D9FF" />
+                                                                    <GradientStop Offset="0.912" Color="#A5CED1D2" />
+                                                                    <GradientStop Offset="1" Color="#FF919191" />
+                                                                </LinearGradientBrush>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <Border x:Name="BtnOverlay"
+                                                                Margin="1"
+                                                                HorizontalAlignment="Right"
+                                                                CornerRadius="2">
+                                                            <Border.Background>
+                                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                    <GradientStop Color="#00FFFFFF" />
+                                                                    <GradientStop Offset="0.189" Color="#72FFFFFF" />
+                                                                    <GradientStop Offset="0.5" Color="#72FFFFFF" />
+                                                                    <GradientStop Offset="0.51" Color="#00FFFFFF" />
+                                                                </LinearGradientBrush>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <Path x:Name="BtnArrow"
+                                                              Width="8"
+                                                              Margin="0,0,7,0"
+                                                              HorizontalAlignment="Right"
+                                                              Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "
+                                                              Fill="#ababab"
+                                                              Stretch="Uniform" />
+                                                        <Rectangle x:Name="DisabledVisualElement"
+                                                                   Margin="1"
+                                                                   Fill="#00FFFFFF"
+                                                                   IsHitTestVisible="false"
+                                                                   RadiusX="3"
+                                                                   RadiusY="3"
+                                                                   StrokeThickness="0"
+                                                                   Visibility="Collapsed" />
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Trigger.ExitActions>
+                                                                <BeginStoryboard x:Name="HoverOff_BeginStoryboard" Storyboard="{StaticResource HoverOff}" />
+                                                            </Trigger.ExitActions>
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard Storyboard="{StaticResource HoverOn}" />
+                                                            </Trigger.EnterActions>
+                                                        </Trigger>
+                                                        <Trigger Property="IsChecked" Value="true" />
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Trigger.ExitActions>
+                                                                <BeginStoryboard x:Name="PressedOff_BeginStoryboard" Storyboard="{StaticResource PressedOff}" />
+                                                            </Trigger.ExitActions>
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard x:Name="PressedOn_BeginStoryboard" Storyboard="{StaticResource PressedOn}" />
+                                                            </Trigger.EnterActions>
+                                                        </Trigger>
+
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </ToggleButton.Template>
+                                        </ToggleButton>
+                                        <TextBlock x:Name="ValueTextBox"
+                                                   Margin="14,3,23,3"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Background="Transparent"
+                                                   Focusable="True"
+                                                   FontSize="12"
+                                                   Foreground="Black"
+                                                   IsHitTestVisible="False"
+                                                   Text="{TemplateBinding SelectedValue}"
+                                                   Visibility="Visible" />
+                                        <Popup x:Name="Popup"
+                                               AllowsTransparency="True"
+                                               Focusable="False"
+                                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                                               Placement="Bottom"
+                                               PopupAnimation="None">
+                                            <Grid x:Name="DropDown"
+                                                  MinWidth="{TemplateBinding ActualWidth}"
+                                                  MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                                  SnapsToDevicePixels="True">
+                                                <Border x:Name="DropDownBorder"
+                                                        Background="#FFFFFFFF"
+                                                        BorderThickness="1"
+                                                        CornerRadius="3,3,3,3">
+                                                    <Border.BorderBrush>
+                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                            <GradientStop Offset="0" Color="#FFABAEB3" />
+                                                            <GradientStop Offset="0.355" Color="#FFD4D7D9" />
+                                                        </LinearGradientBrush>
+                                                    </Border.BorderBrush>
+                                                    <ScrollViewer Margin="4,6,4,6"
+                                                                  CanContentScroll="True"
+                                                                  HorizontalScrollBarVisibility="Auto"
+                                                                  SnapsToDevicePixels="True"
+                                                                  Template="{DynamicResource ScrollViewerControlTemplate1}"
+                                                                  VerticalScrollBarVisibility="Auto">
+                                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                                    </ScrollViewer>
+                                                </Border>
+                                            </Grid>
+                                        </Popup>
+                                    </Grid>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard x:Name="FocusedOff_BeginStoryboard" Storyboard="{StaticResource FocusedOff}" />
+                                        </Trigger.ExitActions>
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                                        </Trigger.EnterActions>
+                                    </Trigger>
+                                    <Trigger Property="HasItems" Value="false">
+                                        <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Trigger>
+                                    <Trigger Property="IsGrouping" Value="true">
+                                        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                                    </Trigger>
+                                    <Trigger SourceName="Popup" Property="AllowsTransparency" Value="true">
+                                        <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="4" />
+                                        <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0" />
+                                    </Trigger>
+                                    <Trigger Property="IsEditable" Value="true">
+                                        <Setter Property="IsTabStop" Value="false" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="ItemContainerStyle">
+                        <Setter.Value>
+                            <!--  ComBoxItem  -->
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="MinHeight" Value="22" />
+                                <Setter Property="MinWidth" Value="60" />
+                                <Setter Property="Foreground" Value="#999999" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ComboBoxItem">
+                                            <Border Name="Back"
+                                                    Height="32"
+                                                    Background="Transparent"
+                                                    BorderBrush="#81D779"
+                                                    BorderThickness="0,0,0,0">
+                                                <ContentPresenter Margin="5,0,0,0"
+                                                                  HorizontalAlignment="Left"
+                                                                  VerticalAlignment="Center"
+                                                                  ContentSource="{Binding Source}" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="Back" Property="Background" Value="#f8f9fc" />
+                                                </Trigger>
+                                                <Trigger Property="IsHighlighted" Value="True">
+                                                    <Setter TargetName="Back" Property="Background" Value="#f8f9fc" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <ScrollViewer x:Name="scrollView"
+                          Grid.Row="1"
+                          Margin="0,0,0,0"
+                          Template="{DynamicResource ScrollViewerControlTemplate1}"
+                          VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel Margin="0,37,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Text="公司LOGO" />
+                        <Button x:Name="btnAddLOGOPicture"
+                                Width="80"
+                                Height="80"
+                                Margin="24,0,0,0"
+                                HorizontalAlignment="Left"
+                                Click="btnAddLOGOPicture_Click">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border Width="80"
+                                            Height="80"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            BorderThickness="0"
+                                            CornerRadius="3">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding SmallCompanyLogoUrl, Converter={StaticResource URLToUploadImageConverter}}" />
+                                        </Border.Background>
+                                        <!--<Image Width="80" Source="/MagicCube;component/Resources/Images/UploadBtn.png" />-->
+                                        <Grid>
+
+                                            <Grid Visibility="{Binding SmallCompanyLogoUrl, Converter={StaticResource URLToUploadVisibleConverter}}">
+                                                <Rectangle Fill="Black"
+                                                           Opacity="0.5"
+                                                           RadiusX="3"
+                                                           RadiusY="3" />
+                                                <Image Width="27"
+                                                       Height="27"
+                                                       Source="/MagicCube;component/Resources/ImageSingle/uploadBackground.png" />
+
+                                            </Grid>
+                                        </Grid>
+
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Cursor" Value="Hand" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <StackPanel Margin="16,20,0,0">
+                            <TextBlock Margin="0,3,0,3"
+                                       Foreground="#999999"
+                                       Style="{x:Null}"
+                                       Text="支持JPG/PNG格式" />
+                            <TextBlock Margin="0,3,0,3"
+                                       Foreground="#999999"
+                                       Style="{x:Null}"
+                                       Text="尺寸为120PX*120PX时显示效果最佳"
+                                       Visibility="Collapsed" />
+                            <TextBlock Margin="0,3,0,3"
+                                       Foreground="#ff6500"
+                                       Style="{x:Null}"
+                                       Text="Logo是企业形象的最佳代言，请上传清晰的图片 " />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="公司全称" />
+                        <Grid Margin="24,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#f5f5f5"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+                            <TextBox Width="324"
+                                     Height="34"
+                                     Margin="0,0,0,0"
+                                     VerticalContentAlignment="Center"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     FontSize="12"
+                                     Foreground="#b4b4b4"
+                                     IsEnabled="False"
+                                     Padding="14,0,0,0"
+                                     Text="{Binding CompanyName}" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="公司简称" />
+                        <Grid Margin="24,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#ffffff"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+                            <TextBox x:Name="txtBriefName"
+                                     Width="324"
+                                     Height="34"
+                                     Margin="0,0,0,0"
+                                     VerticalContentAlignment="Center"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     FontSize="12"
+                                     Foreground="#333333"
+                                     GotFocus="TrackOperation_Event"
+                                     Padding="14,0,0,0"
+                                     Tag="{Binding Error}"
+                                     Text="{Binding BriefName,
+                                                    UpdateSourceTrigger=PropertyChanged,
+                                                    ValidatesOnDataErrors=True}">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <!--  ControlTemplate要求只能有一个子级，所以加个容器控件DockPanel  -->
+                                        <Border BorderBrush="Red" BorderThickness="1">
+                                            <Grid>
+                                                <AdornedElementPlaceholder x:Name="adorner" />
+                                                <TextBlock Width="150"
+                                                           Margin="0,0,-160,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           Foreground="Red"
+                                                           IsHitTestVisible="False"
+                                                           Text="{Binding ElementName=adorner,
+                                                                          Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent}" />
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </TextBox>
+                        </Grid>
+
+                    </StackPanel>
+
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="公司行业" />
+                        <Grid Margin="24,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#ffffff"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+                            <ComboBox x:Name="cmbIndustries"
+                                      Width="324"
+                                      Height="34"
+                                      Background="Transparent"
+                                      SelectedItem="{Binding Industries,
+                                                             UpdateSourceTrigger=PropertyChanged,
+                                                             ValidatesOnDataErrors=True}"
+                                      Visibility="Collapsed">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <!--  ControlTemplate要求只能有一个子级，所以加个容器控件DockPanel  -->
+                                        <Border BorderBrush="Red" BorderThickness="1">
+                                            <Grid>
+                                                <AdornedElementPlaceholder />
+                                                <TextBlock Margin="0,0,15,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           Foreground="Red"
+                                                           IsHitTestVisible="False"
+                                                           Text="该项不能为空" />
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </ComboBox>
+
+                            <StackPanel>
+                                <StackPanel.Resources>
+                                    <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                                    <Style TargetType="{x:Type CheckBox}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True" />
+                                        <Setter Property="Margin" Value="0,8,0,8" />
+                                        <Setter Property="SnapsToDevicePixels" Value="True" />
+                                        <Setter Property="Foreground" Value="#666666" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type CheckBox}">
+                                                    <BulletDecorator VerticalAlignment="Top"
+                                                                     Background="Transparent"
+                                                                     FlowDirection="LeftToRight">
+                                                        <BulletDecorator.Bullet>
+                                                            <Image x:Name="img"
+                                                                   Width="16"
+                                                                   Height="16"
+                                                                   Margin="0,0,0,0"
+                                                                   HorizontalAlignment="Center"
+                                                                   VerticalAlignment="Top"
+                                                                   Source="/MagicCube;component/Resources/Images/Mcheckno.png" />
+                                                        </BulletDecorator.Bullet>
+
+                                                        <ContentPresenter Margin="10,0" VerticalAlignment="Center" />
+
+                                                    </BulletDecorator>
+                                                    <!--
+                                                        控件触发器
+                                                    -->
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsChecked" Value="True">
+                                                            <!--  画上一个勾  -->
+                                                            <Setter TargetName="img" Property="Source" Value="/MagicCube;component/Resources/Images/Mcheck.png" />
+                                                            <!--<Setter TargetName="bd" Property="Background" Value="#5192ff" />-->
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                    </Style>
+                                </StackPanel.Resources>
+                                <CheckBox x:Name="chkIndustryShow"
+                                          VerticalContentAlignment="Center"
+                                          Content="{Binding Industries}"
+                                          FontSize="12"
+                                          GotFocus="TrackOperation_Event"
+                                          IsChecked="False"
+                                          Padding="15,0,0,0"
+                                          Style="{x:Null}">
+                                    <CheckBox.Template>
+                                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                                            <Border Width="324"
+                                                    Height="34"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Background="White"
+                                                    BorderBrush="#e5e5e5"
+                                                    BorderThickness="1">
+                                                <Grid>
+                                                    <Path x:Name="BtnArrow"
+                                                          Width="8"
+                                                          Margin="0,0,7,0"
+                                                          HorizontalAlignment="Right"
+                                                          Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "
+                                                          Fill="#ababab"
+                                                          Stretch="Uniform" />
+                                                    <ContentPresenter x:Name="contentPresenter"
+                                                                      Margin="{TemplateBinding Padding}"
+                                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                      Focusable="False"
+                                                                      RecognizesAccessKey="True"
+                                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                </Grid>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </CheckBox.Template>
+
+                                </CheckBox>
+
+                                <Border Width="540"
+                                        Height="469"
+                                        Background="#f8f9fc"
+                                        BorderBrush="#e5e5e5"
+                                        BorderThickness="1"
+                                        IsVisibleChanged="IndustryBorder_IsVisibaleChanged"
+                                        Visibility="{Binding ElementName=chkIndustryShow,
+                                                             Path=IsChecked,
+                                                             Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <StackPanel>
+                                        <TextBlock Margin="13,18,0,8"
+                                                   FontSize="14"
+                                                   Foreground="#666666"
+                                                   Style="{x:Null}"
+                                                   Text="请选择公司所属行业，最多可选3个" />
+
+                                        <ItemsControl x:Name="itemsIndustries" Margin="15,0,15,0">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Horizontal" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Width="160">
+                                                        <CheckBox Click="chkIndustry_Click" IsChecked="{Binding isChoose}">
+                                                            <CheckBox.Content>
+                                                                <TextBlock Width="100"
+                                                                           Text="{Binding name}"
+                                                                           TextWrapping="Wrap" />
+                                                            </CheckBox.Content>
+
+                                                        </CheckBox>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <StackPanel Margin="158, 20,0,0" Orientation="Horizontal">
+                                            <templateUC:BlueButton Width="80"
+                                                                   Height="34"
+                                                                   Click="IndustrySelectOK_Click"
+                                                                   Text="确定" />
+                                            <templateUC:WhiteButton Width="80"
+                                                                    Height="34"
+                                                                    Margin="10,0,0,0"
+                                                                    Click="IndustrySelectCancel_Click"
+                                                                    Text="取消" />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="公司性质" />
+                        <Grid Margin="24,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#ffffff"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+                            <ComboBox x:Name="cmbNature"
+                                      Width="324"
+                                      Height="34"
+                                      Background="White"
+                                      DisplayMemberPath="name"
+                                      GotFocus="TrackOperation_Event"
+                                      SelectedItem="{Binding Nature,
+                                                             UpdateSourceTrigger=PropertyChanged,
+                                                             ValidatesOnDataErrors=True}"
+                                      SelectedValuePath="name">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <!--  ControlTemplate要求只能有一个子级，所以加个容器控件DockPanel  -->
+                                        <Border BorderBrush="Red" BorderThickness="1">
+                                            <Grid>
+                                                <AdornedElementPlaceholder />
+                                                <TextBlock Margin="0,0,15,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           Foreground="Red"
+                                                           IsHitTestVisible="False"
+                                                           Text="该项不能为空" />
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </ComboBox>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="公司规模" />
+                        <Grid Margin="24,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#ffffff"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+                            <ComboBox x:Name="cmbSize"
+                                      Width="324"
+                                      Height="34"
+                                      Background="White"
+                                      DisplayMemberPath="name"
+                                      GotFocus="TrackOperation_Event"
+                                      SelectedItem="{Binding Size,
+                                                             UpdateSourceTrigger=PropertyChanged,
+                                                             ValidatesOnDataErrors=True}"
+                                      SelectedValuePath="name">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <!--  ControlTemplate要求只能有一个子级，所以加个容器控件DockPanel  -->
+                                        <Border BorderBrush="Red" BorderThickness="1">
+                                            <Grid>
+                                                <AdornedElementPlaceholder />
+                                                <TextBlock Margin="0,0,15,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           Foreground="Red"
+                                                           IsHitTestVisible="False"
+                                                           Text="该项不能为空" />
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </ComboBox>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="所在城市" />
+                        <CheckBox x:Name="chkProvineCity"
+                                  Margin="24,0,0,0"
+                                  VerticalContentAlignment="Center"
+                                  Click="chkProvineCity_Click"
+                                  Content="{Binding FullCity}"
+                                  FontSize="12"
+                                  GotFocus="TrackOperation_Event"
+                                  IsChecked="False"
+                                  Padding="15,0,0,0"
+                                  Style="{x:Null}">
+                            <CheckBox.Template>
+                                <ControlTemplate TargetType="{x:Type CheckBox}">
+                                    <Border Width="324"
+                                            Height="34"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Background="White"
+                                            BorderBrush="#e5e5e5"
+                                            BorderThickness="1">
+                                        <Grid>
+                                            <Path x:Name="BtnArrow"
+                                                  Width="8"
+                                                  Margin="0,0,7,0"
+                                                  HorizontalAlignment="Right"
+                                                  Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "
+                                                  Fill="#ababab"
+                                                  Stretch="Uniform" />
+                                            <ContentPresenter x:Name="contentPresenter"
+                                                              Margin="{TemplateBinding Padding}"
+                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                              Focusable="False"
+                                                              RecognizesAccessKey="True"
+                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Grid>
+
+                                    </Border>
+                                </ControlTemplate>
+                            </CheckBox.Template>
+
+                        </CheckBox>
+                        <TextBlock x:Name="tbCityValidate"
+                                   Margin="10,0,0,0"
+                                   Foreground="Red"
+                                   Text="请填写城市"
+                                   Visibility="Collapsed" />
+                    </StackPanel>
+                    <Grid Margin="131,14,0,0" HorizontalAlignment="Left">
+                        <Rectangle Width="324"
+                                   Height="34"
+                                   Fill="White"
+                                   Stroke="#E5E5E5"
+                                   StrokeThickness="1" />
+                        <TextBlock Margin="14,0,0,0"
+                                   HorizontalAlignment="Left"
+                                   Foreground="#b4b4b4"
+                                   Text="请输入具体地址"
+                                   Visibility="{Binding Location,
+                                                        Converter={StaticResource StringNullToVisibilityConverter}}" />
+                        <TextBox x:Name="txtCompanyAddress"
+                                 Width="324"
+                                 Height="34"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Foreground="#333333"
+                                 GotFocus="TrackOperation_Event"
+                                 Padding="14,0,0,0"
+                                 Text="{Binding Location,
+                                                UpdateSourceTrigger=PropertyChanged,
+                                                ValidatesOnDataErrors=True}"
+                                 TextChanged="txtAddress_TextChanged">
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <!--  ControlTemplate要求只能有一个子级，所以加个容器控件DockPanel  -->
+                                    <Border BorderBrush="Red" BorderThickness="1">
+                                        <Grid>
+                                            <AdornedElementPlaceholder x:Name="adorner" />
+                                            <TextBlock Width="140"
+                                                       Margin="0,0,-150,0"
+                                                       HorizontalAlignment="Right"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="12"
+                                                       Foreground="Red"
+                                                       IsHitTestVisible="False"
+                                                       Text="{Binding ElementName=adorner,
+                                                                      Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent}" />
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+                    </Grid>
+                    <Grid Width="417"
+                          Height="222"
+                          Margin="130,14.4,0,0"
+                          HorizontalAlignment="Left">
+                        <templateUC:UCGmap x:Name="ucGmap" PreviewMouseWheel="ucGmap_PreviewMouseWheel" />
+                    </Grid>
+                    <StackPanel Height="20"
+                                Margin="0,14,0,0"
+                                Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60" Text="诱惑标签" />
+                        <TextBlock Margin="20,0,0,0" Text="已选标签(最多可选8个)" />
+
+                    </StackPanel>
+                    <ItemsControl x:Name="itemsTagChoosed"
+                                  Width="500"
+                                  Margin="130,14,0,0"
+                                  HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Tags,
+                                                        UpdateSourceTrigger=PropertyChanged,
+                                                        ValidatesOnDataErrors=True}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="500" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="26"
+                                        Margin="0,0,10,10"
+                                        Background="#ffffff"
+                                        BorderBrush="#00beff"
+                                        BorderThickness="1"
+                                        CornerRadius="13">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="10,0,10,0"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#00beff"
+                                                   Text="{Binding}" />
+                                        <Rectangle Width="1"
+                                                   Height="13"
+                                                   VerticalAlignment="Center"
+                                                   Fill="#eeeeee" />
+                                        <Button Margin="8,0,8,0"
+                                                VerticalAlignment="Center"
+                                                Click="DeleteTags_Click">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <Border Background="Transparent">
+                                                        <Path x:Name="PART_Path"
+                                                              Width="10"
+                                                              Height="10"
+                                                              HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"
+                                                              Data="M6,6 L6,6 10,10 M10,6 L10,6 6,10"
+                                                              Fill="White"
+                                                              Stretch="Fill"
+                                                              Stroke="#00beff"
+                                                              StrokeThickness="2" />
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="PART_Path" Property="Fill" Value="Gray" />
+                                                            <Setter TargetName="PART_Path" Property="Stroke" Value="Gray" />
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <CheckBox x:Name="chkAddTags"
+                                  Margin="130,0,10,0"
+                                  HorizontalAlignment="Left"
+                                  Cursor="Hand"
+                                  GotFocus="TrackOperation_Event">
+                            <CheckBox.Template>
+                                <ControlTemplate>
+                                    <Border Width="98"
+                                            Height="26"
+                                            BorderBrush="#ebebeb"
+                                            BorderThickness="2"
+                                            CornerRadius="13">
+                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                            <Image Width="12"
+                                                   Height="12"
+                                                   Margin="10,0,0,0"
+                                                   Source="/MagicCube;component/Resources/ImageSingle/iconfont-tianjia.png" />
+                                            <TextBlock Width="60"
+                                                       Margin="6,0,0,0"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="12"
+                                                       Foreground="#999999"
+                                                       Text="自定义标签" />
+                                        </StackPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </CheckBox.Template>
+                        </CheckBox>
+                        <Border Width="183"
+                                Height="26"
+                                BorderBrush="#ebebeb"
+                                BorderThickness="2"
+                                CornerRadius="13"
+                                Visibility="{Binding ElementName=chkAddTags,
+                                                     Path=IsChecked,
+                                                     Converter={StaticResource BoolToVisibilityConverter}}">
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                <templateUC:HintTextBox x:Name="txtAddTag"
+                                                        Width="140"
+                                                        BorderThickness="0"
+                                                        Hint="编辑标签,最多10个字"
+                                                        MaxLength="10" />
+                                <templateUC:LinkButton Click="BtnAddSelfTag_Click"
+                                                       Content="添加"
+                                                       Cursor="Hand" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <Rectangle Height="1"
+                               Margin="135,14,100,0"
+                               Stroke="#d7d7d7"
+                               StrokeDashArray="3.0 3.0" />
+                    <TextBlock Margin="130,14,100,0"
+                               HorizontalAlignment="Left"
+                               Foreground="#666666"
+                               Style="{x:Null}"
+                               Text="可选标签" />
+                    <Grid Margin="130,0,0,0" HorizontalAlignment="Left">
+                        <Grid.Resources>
+                            <Style x:Key="tagItemControl" TargetType="{x:Type ItemsControl}">
+                                <Setter Property="ItemsPanel">
+                                    <Setter.Value>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel MaxWidth="500"
+                                                       Background="Transparent"
+                                                       Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="ItemTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <CheckBox Click="TagsCheck_Click" IsChecked="{Binding IsChecked, Mode=TwoWay}">
+                                                <CheckBox.Template>
+                                                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                                                        <Border x:Name="bd"
+                                                                Height="26"
+                                                                Margin="5,5,5,5"
+                                                                BorderBrush="#00beff"
+                                                                BorderThickness="1"
+                                                                CornerRadius="13">
+                                                            <TextBlock x:Name="txt"
+                                                                       Margin="10,0,10,0"
+                                                                       VerticalAlignment="Center"
+                                                                       Foreground="#00beff"
+                                                                       Text="{Binding Tag}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="bd" Property="BorderBrush" Value="#e5e5e5" />
+                                                                <Setter TargetName="txt" Property="Foreground" Value="#b4b4b4" />
+                                                                <Setter Property="IsEnabled" Value="False" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="bd" Property="Background" Value="#e9f9ff" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </CheckBox.Template>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                            <Style x:Key="TagsTabItem" TargetType="{x:Type TabItem}">
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type TabItem}">
+                                            <Grid Width="130"
+                                                  Height="30"
+                                                  Background="{TemplateBinding Background}"
+                                                  SnapsToDevicePixels="true">
+                                                <Border x:Name="Bd"
+                                                        Background="Transparent"
+                                                        BorderThickness="0">
+                                                    <TextBlock x:Name="CN"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="12"
+                                                               Foreground="#666666"
+                                                               Text="{TemplateBinding Header}" />
+                                                </Border>
+                                                <Line x:Name="line"
+                                                      Margin="0,5,0,0"
+                                                      VerticalAlignment="Bottom"
+                                                      Stroke="Transparent"
+                                                      StrokeThickness="2"
+                                                      X1="0"
+                                                      X2="120"
+                                                      Y1="0"
+                                                      Y2="0" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="true">
+                                                    <Setter TargetName="CN" Property="Foreground" Value="#00beff" />
+                                                    <Setter TargetName="line" Property="Stroke" Value="#00beff" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+
+                        <TabControl x:Name="tabTagsChoose"
+                                    Width="500"
+                                    Background="Transparent"
+                                    BorderThickness="0">
+                            <TabItem x:Name="tabTag1"
+                                     Margin="0"
+                                     VerticalAlignment="Center"
+                                     Background="Transparent"
+                                     Header="薪酬福利 (11)"
+                                     IsSelected="True"
+                                     Style="{StaticResource TagsTabItem}">
+                                <Grid HorizontalAlignment="Left" Background="Transparent">
+                                    <ItemsControl x:Name="itemsTag1" Style="{StaticResource tagItemControl}" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem Margin="0"
+                                     VerticalAlignment="Center"
+                                     Background="Transparent"
+                                     Header="公司氛围/环境 (13)"
+                                     IsSelected="True"
+                                     Style="{StaticResource TagsTabItem}">
+                                <Grid HorizontalAlignment="Left">
+                                    <ItemsControl x:Name="itemsTag2" Style="{StaticResource tagItemControl}" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem Margin="0"
+                                     VerticalAlignment="Center"
+                                     Background="Transparent"
+                                     Header="更多福利 (14)"
+                                     IsSelected="True"
+                                     Style="{StaticResource TagsTabItem}">
+                                <Grid HorizontalAlignment="Left">
+                                    <ItemsControl x:Name="itemsTag3" Style="{StaticResource tagItemControl}" />
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Margin="37,0,0,0"
+                                   VerticalAlignment="Top"
+                                   Foreground="Red"
+                                   Text="*" />
+                        <TextBlock Width="60"
+                                   VerticalAlignment="Top"
+                                   Text="公司介绍" />
+                        <Grid Margin="24,0,0,0">
+                            <Border x:Name="bdHtmlEditor"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="2">
+                                <Grid>
+                                    <Rectangle Width="502"
+                                               Height="254"
+                                               Stroke="#dddddd"
+                                               StrokeThickness="1" />
+                                    <view:UCRichTextBox x:Name="ucHtmlEditor"
+                                                        Width="500"
+                                                        Height="252"
+                                                        Margin="0"
+                                                        GotFocus="TrackOperation_Event" />
+                                    <TextBlock x:Name="tbHtmlEditorValidate"
+                                               Margin="0,0,5,0"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Top"
+                                               FontSize="12"
+                                               Foreground="Red"
+                                               Text="请填写公司介绍"
+                                               Visibility="Collapsed" />
+                                </Grid>
+
+
+                            </Border>
+
+
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Width="60"
+                                   Margin="37,0,0,0"
+                                   Text="发展阶段" />
+                        <Grid Margin="35,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#ffffff"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+
+                            <ComboBox x:Name="ucHintComboBox"
+                                      Width="324"
+                                      Height="34"
+                                      Background="Transparent"
+                                      DisplayMemberPath="name"
+                                      GotFocus="TrackOperation_Event"
+                                      SelectedItem="{Binding FinancingState}"
+                                      SelectedValuePath="name" />
+                            <TextBlock Width="100"
+                                       Margin="14,0,0,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#b4b4b4"
+                                       IsHitTestVisible="False"
+                                       Style="{x:Null}"
+                                       Text="请选择发展阶段"
+                                       Visibility="{Binding ElementName=ucHintComboBox,
+                                                            Path=SelectedIndex,
+                                                            Converter={StaticResource ListCountNegativeToVisibleConverter}}" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Width="60"
+                                   Margin="37,0,0,0"
+                                   Text="公司网址" />
+                        <Grid Margin="35,0,0,0">
+                            <Rectangle Width="324"
+                                       Height="34"
+                                       Fill="#ffffff"
+                                       Stroke="#e5e5e5"
+                                       StrokeThickness="1" />
+                            <TextBlock Margin="14"
+                                       HorizontalAlignment="Left"
+                                       Foreground="#b4b4b4"
+                                       Style="{x:Null}"
+                                       Text="请填写公司网址"
+                                       Visibility="{Binding ElementName=txtWebSite,
+                                                            Path=Text,
+                                                            Converter={StaticResource StringNullToVisibilityConverter}}" />
+                            <TextBox x:Name="txtWebSite"
+                                     Width="324"
+                                     Height="34"
+                                     Margin="0,0,0,0"
+                                     VerticalContentAlignment="Center"
+                                     input:InputMethod.IsInputMethodEnabled="False"
+                                     Background="Transparent"
+                                     BorderBrush="White"
+                                     BorderThickness="0"
+                                     FontSize="14"
+                                     GotFocus="TrackOperation_Event"
+                                     Padding="14,0,0,0"
+                                     Text="{Binding WebSite,
+                                                    UpdateSourceTrigger=PropertyChanged,
+                                                    ValidatesOnDataErrors=True}">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <!--  ControlTemplate要求只能有一个子级，所以加个容器控件DockPanel  -->
+                                        <Border BorderBrush="Red" BorderThickness="1">
+                                            <Grid>
+                                                <AdornedElementPlaceholder />
+                                                <TextBlock Width="95"
+                                                           Margin="0,0,-100,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           Foreground="Red"
+                                                           IsHitTestVisible="False"
+                                                           Text="请输入正确网址" />
+
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </TextBox>
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+                        <TextBlock Width="60"
+                                   Margin="37,0,0,0"
+                                   VerticalAlignment="Top"
+                                   Text="公司照片" />
+                        <Grid Height="100" Margin="30,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <ListBox Background="Transparent"
+                                         BorderThickness="0"
+                                         ItemsSource="{Binding ImageUrls}"
+                                         MouseLeftButtonUp="listImageList_MouseLeftButtonUp"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Height="100"
+                                                        Background="Transparent"
+                                                        Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid x:Name="gd"
+                                                  Width="84"
+                                                  Margin="6,0,0,0"
+                                                  Background="Transparent">
+                                                <Image Width="84"
+                                                       Height="84"
+                                                       Source="{Binding}" />
+                                                <Button x:Name="btnDel"
+                                                        Width="18"
+                                                        Height="18"
+                                                        Margin="0,-8,-5,0"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Top"
+                                                        Click="DeleteCompanyImageShow_Click"
+                                                        Visibility="Collapsed">
+                                                    <Button.Template>
+                                                        <ControlTemplate>
+                                                            <Border x:Name="PART_Border"
+                                                                    Background="#818690"
+                                                                    BorderThickness="0"
+                                                                    CornerRadius="9"
+                                                                    Padding="0">
+                                                                <Path x:Name="PART_Path"
+                                                                      Width="12"
+                                                                      Height="12"
+                                                                      HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"
+                                                                      Data="M6,6 L6,6 10,10 M10,6 L10,6 6,10"
+                                                                      Fill="#A6bbc5"
+                                                                      Stretch="Fill"
+                                                                      Stroke="#ffffff"
+                                                                      StrokeThickness="1" />
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="PART_Border" Property="Background" Value="red" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                            </Grid>
+                                            <DataTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="gd" Property="Background" Value="Transparent" />
+                                                    <Setter TargetName="btnDel" Property="Visibility" Value="Visible" />
+                                                </Trigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <!--<EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListBoxItem_MouseDownClick" />-->
+                                            <!--  设置控件模板  -->
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border Width="100"
+                                                                Height="100"
+                                                                Background="{TemplateBinding Background}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <!--  设置触发器  -->
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="true">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </Trigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsMouseOver" Value="True" />
+                                                        <Condition Property="IsSelected" Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </MultiTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+
+
+                                </ListBox>
+                                <Button x:Name="btnAddCompanyPictureShow"
+                                        Width="84"
+                                        Height="84"
+                                        Margin="0"
+                                        HorizontalAlignment="Left"
+                                        Click="UploadCompanyImageShow_Click">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border Width="84"
+                                                    Height="84"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    BorderThickness="0"
+                                                    CornerRadius="5">
+                                                <Image Width="82"
+                                                       Height="82"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Source="/MagicCube;component/Resources/ImageSingle/AddImage.png" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                    <TextBlock Margin="126,0,0,0"
+                               HorizontalAlignment="Left"
+                               Foreground="#999999"
+                               Style="{x:Null}"
+                               Text="支持JPG,PNG格式，最多可上传5张" />
+                    <StackPanel Margin="118,40,0,60" Orientation="Horizontal">
+                        <templateUC:BlueButton Width="96"
+                                               Height="34"
+                                               Click="BtnSave_Click"
+                                               Text="保存" />
+                        <templateUC:WhiteButton Width="96"
+                                                Height="34"
+                                                Margin="14,0,0,0"
+                                                Click="BtnCancel_Click"
+                                                Text="取消" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <local:UCSelfImageUpload x:Name="ucCompanyLogoUpload"
+                                 Grid.Row="1"
+                                 Margin="0,20,0,0"
+                                 Visibility="Collapsed" />
+    </Grid>
+</UserControl>

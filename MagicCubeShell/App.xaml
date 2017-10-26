@@ -1,0 +1,9 @@
+﻿<Application x:Class="MagicCubeShell.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="LoadingView.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary Source="/MagicCube;component/Themes/CommonThemes.xaml" />
+    </Application.Resources>
+</Application>

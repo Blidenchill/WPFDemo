@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCAccountSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:relayCmd="clr-namespace:MagicCube.Command"
+             xmlns:tempUC="clr-namespace:MagicCube.TemplateUC"
+             d:DesignHeight="470"
+             d:DesignWidth="440"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel Margin="0,90,0,0" HorizontalAlignment="Center">
+            <Border Width="66"
+                    Height="66"
+                    Margin="0,0,0,0"
+                    BorderBrush="AliceBlue"
+                    BorderThickness="0"
+                    CornerRadius="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="/MagicCube;component/Resources/Images/UserDefault.png" />
+                </Border.Background>
+                <Border Width="66" Height="66" CornerRadius="2" BorderThickness="0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding Path=AvatarUrl}"/>
+                    </Border.Background>
+                </Border>
+            </Border>
+            <TextBlock Margin="0,16,0,0"
+                       HorizontalAlignment="Center"
+                       FontSize="12"
+                       Foreground="#333333"
+                       Text="{Binding HrName}" />
+            <TextBlock Margin="0,10,0,0"
+                       HorizontalAlignment="Center"
+                       FontSize="12"
+                       Foreground="#666666"
+                       Text="{Binding HrPosition}" />
+            <tempUC:WhiteButton Width="114"
+                                Height="30"
+                                Margin="0,42,0,0"
+                                Command="{Binding CloseCommand}"
+                                FontSize="12"
+                                Text="退出登录" />
+            <tempUC:LinkButton Margin="0,16,0,0"
+                               Click="LinkButton_Click"
+                               Content="切换账号"
+                               FontSize="12" />
+        </StackPanel>
+    </Grid>
+</UserControl>

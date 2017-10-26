@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="MagicCube.TemplateUC.PhoneFailTemp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Margin="0,8"
+    d:DesignHeight="34"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.Resources />
+    <Grid>
+        <Border
+            Height="34"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="#eeeeee"
+            CornerRadius="4">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Image
+                    Width="16"
+                    Height="16"
+                    Margin="10,0,10,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/MagicCube;component/Resources/ImageSingle/phnoesucess.png" />
+                <TextBlock
+                    x:Name="msg"
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="12"
+                    Foreground="#f25751"
+                    Text="对方未接听" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,221 @@
+﻿<UserControl x:Class="MagicCube.ViewSingle.UCSafeSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:BConvert="clr-namespace:MagicCube.BindingConvert"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:index="clr-namespace:MagicCube.Index"
+             xmlns:local="clr-namespace:MagicCube.ViewSingle"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templateUC="clr-namespace:MagicCube.TemplateUC"
+             x:Name="ucSafe"
+             d:DesignHeight="665"
+             d:DesignWidth="700"
+             mc:Ignorable="d">
+    <Grid x:Name="gdMain">
+        <Grid.Resources>
+            <BConvert:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+            <Style TargetType="TextBlock">
+                <Setter Property="Width" Value="80" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="TextAlignment" Value="Right" />
+                <Setter Property="Padding" Value="0,9,5,0" />
+                <Setter Property="Height" Value="34" />
+                <Setter Property="Margin" Value="0,0,24,0" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="#999999" />
+            </Style>
+            <Style x:Key="ErrorBlock" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="#f25751" />
+                <Setter Property="Margin" Value="105,0,0,12" />
+            </Style>
+
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Foreground="#333333"
+                   Text="安全设置" />
+        <Rectangle VerticalAlignment="Bottom"
+                   Stroke="#e7e7e7"
+                   StrokeThickness="1" />
+        <Grid x:Name="gdModify"
+              Grid.Row="1"
+              Background="#ffffff">
+
+            <StackPanel Margin="30,20,0,0" HorizontalAlignment="Left">
+                <TextBlock Margin="0,0,0,20"
+                           FontSize="14"
+                           Foreground="#333333"
+                           Style="{x:Null}"
+                           Text="修改密码" />
+                <StackPanel Margin="0,0,0,8" Orientation="Horizontal">
+                    <TextBlock>
+                        <Run Foreground="#f25751" Text="*" />
+                        <Run Text="当前密码" />
+                    </TextBlock>
+                    <Grid Width="324" Height="34">
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#e7e7e7"
+                                   StrokeThickness="1" />
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#f25751"
+                                   StrokeThickness="1"
+                                   Visibility="{Binding ElementName=ucSafe,
+                                                        Path=CurrentWordValidate,
+                                                        Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <templateUC:HintPasswordBox x:Name="pbCurrentWord"
+                                                    Margin="10,0,0,0"
+                                                    VerticalContentAlignment="Center"
+                                                    GotFocus="pbCurrentWord_GotFocus"
+                                                    Hint="请输入当前密码" />
+                    </Grid>
+                </StackPanel>
+                <TextBlock FontSize="12"
+                           Style="{StaticResource ErrorBlock}"
+                           Text="密码错误"
+                           Visibility="{Binding ElementName=ucSafe,
+                                                Path=CurrentWordValidate,
+                                                Converter={StaticResource BoolToVisibilityConverter}}" />
+                <StackPanel Margin="0,6,0,8" Orientation="Horizontal">
+                    <TextBlock>
+                        <Run Foreground="#f25751" Text="*" />
+                        <Run Text="新密码" />
+                    </TextBlock>
+                    <Grid Width="324" Height="34">
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#e7e7e7"
+                                   StrokeThickness="1" />
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#f25751"
+                                   StrokeThickness="1"
+                                   Visibility="{Binding ElementName=ucSafe,
+                                                        Path=NewWordValidate,
+                                                        Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <templateUC:HintPasswordBox x:Name="pbNewWord"
+                                                    Margin="10,0,0,0"
+                                                    VerticalContentAlignment="Center"
+                                                    CommandManager.PreviewExecuted="HintPasswordBox_PreviewExecuted"
+                                                    GotFocus="pbNewWord_GotFocus"
+                                                    Hint="6-20位字母、数字或特殊字符" />
+                    </Grid>
+                </StackPanel>
+                <TextBlock Style="{StaticResource ErrorBlock}"
+                           Text="请输入6-20位字母、数字或特殊字符"
+                           Visibility="{Binding ElementName=ucSafe,
+                                                Path=NewWordValidate,
+                                                Converter={StaticResource BoolToVisibilityConverter}}" />
+                <TextBlock x:Name="tbNewPassValidate"
+                           Style="{StaticResource ErrorBlock}"
+                           Text="为了您的账号安全，密码请勿与手机号相同"
+                           Visibility="Collapsed" />
+                <StackPanel Margin="0,6,0,8" Orientation="Horizontal">
+                    <TextBlock>
+                        <Run Foreground="#f25751" Text="*" />
+                        <Run Text="确认密码" />
+                    </TextBlock>
+                    <Grid Width="324" Height="34">
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#e7e7e7"
+                                   StrokeThickness="1" />
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#f25751"
+                                   StrokeThickness="1"
+                                   Visibility="{Binding ElementName=ucSafe,
+                                                        Path=VerifyWordValidate,
+                                                        Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <templateUC:HintPasswordBox x:Name="pbVerifyWord"
+                                                    Margin="10,0,0,0"
+                                                    VerticalContentAlignment="Center"
+                                                    CommandManager.PreviewExecuted="HintPasswordBox_PreviewExecuted"
+                                                    GotFocus="pbVerifyWord_GotFocus"
+                                                    Hint="请再次输入新密码" />
+                    </Grid>
+                </StackPanel>
+                <TextBlock Style="{StaticResource ErrorBlock}"
+                           Text="密码不一致，请重新输入"
+                           Visibility="{Binding ElementName=ucSafe,
+                                                Path=VerifyWordValidate,
+                                                Converter={StaticResource BoolToVisibilityConverter}}" />
+
+
+                <templateUC:BlueButton Width="124"
+                                       Height="34"
+                                       Margin="105,22,0,0"
+                                       HorizontalAlignment="Left"
+                                       Click="OK_Click"
+                                       Text="确认修改" />
+
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="gdSetting"
+              Grid.Row="1"
+              Background="#ffffff">
+
+            <StackPanel Margin="30,20,0,0" HorizontalAlignment="Left">
+                <TextBlock FontSize="14"
+                           Foreground="#333333"
+                           Style="{x:Null}"
+                           Text="设置密码" />
+
+                <StackPanel Margin="0,0,0,8" Orientation="Horizontal">
+                    <TextBlock Text="登录密码" />
+                    <Grid Width="324" Height="34">
+                        <Rectangle Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#e7e7e7"
+                                   StrokeThickness="1" />
+                        <Rectangle x:Name="rect"
+                                   Fill="White"
+                                   RadiusX="3"
+                                   RadiusY="3"
+                                   Stroke="#f25751"
+                                   StrokeThickness="1"
+                                   Visibility="Collapsed" />
+                        <templateUC:HintPasswordBox x:Name="txtPassword"
+                                                    Margin="10,0,0,0"
+                                                    VerticalContentAlignment="Center"
+                                                    GotFocus="txtPassword_GotFocus"
+                                                    Hint="请设置密码，6-20位数字、字母" />
+
+                    </Grid>
+
+                </StackPanel>
+                <TextBlock x:Name="txtError"
+                           Margin="110,0,0,0"
+                           Foreground="#f25751"
+                           Style="{x:Null}"
+                           Text="请输入6-20位字母、数字或特殊字符"
+                           Visibility="Collapsed" />
+                <templateUC:BlueButton Width="103"
+                                       Height="34"
+                                       Margin="0,30,0,0"
+                                       Click="BtnConfirm_Click"
+                                       Text="保存密码" />
+            </StackPanel>
+        </Grid>
+        <Busy:BusyIndicator xmlns:Busy="clr-namespace:BusyIndicatorCtrl"
+                            x:Name="busyCtrl"
+                            Grid.Row="1"
+                            d:IsHidden="True" />
+    </Grid>
+</UserControl>
